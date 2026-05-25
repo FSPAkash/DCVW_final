@@ -30,7 +30,17 @@
       "Bash(taskkill //F //PID 11096)",
       "Bash(taskkill //F //PID 33944)",
       "Bash(python -c \"import docx; print\\(docx.__version__\\)\")",
-      "Bash(python \"c:/Users/AkashPatil/DCW SIOP/build_manual.py\")"
+      "Bash(python \"c:/Users/AkashPatil/DCW SIOP/build_manual.py\")",
+      "Bash(python v3_master.py)",
+      "Bash(python v3_coa.py)",
+      "Bash(python v3_match.py)",
+      "Bash(npx vite *)",
+      "Read(//c/Users/AkashPatil/DCW SIOP/**)",
+      "Bash(cd ../frontend && npm run build 2>&1 | tail -12)",
+      "Read(//c/Users/AkashPatil/**)",
+      "PowerShell(python _audit_tmp.py)",
+      "PowerShell(python -c \"import ast; ast.parse\\(open\\('backend/v3_match.py'\\).read\\(\\)\\); print\\('OK'\\)\")",
+      "Bash(curl -s -o NUL -w \"%{http_code}\\\\n\" \"http://localhost:5000/api/v3/master/blend/BLEND-1779431678/card.pdf\")"
     ]
   }
 }

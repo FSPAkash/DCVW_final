@@ -13,13 +13,13 @@ function Login({ onLogin }) {
     setLoading(true);
 
     try {
-      const res = await fetch(`${config.API_URL}/api/login`, {
+      const res = await fetch(`${config.API_URL}/api/v3/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
       });
       const data = await res.json();
-      
+
       if (data.success) {
         onLogin(data.user);
       } else {
@@ -33,101 +33,116 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div className="login-wrapper">
-      <div className="login-background">
-        <div className="login-grid"></div>
-        <div className="login-dots">
-          <div className="login-dot dot-1"></div>
-          <div className="login-dot dot-2"></div>
-          <div className="login-dot dot-3"></div>
-          <div className="login-dot dot-4"></div>
-          <div className="login-dot dot-5"></div>
-          <div className="login-dot dot-6"></div>
-          <div className="login-dot dot-7"></div>
-          <div className="login-dot dot-8"></div>
-          <div className="login-dot dot-9"></div>
-          <div className="login-dot dot-10"></div>
-          <div className="login-dot dot-11"></div>
-          <div className="login-dot dot-12"></div>
+    <div className="desktop login-desktop">
+      <div className="window login-window">
+        <div className="login-topbar">
+          <div className="login-brand">
+            <img
+              src="/logos/main-logo.png"
+              alt="DCW"
+              className="login-topbar-logo"
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
+            <div className="login-brand-meta">
+              <span className="login-brand-name">SIOP</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="login-page">
-        <div className="login-container">
-          <div className="login-logo">
-            <div className="login-logo-icon">
-              <img 
-                src="/logos/main-logo.png" 
-                alt="Pigment Matcher" 
-                className="login-main-logo"
+        <div className="body login-body">
+          <div className="login-pane">
+            <div className="login-eyebrow">
+              <span className="bar"></span>
+              <span>SECURE ACCESS</span>
+            </div>
+            <h1 className="login-title">Inventory <em>Match</em> Matrix</h1>
+            <p className="login-lede">
+              AI driven Lot and Customer Requirement Management.
+              Sign in with your operator credentials to continue.
+            </p>
+
+            <div className="login-powered">
+              <span className="login-powered-label">Powered By :</span>
+              <img
+                src="/logos/partner2.png"
+                alt="Findability Sciences"
+                className="login-powered-logo"
                 onError={(e) => { e.target.style.display = 'none'; }}
               />
+              <span className="login-powered-name">Findability Sciences</span>
             </div>
-            <h1>Customer Match Matrix</h1>
-            <p>AI Driven Matching Tool - Powered By Findability Sciences</p>
           </div>
 
-          <div className="login-box">
-            <h2>Sign In</h2>
-
-            {error && (
-              <div className="alert alert-error">
-                {error}
+          <div className="login-form-wrap">
+            <div className="card login-card">
+              <div className="card-head">
+                <span className="dot-r"></span>
+                <span>Operator Sign-In</span>
               </div>
-            )}
+              <div className="card-body">
+                {error && (
+                  <div className="login-alert">
+                    <span className="login-alert-tag">ERR</span>
+                    <span>{error}</span>
+                  </div>
+                )}
 
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label className="form-label">Username</label>
-                <input
-                  type="text"
-                  className="form-input"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter username"
-                  required
-                />
+                <form onSubmit={handleSubmit} className="login-form">
+                  <div className="field">
+                    <label className="field-label" htmlFor="login-username">Username</label>
+                    <input
+                      id="login-username"
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      placeholder="operator.id"
+                      autoComplete="username"
+                      required
+                    />
+                  </div>
+
+                  <div className="field">
+                    <label className="field-label" htmlFor="login-password">Password</label>
+                    <input
+                      id="login-password"
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="••••••••"
+                      autoComplete="current-password"
+                      required
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="btn btn-primary login-submit"
+                    disabled={loading}
+                  >
+                    {loading ? 'Signing in…' : 'Sign In →'}
+                  </button>
+                </form>
+
+                <div className="login-foot">
+                  <span className="login-foot-key">SESSION</span>
+                  <span className="login-foot-val">awaiting credentials</span>
+                </div>
               </div>
-
-              <div className="form-group">
-                <label className="form-label">Password</label>
-                <input
-                  type="password"
-                  className="form-input"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter password"
-                  required
-                />
-              </div>
-
-              <button 
-                type="submit" 
-                className="btn btn-primary btn-full"
-                disabled={loading}
-              >
-                {loading ? 'Signing in...' : 'Sign In'}
-              </button>
-            </form>
-          </div>
-
-          <div className="login-powered">
-            <p>Powered by</p>
-            <div className="login-powered-logos">
-              <img 
-                src="/logos/partner1.png" 
-                alt="Partner 1" 
-                className="powered-logo-img"
-                onError={(e) => { e.target.style.display = 'none'; }}
-              />
-              <span className="powered-divider"></span>
-              <img 
-                src="/logos/partner2.png" 
-                alt="Partner 2" 
-                className="powered-logo-img"
-                onError={(e) => { e.target.style.display = 'none'; }}
-              />
             </div>
+          </div>
+        </div>
+
+        <div className="statusbar">
+          <span className="dot"></span>
+          <span>READY</span>
+          <span className="sep"></span>
+          <span>AUTH · LOCAL</span>
+          <span className="sep"></span>
+          <span>USER · —</span>
+          <div className="right">
+            <span>VIEW · SIGN-IN</span>
+            <span className="sep"></span>
+            <span>SAHUPURAM · TN</span>
           </div>
         </div>
       </div>

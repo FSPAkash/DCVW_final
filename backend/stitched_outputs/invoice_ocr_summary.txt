@@ -1,1 +1,0 @@
-Invoice 4210 | Date 14-Mar-26 | Customer Sri Kartikeya Enterprises | OCR item quantities 8000, 500, 2000, 1500 kg | Only grade 130 std 325 is stitchable to current inventory.

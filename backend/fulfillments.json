@@ -1,0 +1,2780 @@
+[
+  {
+    "id": "cd3028f2b6f9",
+    "ts": "2026-05-18T14:52:14",
+    "user": "TEST",
+    "customer_id": "Himalaya paints",
+    "customer_name": "HIMAALAYAAPAINTS",
+    "qty_requested": 1.0,
+    "lines": [
+      {
+        "lot_id": "TESTNEW1@LT",
+        "lot_no": "TESTNEW1",
+        "col_letter": "LT",
+        "consume_mt": 10.5,
+        "prev_qty": 10.5,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6286N-B@LS",
+        "lot_no": "6286N-B",
+        "col_letter": "LS",
+        "consume_mt": 3.0,
+        "prev_qty": 5.0,
+        "new_qty": 2.0
+      }
+    ],
+    "edit_history": [
+      {
+        "ts": "2026-05-18T14:52:15",
+        "user": "TEST",
+        "rewinds": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "restored": 0.5,
+            "qty_now": 0.5
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 0.2,
+            "prev_qty": 0.5,
+            "new_qty": 0.3
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 0.5,
+            "prev_qty": 0.0,
+            "new_qty": 0.0
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-18T14:52:15",
+        "user": "TEST",
+        "rewinds": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "restored": 0.2,
+            "qty_now": 0.5
+          }
+        ],
+        "appended_lots": [
+          {
+            "col": 332,
+            "col_letter": "LT",
+            "lot_id": "TESTNEW1@LT",
+            "lot_no": "TESTNEW1"
+          }
+        ],
+        "applied": [
+          {
+            "lot_id": "TESTNEW1",
+            "lot_no": "TESTNEW1",
+            "col_letter": "LT",
+            "consume_mt": 1.5,
+            "prev_qty": 10.0,
+            "new_qty": 8.5
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 0.2,
+            "prev_qty": 0.5,
+            "new_qty": 0.3
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-18T15:02:51",
+        "user": "operator",
+        "rewinds": [
+          {
+            "lot_id": "TESTNEW1",
+            "restored": 1.5,
+            "qty_now": 10.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "TESTNEW1@LT",
+            "lot_no": "TESTNEW1",
+            "col_letter": "LT",
+            "consume_mt": 10.5,
+            "prev_qty": 10.0,
+            "new_qty": 0.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "TESTNEW1",
+            "lot_no": "TESTNEW1",
+            "col_letter": "LT",
+            "consume_mt": 1.5,
+            "prev_qty": 10.0,
+            "new_qty": 8.5
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-18T15:05:03",
+        "user": "operator",
+        "rewinds": [
+          {
+            "lot_id": "TESTNEW1@LT",
+            "restored": 10.5,
+            "qty_now": 10.5
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "TESTNEW1@LT",
+            "lot_no": "TESTNEW1",
+            "col_letter": "LT",
+            "consume_mt": 10.5,
+            "prev_qty": 10.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6286N-B@LS",
+            "lot_no": "6286N-B",
+            "col_letter": "LS",
+            "consume_mt": 3.0,
+            "prev_qty": 5.0,
+            "new_qty": 2.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "TESTNEW1@LT",
+            "lot_no": "TESTNEW1",
+            "col_letter": "LT",
+            "consume_mt": 10.5,
+            "prev_qty": 10.0,
+            "new_qty": 0.0
+          }
+        ]
+      }
+    ],
+    "edited_at": "2026-05-18T15:05:03"
+  },
+  {
+    "id": "e80cfa47d471",
+    "ts": "2026-05-18T15:11:17",
+    "user": "admin",
+    "customer_id": "Himalaya paints",
+    "customer_name": "HIMAALAYAAPAINTS",
+    "qty_requested": 50.0,
+    "lines": [
+      {
+        "lot_id": "6826N-D@FQ",
+        "lot_no": "6826N-D",
+        "col_letter": "FQ",
+        "consume_mt": 0.5,
+        "prev_qty": 0.5,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6564B@AF",
+        "lot_no": "6564B",
+        "col_letter": "AF",
+        "consume_mt": 1.5,
+        "prev_qty": 1.5,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6785B@AR",
+        "lot_no": "6785B",
+        "col_letter": "AR",
+        "consume_mt": 7.0,
+        "prev_qty": 7.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6822N-C@FJ",
+        "lot_no": "6822N-C",
+        "col_letter": "FJ",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6134B@M",
+        "lot_no": "6134B",
+        "col_letter": "M",
+        "consume_mt": 2.0,
+        "prev_qty": 2.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6766A@AP",
+        "lot_no": "6766A",
+        "col_letter": "AP",
+        "consume_mt": 8.0,
+        "prev_qty": 8.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6828N-D@FT",
+        "lot_no": "6828N-D",
+        "col_letter": "FT",
+        "consume_mt": 2.0,
+        "prev_qty": 2.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6564A@AE",
+        "lot_no": "6564A",
+        "col_letter": "AE",
+        "consume_mt": 2.25,
+        "prev_qty": 2.25,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6041N-D@CV",
+        "lot_no": "6041N-D",
+        "col_letter": "CV",
+        "consume_mt": 2.0,
+        "prev_qty": 2.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6824N-A@FM",
+        "lot_no": "6824N-A",
+        "col_letter": "FM",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6823N-C@FK",
+        "lot_no": "6823N-C",
+        "col_letter": "FK",
+        "consume_mt": 1.0,
+        "prev_qty": 1.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6770A@AQ",
+        "lot_no": "6770A",
+        "col_letter": "AQ",
+        "consume_mt": 6.75,
+        "prev_qty": 10.0,
+        "new_qty": 3.25
+      },
+      {
+        "lot_id": "6979N-D@GS",
+        "lot_no": "6979N-D",
+        "col_letter": "GS",
+        "consume_mt": 2.0,
+        "prev_qty": 5.0,
+        "new_qty": 3.0
+      }
+    ],
+    "edit_history": [
+      {
+        "ts": "2026-05-18T15:35:32",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "restored": 0.5,
+            "qty_now": 0.5
+          },
+          {
+            "lot_id": "6564B@AF",
+            "restored": 1.5,
+            "qty_now": 1.5
+          },
+          {
+            "lot_id": "6785B@AR",
+            "restored": 7.0,
+            "qty_now": 7.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6134B@M",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6766A@AP",
+            "restored": 8.0,
+            "qty_now": 8.0
+          },
+          {
+            "lot_id": "6828N-D@FT",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6564A@AE",
+            "restored": 2.25,
+            "qty_now": 2.25
+          },
+          {
+            "lot_id": "6041N-D@CV",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6824N-A@FM",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6823N-C@FK",
+            "restored": 1.0,
+            "qty_now": 1.0
+          },
+          {
+            "lot_id": "6133B@K",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6134A@L",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6770A@AQ",
+            "restored": 6.75,
+            "qty_now": 10.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 0.5,
+            "prev_qty": 0.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564B@AF",
+            "lot_no": "6564B",
+            "col_letter": "AF",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6785B@AR",
+            "lot_no": "6785B",
+            "col_letter": "AR",
+            "consume_mt": 7.0,
+            "prev_qty": 7.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "lot_no": "6822N-C",
+            "col_letter": "FJ",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6134B@M",
+            "lot_no": "6134B",
+            "col_letter": "M",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6766A@AP",
+            "lot_no": "6766A",
+            "col_letter": "AP",
+            "consume_mt": 8.0,
+            "prev_qty": 8.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6828N-D@FT",
+            "lot_no": "6828N-D",
+            "col_letter": "FT",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564A@AE",
+            "lot_no": "6564A",
+            "col_letter": "AE",
+            "consume_mt": 2.25,
+            "prev_qty": 2.25,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6041N-D@CV",
+            "lot_no": "6041N-D",
+            "col_letter": "CV",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6824N-A@FM",
+            "lot_no": "6824N-A",
+            "col_letter": "FM",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6823N-C@FK",
+            "lot_no": "6823N-C",
+            "col_letter": "FK",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6133B@K",
+            "lot_no": "6133B",
+            "col_letter": "K",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6134A@L",
+            "lot_no": "6134A",
+            "col_letter": "L",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6770A@AQ",
+            "lot_no": "6770A",
+            "col_letter": "AQ",
+            "consume_mt": 6.75,
+            "prev_qty": 10.0,
+            "new_qty": 3.25
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 0.5,
+            "prev_qty": 0.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564B@AF",
+            "lot_no": "6564B",
+            "col_letter": "AF",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6785B@AR",
+            "lot_no": "6785B",
+            "col_letter": "AR",
+            "consume_mt": 7.0,
+            "prev_qty": 7.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "lot_no": "6822N-C",
+            "col_letter": "FJ",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6134B@M",
+            "lot_no": "6134B",
+            "col_letter": "M",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6766A@AP",
+            "lot_no": "6766A",
+            "col_letter": "AP",
+            "consume_mt": 8.0,
+            "prev_qty": 8.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6828N-D@FT",
+            "lot_no": "6828N-D",
+            "col_letter": "FT",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564A@AE",
+            "lot_no": "6564A",
+            "col_letter": "AE",
+            "consume_mt": 2.25,
+            "prev_qty": 2.25,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6041N-D@CV",
+            "lot_no": "6041N-D",
+            "col_letter": "CV",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6824N-A@FM",
+            "lot_no": "6824N-A",
+            "col_letter": "FM",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6823N-C@FK",
+            "lot_no": "6823N-C",
+            "col_letter": "FK",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6133B@K",
+            "lot_no": "6133B",
+            "col_letter": "K",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6134A@L",
+            "lot_no": "6134A",
+            "col_letter": "L",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6770A@AQ",
+            "lot_no": "6770A",
+            "col_letter": "AQ",
+            "consume_mt": 6.75,
+            "prev_qty": 10.0,
+            "new_qty": 3.25
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-18T15:40:41",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "restored": 0.5,
+            "qty_now": 0.5
+          },
+          {
+            "lot_id": "6564B@AF",
+            "restored": 1.5,
+            "qty_now": 1.5
+          },
+          {
+            "lot_id": "6785B@AR",
+            "restored": 7.0,
+            "qty_now": 7.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6134B@M",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6766A@AP",
+            "restored": 8.0,
+            "qty_now": 8.0
+          },
+          {
+            "lot_id": "6828N-D@FT",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6564A@AE",
+            "restored": 2.25,
+            "qty_now": 2.25
+          },
+          {
+            "lot_id": "6041N-D@CV",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6824N-A@FM",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6823N-C@FK",
+            "restored": 1.0,
+            "qty_now": 1.0
+          },
+          {
+            "lot_id": "6133B@K",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6134A@L",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6770A@AQ",
+            "restored": 6.75,
+            "qty_now": 10.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 0.5,
+            "prev_qty": 0.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564B@AF",
+            "lot_no": "6564B",
+            "col_letter": "AF",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6785B@AR",
+            "lot_no": "6785B",
+            "col_letter": "AR",
+            "consume_mt": 7.0,
+            "prev_qty": 7.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "lot_no": "6822N-C",
+            "col_letter": "FJ",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6134B@M",
+            "lot_no": "6134B",
+            "col_letter": "M",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6766A@AP",
+            "lot_no": "6766A",
+            "col_letter": "AP",
+            "consume_mt": 8.0,
+            "prev_qty": 8.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6828N-D@FT",
+            "lot_no": "6828N-D",
+            "col_letter": "FT",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564A@AE",
+            "lot_no": "6564A",
+            "col_letter": "AE",
+            "consume_mt": 2.25,
+            "prev_qty": 2.25,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6041N-D@CV",
+            "lot_no": "6041N-D",
+            "col_letter": "CV",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6824N-A@FM",
+            "lot_no": "6824N-A",
+            "col_letter": "FM",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6823N-C@FK",
+            "lot_no": "6823N-C",
+            "col_letter": "FK",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6133B@K",
+            "lot_no": "6133B",
+            "col_letter": "K",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6770A@AQ",
+            "lot_no": "6770A",
+            "col_letter": "AQ",
+            "consume_mt": 6.75,
+            "prev_qty": 10.0,
+            "new_qty": 3.25
+          },
+          {
+            "lot_id": "6979N-D@GS",
+            "lot_no": "6979N-D",
+            "col_letter": "GS",
+            "consume_mt": 2.0,
+            "prev_qty": 5.0,
+            "new_qty": 3.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 0.5,
+            "prev_qty": 0.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564B@AF",
+            "lot_no": "6564B",
+            "col_letter": "AF",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6785B@AR",
+            "lot_no": "6785B",
+            "col_letter": "AR",
+            "consume_mt": 7.0,
+            "prev_qty": 7.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "lot_no": "6822N-C",
+            "col_letter": "FJ",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6134B@M",
+            "lot_no": "6134B",
+            "col_letter": "M",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6766A@AP",
+            "lot_no": "6766A",
+            "col_letter": "AP",
+            "consume_mt": 8.0,
+            "prev_qty": 8.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6828N-D@FT",
+            "lot_no": "6828N-D",
+            "col_letter": "FT",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564A@AE",
+            "lot_no": "6564A",
+            "col_letter": "AE",
+            "consume_mt": 2.25,
+            "prev_qty": 2.25,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6041N-D@CV",
+            "lot_no": "6041N-D",
+            "col_letter": "CV",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6824N-A@FM",
+            "lot_no": "6824N-A",
+            "col_letter": "FM",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6823N-C@FK",
+            "lot_no": "6823N-C",
+            "col_letter": "FK",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6133B@K",
+            "lot_no": "6133B",
+            "col_letter": "K",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6134A@L",
+            "lot_no": "6134A",
+            "col_letter": "L",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6770A@AQ",
+            "lot_no": "6770A",
+            "col_letter": "AQ",
+            "consume_mt": 6.75,
+            "prev_qty": 10.0,
+            "new_qty": 3.25
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-18T15:42:04",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "restored": 0.5,
+            "qty_now": 0.5
+          },
+          {
+            "lot_id": "6564B@AF",
+            "restored": 1.5,
+            "qty_now": 1.5
+          },
+          {
+            "lot_id": "6785B@AR",
+            "restored": 7.0,
+            "qty_now": 7.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6134B@M",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6766A@AP",
+            "restored": 8.0,
+            "qty_now": 8.0
+          },
+          {
+            "lot_id": "6828N-D@FT",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6564A@AE",
+            "restored": 2.25,
+            "qty_now": 2.25
+          },
+          {
+            "lot_id": "6041N-D@CV",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6824N-A@FM",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6823N-C@FK",
+            "restored": 1.0,
+            "qty_now": 1.0
+          },
+          {
+            "lot_id": "6133B@K",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6770A@AQ",
+            "restored": 6.75,
+            "qty_now": 10.0
+          },
+          {
+            "lot_id": "6979N-D@GS",
+            "restored": 2.0,
+            "qty_now": 5.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 0.5,
+            "prev_qty": 0.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564B@AF",
+            "lot_no": "6564B",
+            "col_letter": "AF",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6785B@AR",
+            "lot_no": "6785B",
+            "col_letter": "AR",
+            "consume_mt": 7.0,
+            "prev_qty": 7.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "lot_no": "6822N-C",
+            "col_letter": "FJ",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6134B@M",
+            "lot_no": "6134B",
+            "col_letter": "M",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6766A@AP",
+            "lot_no": "6766A",
+            "col_letter": "AP",
+            "consume_mt": 8.0,
+            "prev_qty": 8.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6828N-D@FT",
+            "lot_no": "6828N-D",
+            "col_letter": "FT",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564A@AE",
+            "lot_no": "6564A",
+            "col_letter": "AE",
+            "consume_mt": 2.25,
+            "prev_qty": 2.25,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6041N-D@CV",
+            "lot_no": "6041N-D",
+            "col_letter": "CV",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6824N-A@FM",
+            "lot_no": "6824N-A",
+            "col_letter": "FM",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6823N-C@FK",
+            "lot_no": "6823N-C",
+            "col_letter": "FK",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6770A@AQ",
+            "lot_no": "6770A",
+            "col_letter": "AQ",
+            "consume_mt": 6.75,
+            "prev_qty": 10.0,
+            "new_qty": 3.25
+          },
+          {
+            "lot_id": "6979N-D@GS",
+            "lot_no": "6979N-D",
+            "col_letter": "GS",
+            "consume_mt": 2.0,
+            "prev_qty": 5.0,
+            "new_qty": 3.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 0.5,
+            "prev_qty": 0.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564B@AF",
+            "lot_no": "6564B",
+            "col_letter": "AF",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6785B@AR",
+            "lot_no": "6785B",
+            "col_letter": "AR",
+            "consume_mt": 7.0,
+            "prev_qty": 7.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "lot_no": "6822N-C",
+            "col_letter": "FJ",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6134B@M",
+            "lot_no": "6134B",
+            "col_letter": "M",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6766A@AP",
+            "lot_no": "6766A",
+            "col_letter": "AP",
+            "consume_mt": 8.0,
+            "prev_qty": 8.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6828N-D@FT",
+            "lot_no": "6828N-D",
+            "col_letter": "FT",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564A@AE",
+            "lot_no": "6564A",
+            "col_letter": "AE",
+            "consume_mt": 2.25,
+            "prev_qty": 2.25,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6041N-D@CV",
+            "lot_no": "6041N-D",
+            "col_letter": "CV",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6824N-A@FM",
+            "lot_no": "6824N-A",
+            "col_letter": "FM",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6823N-C@FK",
+            "lot_no": "6823N-C",
+            "col_letter": "FK",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6133B@K",
+            "lot_no": "6133B",
+            "col_letter": "K",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6770A@AQ",
+            "lot_no": "6770A",
+            "col_letter": "AQ",
+            "consume_mt": 6.75,
+            "prev_qty": 10.0,
+            "new_qty": 3.25
+          },
+          {
+            "lot_id": "6979N-D@GS",
+            "lot_no": "6979N-D",
+            "col_letter": "GS",
+            "consume_mt": 2.0,
+            "prev_qty": 5.0,
+            "new_qty": 3.0
+          }
+        ]
+      }
+    ],
+    "edited_at": "2026-05-18T15:42:04"
+  },
+  {
+    "id": "139f01a0e2c3",
+    "ts": "2026-05-18T15:37:51",
+    "user": "admin",
+    "customer_id": "MS Enterprises RIO & OIO 31.12.25",
+    "customer_name": "Enterprises,Ahmedabad",
+    "qty_requested": 10.0,
+    "lines": [
+      {
+        "lot_id": "6978N-C@GO",
+        "lot_no": "6978N-C",
+        "col_letter": "GO",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6980N-A@GT",
+        "lot_no": "6980N-A",
+        "col_letter": "GT",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      }
+    ],
+    "edit_history": [
+      {
+        "ts": "2026-05-18T15:38:12",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6978N-C@GO",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6978N-D@GP",
+            "restored": 5.0,
+            "qty_now": 5.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6978N-D@GP",
+            "lot_no": "6978N-D",
+            "col_letter": "GP",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6972N-A@GB",
+            "lot_no": "6972N-A",
+            "col_letter": "GB",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6979N-D@GS",
+            "lot_no": "6979N-D",
+            "col_letter": "GS",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6978N-C@GO",
+            "lot_no": "6978N-C",
+            "col_letter": "GO",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6978N-D@GP",
+            "lot_no": "6978N-D",
+            "col_letter": "GP",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-18T15:40:09",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6978N-D@GP",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6972N-A@GB",
+            "restored": 4.0,
+            "qty_now": 4.0
+          },
+          {
+            "lot_id": "6979N-D@GS",
+            "restored": 1.0,
+            "qty_now": 5.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6978N-C@GO",
+            "lot_no": "6978N-C",
+            "col_letter": "GO",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6980N-A@GT",
+            "lot_no": "6980N-A",
+            "col_letter": "GT",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6978N-D@GP",
+            "lot_no": "6978N-D",
+            "col_letter": "GP",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6972N-A@GB",
+            "lot_no": "6972N-A",
+            "col_letter": "GB",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6979N-D@GS",
+            "lot_no": "6979N-D",
+            "col_letter": "GS",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          }
+        ]
+      }
+    ],
+    "edited_at": "2026-05-18T15:40:09"
+  },
+  {
+    "id": "7478794a6558",
+    "ts": "2026-05-18T15:43:13",
+    "user": "admin",
+    "customer_id": "Durga enterprises",
+    "customer_name": "Durgaenterprises",
+    "qty_requested": 2.0,
+    "lines": [
+      {
+        "lot_id": "6977N-D@GJ",
+        "lot_no": "6977N-D",
+        "col_letter": "GJ",
+        "consume_mt": 2.0,
+        "prev_qty": 5.0,
+        "new_qty": 3.0
+      }
+    ],
+    "edit_history": [
+      {
+        "ts": "2026-05-18T15:44:02",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6977N-D@GJ",
+            "restored": 2.0,
+            "qty_now": 5.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6977N-D@GJ",
+            "lot_no": "6977N-D",
+            "col_letter": "GJ",
+            "consume_mt": 2.0,
+            "prev_qty": 5.0,
+            "new_qty": 3.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6977N-D@GJ",
+            "lot_no": "6977N-D",
+            "col_letter": "GJ",
+            "consume_mt": 2.0,
+            "prev_qty": 5.0,
+            "new_qty": 3.0
+          }
+        ]
+      }
+    ],
+    "edited_at": "2026-05-18T15:44:02"
+  },
+  {
+    "id": "c524cc0170d6",
+    "ts": "2026-05-18T15:47:52",
+    "user": "admin",
+    "customer_id": "Himalaya paints",
+    "customer_name": "HIMAALAYAAPAINTS",
+    "qty_requested": 45.0,
+    "lines": [
+      {
+        "lot_id": "6133B@K",
+        "lot_no": "6133B",
+        "col_letter": "K",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6134A@L",
+        "lot_no": "6134A",
+        "col_letter": "L",
+        "consume_mt": 2.0,
+        "prev_qty": 2.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6770A@AQ",
+        "lot_no": "6770A",
+        "col_letter": "AQ",
+        "consume_mt": 3.25,
+        "prev_qty": 3.25,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6136B@O",
+        "lot_no": "6136B",
+        "col_letter": "O",
+        "consume_mt": 2.0,
+        "prev_qty": 2.0,
+        "new_qty": 0.0
+      }
+    ],
+    "edit_history": []
+  },
+  {
+    "id": "dbf94e49d4ec",
+    "ts": "2026-05-18T15:51:19",
+    "user": "TEST",
+    "customer_id": "Himalaya paints",
+    "customer_name": "HIMAALAYAAPAINTS",
+    "qty_requested": 1.0,
+    "lines": [
+      {
+        "lot_id": "6566B@AI",
+        "lot_no": "6566B",
+        "col_letter": "AI",
+        "consume_mt": 0.1,
+        "prev_qty": 0.0,
+        "new_qty": 0.0
+      }
+    ],
+    "edit_history": []
+  },
+  {
+    "id": "3d091d8c2511",
+    "ts": "2026-05-19T10:22:17",
+    "user": "admin",
+    "customer_id": "Himalaya paints",
+    "customer_name": "HIMAALAYAAPAINTS",
+    "qty_requested": 45.0,
+    "lines": [
+      {
+        "lot_id": "6979N-D@GS",
+        "lot_no": "6979N-D",
+        "col_letter": "GS",
+        "consume_mt": 3.0,
+        "prev_qty": 3.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6975N-D@GG",
+        "lot_no": "6975N-D",
+        "col_letter": "GG",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6980N-B@GU",
+        "lot_no": "6980N-B",
+        "col_letter": "GU",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6135A@N",
+        "lot_no": "6135A",
+        "col_letter": "N",
+        "consume_mt": 1.5,
+        "prev_qty": 1.5,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6121@GZ",
+        "lot_no": "6121",
+        "col_letter": "GZ",
+        "consume_mt": 2.0,
+        "prev_qty": 2.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6130B@J",
+        "lot_no": "6130B",
+        "col_letter": "J",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6526A2@AA",
+        "lot_no": "6526A2",
+        "col_letter": "AA",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6823N-D@FL",
+        "lot_no": "6823N-D",
+        "col_letter": "FL",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6828N- A@FS",
+        "lot_no": "6828N- A",
+        "col_letter": "FS",
+        "consume_mt": 4.5,
+        "prev_qty": 5.0,
+        "new_qty": 0.5
+      }
+    ],
+    "edit_history": [
+      {
+        "ts": "2026-05-19T10:23:56",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6978N-D@GP",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6972N-A@GB",
+            "restored": 4.0,
+            "qty_now": 4.0
+          },
+          {
+            "lot_id": "6979N-D@GS",
+            "restored": 3.0,
+            "qty_now": 3.0
+          },
+          {
+            "lot_id": "6975N-D@GG",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6980N-B@GU",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6135A@N",
+            "restored": 1.5,
+            "qty_now": 1.5
+          },
+          {
+            "lot_id": "6121@GZ",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6130B@J",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6526A2@AA",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6823N-D@FL",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6828N- A@FS",
+            "restored": 4.5,
+            "qty_now": 5.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6979N-D@GS",
+            "lot_no": "6979N-D",
+            "col_letter": "GS",
+            "consume_mt": 3.0,
+            "prev_qty": 3.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6975N-D@GG",
+            "lot_no": "6975N-D",
+            "col_letter": "GG",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6980N-B@GU",
+            "lot_no": "6980N-B",
+            "col_letter": "GU",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6135A@N",
+            "lot_no": "6135A",
+            "col_letter": "N",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6121@GZ",
+            "lot_no": "6121",
+            "col_letter": "GZ",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6130B@J",
+            "lot_no": "6130B",
+            "col_letter": "J",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6526A2@AA",
+            "lot_no": "6526A2",
+            "col_letter": "AA",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6823N-D@FL",
+            "lot_no": "6823N-D",
+            "col_letter": "FL",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6828N- A@FS",
+            "lot_no": "6828N- A",
+            "col_letter": "FS",
+            "consume_mt": 4.5,
+            "prev_qty": 5.0,
+            "new_qty": 0.5
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6978N-D@GP",
+            "lot_no": "6978N-D",
+            "col_letter": "GP",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6972N-A@GB",
+            "lot_no": "6972N-A",
+            "col_letter": "GB",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6979N-D@GS",
+            "lot_no": "6979N-D",
+            "col_letter": "GS",
+            "consume_mt": 3.0,
+            "prev_qty": 3.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6975N-D@GG",
+            "lot_no": "6975N-D",
+            "col_letter": "GG",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6980N-B@GU",
+            "lot_no": "6980N-B",
+            "col_letter": "GU",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6135A@N",
+            "lot_no": "6135A",
+            "col_letter": "N",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6121@GZ",
+            "lot_no": "6121",
+            "col_letter": "GZ",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6130B@J",
+            "lot_no": "6130B",
+            "col_letter": "J",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6526A2@AA",
+            "lot_no": "6526A2",
+            "col_letter": "AA",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6823N-D@FL",
+            "lot_no": "6823N-D",
+            "col_letter": "FL",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6828N- A@FS",
+            "lot_no": "6828N- A",
+            "col_letter": "FS",
+            "consume_mt": 4.5,
+            "prev_qty": 5.0,
+            "new_qty": 0.5
+          }
+        ]
+      }
+    ],
+    "edited_at": "2026-05-19T10:23:56"
+  },
+  {
+    "id": "b2eb95f07c18",
+    "ts": "2026-05-20T12:34:16",
+    "user": "admin",
+    "customer_id": "SIDDIVINAY 05.02.26",
+    "customer_name": "Siddivinayak Enterprises,Bangalore",
+    "qty_requested": 8.0,
+    "lines": [
+      {
+        "lot_id": "6947B@BI",
+        "lot_no": "6947B",
+        "col_letter": "BI",
+        "consume_mt": 6.0,
+        "prev_qty": 10.0,
+        "new_qty": 4.0
+      },
+      {
+        "lot_id": "6345N-B@EC",
+        "lot_no": "6345N-B",
+        "col_letter": "EC",
+        "consume_mt": 1.0,
+        "prev_qty": 4.0,
+        "new_qty": 4.0
+      },
+      {
+        "lot_id": "6285N-D@DP",
+        "lot_no": "6285N-D",
+        "col_letter": "DP",
+        "consume_mt": 1.0,
+        "prev_qty": 1.0,
+        "new_qty": 1.0
+      }
+    ],
+    "edit_history": [
+      {
+        "ts": "2026-05-21T10:15:34",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6958B@BJ",
+            "restored": 8.0,
+            "qty_now": 8.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 8.0,
+            "prev_qty": 8.0,
+            "new_qty": 0.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 8.0,
+            "prev_qty": 8.0,
+            "new_qty": 0.0
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-21T10:43:09",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6958B@BJ",
+            "restored": 8.0,
+            "qty_now": 8.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 6.0,
+            "prev_qty": 8.0,
+            "new_qty": 2.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "lot_no": "6285N-D",
+            "col_letter": "DP",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 8.0,
+            "prev_qty": 8.0,
+            "new_qty": 0.0
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-21T10:43:53",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6958B@BJ",
+            "restored": 6.0,
+            "qty_now": 8.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "restored": 2.0,
+            "qty_now": 2.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 6.0,
+            "prev_qty": 8.0,
+            "new_qty": 2.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "lot_no": "6285N-D",
+            "col_letter": "DP",
+            "consume_mt": 1.0,
+            "prev_qty": 2.0,
+            "new_qty": 1.0
+          },
+          {
+            "lot_id": "6262A@HK",
+            "lot_no": "6262A",
+            "col_letter": "HK",
+            "consume_mt": 1.0,
+            "prev_qty": 2.0,
+            "new_qty": 1.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 6.0,
+            "prev_qty": 8.0,
+            "new_qty": 2.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "lot_no": "6285N-D",
+            "col_letter": "DP",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-21T10:46:15",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6958B@BJ",
+            "restored": 6.0,
+            "qty_now": 8.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "restored": 1.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6262A@HK",
+            "restored": 1.0,
+            "qty_now": 2.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 6.0,
+            "prev_qty": 8.0,
+            "new_qty": 2.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "lot_no": "6285N-D",
+            "col_letter": "DP",
+            "consume_mt": 1.0,
+            "prev_qty": 2.0,
+            "new_qty": 1.0
+          },
+          {
+            "lot_id": "6345N-B@EC",
+            "lot_no": "6345N-B",
+            "col_letter": "EC",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 6.0,
+            "prev_qty": 8.0,
+            "new_qty": 2.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "lot_no": "6285N-D",
+            "col_letter": "DP",
+            "consume_mt": 1.0,
+            "prev_qty": 2.0,
+            "new_qty": 1.0
+          },
+          {
+            "lot_id": "6262A@HK",
+            "lot_no": "6262A",
+            "col_letter": "HK",
+            "consume_mt": 1.0,
+            "prev_qty": 2.0,
+            "new_qty": 1.0
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-21T11:01:06",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6958B@BJ",
+            "restored": 6.0,
+            "qty_now": 8.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "restored": 1.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6345N-B@EC",
+            "restored": 1.0,
+            "qty_now": 5.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 6.0,
+            "prev_qty": 8.0,
+            "new_qty": 2.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "lot_no": "6285N-D",
+            "col_letter": "DP",
+            "consume_mt": 1.0,
+            "prev_qty": 2.0,
+            "new_qty": 1.0
+          },
+          {
+            "lot_id": "6345N-B@EC",
+            "lot_no": "6345N-B",
+            "col_letter": "EC",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 6.0,
+            "prev_qty": 8.0,
+            "new_qty": 2.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "lot_no": "6285N-D",
+            "col_letter": "DP",
+            "consume_mt": 1.0,
+            "prev_qty": 2.0,
+            "new_qty": 1.0
+          },
+          {
+            "lot_id": "6345N-B@EC",
+            "lot_no": "6345N-B",
+            "col_letter": "EC",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-21T11:11:15",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6958B@BJ",
+            "restored": 6.0,
+            "qty_now": 8.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6947B@BI",
+            "lot_no": "6947B",
+            "col_letter": "BI",
+            "consume_mt": 6.0,
+            "prev_qty": 10.0,
+            "new_qty": 4.0
+          },
+          {
+            "lot_id": "6345N-B@EC",
+            "lot_no": "6345N-B",
+            "col_letter": "EC",
+            "consume_mt": 1.0,
+            "prev_qty": 4.0,
+            "new_qty": 4.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "lot_no": "6285N-D",
+            "col_letter": "DP",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 1.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6958B@BJ",
+            "lot_no": "6958B",
+            "col_letter": "BJ",
+            "consume_mt": 6.0,
+            "prev_qty": 8.0,
+            "new_qty": 2.0
+          },
+          {
+            "lot_id": "6285N-D@DP",
+            "lot_no": "6285N-D",
+            "col_letter": "DP",
+            "consume_mt": 1.0,
+            "prev_qty": 2.0,
+            "new_qty": 1.0
+          },
+          {
+            "lot_id": "6345N-B@EC",
+            "lot_no": "6345N-B",
+            "col_letter": "EC",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          }
+        ]
+      }
+    ],
+    "edited_at": "2026-05-21T11:11:15"
+  },
+  {
+    "id": "c8c13b47456d",
+    "ts": "2026-05-21T11:31:28",
+    "user": "admin",
+    "customer_id": "Durga enterprises",
+    "customer_name": "Durgaenterprises",
+    "qty_requested": 8.0,
+    "lines": [
+      {
+        "lot_id": "7013A@CN",
+        "lot_no": "7013A",
+        "col_letter": "CN",
+        "consume_mt": 4.0,
+        "prev_qty": 10.0,
+        "new_qty": 6.0
+      },
+      {
+        "lot_id": "6825N-C@FO",
+        "lot_no": "6825N-C",
+        "col_letter": "FO",
+        "consume_mt": 1.0,
+        "prev_qty": 1.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6896N-D@FY",
+        "lot_no": "6896N-D",
+        "col_letter": "FY",
+        "consume_mt": 1.0,
+        "prev_qty": 1.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6771N-C@FE",
+        "lot_no": "6771N-C",
+        "col_letter": "FE",
+        "consume_mt": 1.0,
+        "prev_qty": 1.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6977N-D@GM",
+        "lot_no": "6977N-D",
+        "col_letter": "GM",
+        "consume_mt": 1.0,
+        "prev_qty": 5.0,
+        "new_qty": 4.0
+      }
+    ],
+    "edit_history": [
+      {
+        "ts": "2026-05-21T11:39:33",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "7013A@CN",
+            "restored": 6.0,
+            "qty_now": 10.0
+          },
+          {
+            "lot_id": "6825N-C@FO",
+            "restored": 1.0,
+            "qty_now": 1.0
+          },
+          {
+            "lot_id": "6896N-D@FY",
+            "restored": 1.0,
+            "qty_now": 1.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "7013A@CN",
+            "lot_no": "7013A",
+            "col_letter": "CN",
+            "consume_mt": 4.0,
+            "prev_qty": 10.0,
+            "new_qty": 6.0
+          },
+          {
+            "lot_id": "6825N-C@FO",
+            "lot_no": "6825N-C",
+            "col_letter": "FO",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6896N-D@FY",
+            "lot_no": "6896N-D",
+            "col_letter": "FY",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6771N-C@FE",
+            "lot_no": "6771N-C",
+            "col_letter": "FE",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6977N-D@GJ",
+            "lot_no": "6977N-D",
+            "col_letter": "GJ",
+            "consume_mt": 1.0,
+            "prev_qty": 3.0,
+            "new_qty": 2.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "7013A@CN",
+            "lot_no": "7013A",
+            "col_letter": "CN",
+            "consume_mt": 6.0,
+            "prev_qty": 10.0,
+            "new_qty": 4.0
+          },
+          {
+            "lot_id": "6825N-C@FO",
+            "lot_no": "6825N-C",
+            "col_letter": "FO",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6896N-D@FY",
+            "lot_no": "6896N-D",
+            "col_letter": "FY",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          }
+        ]
+      },
+      {
+        "ts": "2026-05-21T11:42:20",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "7013A@CN",
+            "restored": 4.0,
+            "qty_now": 10.0
+          },
+          {
+            "lot_id": "6825N-C@FO",
+            "restored": 1.0,
+            "qty_now": 1.0
+          },
+          {
+            "lot_id": "6896N-D@FY",
+            "restored": 1.0,
+            "qty_now": 1.0
+          },
+          {
+            "lot_id": "6771N-C@FE",
+            "restored": 1.0,
+            "qty_now": 1.0
+          },
+          {
+            "lot_id": "6977N-D@GJ",
+            "restored": 1.0,
+            "qty_now": 3.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "7013A@CN",
+            "lot_no": "7013A",
+            "col_letter": "CN",
+            "consume_mt": 4.0,
+            "prev_qty": 10.0,
+            "new_qty": 6.0
+          },
+          {
+            "lot_id": "6825N-C@FO",
+            "lot_no": "6825N-C",
+            "col_letter": "FO",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6896N-D@FY",
+            "lot_no": "6896N-D",
+            "col_letter": "FY",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6771N-C@FE",
+            "lot_no": "6771N-C",
+            "col_letter": "FE",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6977N-D@GM",
+            "lot_no": "6977N-D",
+            "col_letter": "GM",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "7013A@CN",
+            "lot_no": "7013A",
+            "col_letter": "CN",
+            "consume_mt": 4.0,
+            "prev_qty": 10.0,
+            "new_qty": 6.0
+          },
+          {
+            "lot_id": "6825N-C@FO",
+            "lot_no": "6825N-C",
+            "col_letter": "FO",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6896N-D@FY",
+            "lot_no": "6896N-D",
+            "col_letter": "FY",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6771N-C@FE",
+            "lot_no": "6771N-C",
+            "col_letter": "FE",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6977N-D@GJ",
+            "lot_no": "6977N-D",
+            "col_letter": "GJ",
+            "consume_mt": 1.0,
+            "prev_qty": 3.0,
+            "new_qty": 2.0
+          }
+        ]
+      }
+    ],
+    "edited_at": "2026-05-21T11:42:20"
+  },
+  {
+    "id": "eb0861b265ca",
+    "ts": "2026-05-21T14:47:05",
+    "user": "admin",
+    "customer_id": "Himalaya paints",
+    "customer_name": "HIMAALAYAAPAINTS",
+    "qty_requested": 50.0,
+    "lines": [
+      {
+        "lot_id": "6715N-B@EV",
+        "lot_no": "6715N-B",
+        "col_letter": "EV",
+        "consume_mt": 1.0,
+        "prev_qty": 1.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6826N-D@FQ",
+        "lot_no": "6826N-D",
+        "col_letter": "FQ",
+        "consume_mt": 4.0,
+        "prev_qty": 4.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6827N-A@FR",
+        "lot_no": "6827N-A",
+        "col_letter": "FR",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6715N-A@EU",
+        "lot_no": "6715N-A",
+        "col_letter": "EU",
+        "consume_mt": 2.0,
+        "prev_qty": 2.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6566B@AI",
+        "lot_no": "6566B",
+        "col_letter": "AI",
+        "consume_mt": 8.0,
+        "prev_qty": 9.0,
+        "new_qty": 1.0
+      },
+      {
+        "lot_id": "6126A@H",
+        "lot_no": "6126A",
+        "col_letter": "H",
+        "consume_mt": 5.5,
+        "prev_qty": 5.5,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6124A@G",
+        "lot_no": "6124A",
+        "col_letter": "G",
+        "consume_mt": 2.0,
+        "prev_qty": 2.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6127A@I",
+        "lot_no": "6127A",
+        "col_letter": "I",
+        "consume_mt": 4.0,
+        "prev_qty": 4.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6561A@AC",
+        "lot_no": "6561A",
+        "col_letter": "AC",
+        "consume_mt": 9.0,
+        "prev_qty": 9.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6974N-B@GF",
+        "lot_no": "6974N-B",
+        "col_letter": "GF",
+        "consume_mt": 4.0,
+        "prev_qty": 4.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6561B@AD",
+        "lot_no": "6561B",
+        "col_letter": "AD",
+        "consume_mt": 4.5,
+        "prev_qty": 10.0,
+        "new_qty": 5.5
+      },
+      {
+        "lot_id": "6978N-C@GO",
+        "lot_no": "6978N-C",
+        "col_letter": "GO",
+        "consume_mt": 1.0,
+        "prev_qty": 5.0,
+        "new_qty": 4.0
+      }
+    ],
+    "edit_history": [
+      {
+        "ts": "2026-05-21T14:48:28",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6715N-B@EV",
+            "restored": 1.0,
+            "qty_now": 1.0
+          },
+          {
+            "lot_id": "6826N-D@FQ",
+            "restored": 4.0,
+            "qty_now": 4.0
+          },
+          {
+            "lot_id": "6827N-A@FR",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6715N-A@EU",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6566B@AI",
+            "restored": 9.0,
+            "qty_now": 9.0
+          },
+          {
+            "lot_id": "6126A@H",
+            "restored": 5.5,
+            "qty_now": 5.5
+          },
+          {
+            "lot_id": "6124A@G",
+            "restored": 2.0,
+            "qty_now": 2.0
+          },
+          {
+            "lot_id": "6127A@I",
+            "restored": 4.0,
+            "qty_now": 4.0
+          },
+          {
+            "lot_id": "6561A@AC",
+            "restored": 9.0,
+            "qty_now": 9.0
+          },
+          {
+            "lot_id": "6974N-B@GF",
+            "restored": 4.0,
+            "qty_now": 4.0
+          },
+          {
+            "lot_id": "6561B@AD",
+            "restored": 4.5,
+            "qty_now": 10.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6715N-B@EV",
+            "lot_no": "6715N-B",
+            "col_letter": "EV",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6827N-A@FR",
+            "lot_no": "6827N-A",
+            "col_letter": "FR",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6715N-A@EU",
+            "lot_no": "6715N-A",
+            "col_letter": "EU",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6566B@AI",
+            "lot_no": "6566B",
+            "col_letter": "AI",
+            "consume_mt": 8.0,
+            "prev_qty": 9.0,
+            "new_qty": 1.0
+          },
+          {
+            "lot_id": "6126A@H",
+            "lot_no": "6126A",
+            "col_letter": "H",
+            "consume_mt": 5.5,
+            "prev_qty": 5.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6124A@G",
+            "lot_no": "6124A",
+            "col_letter": "G",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6127A@I",
+            "lot_no": "6127A",
+            "col_letter": "I",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6561A@AC",
+            "lot_no": "6561A",
+            "col_letter": "AC",
+            "consume_mt": 9.0,
+            "prev_qty": 9.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6974N-B@GF",
+            "lot_no": "6974N-B",
+            "col_letter": "GF",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6561B@AD",
+            "lot_no": "6561B",
+            "col_letter": "AD",
+            "consume_mt": 4.5,
+            "prev_qty": 10.0,
+            "new_qty": 5.5
+          },
+          {
+            "lot_id": "6978N-C@GO",
+            "lot_no": "6978N-C",
+            "col_letter": "GO",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6715N-B@EV",
+            "lot_no": "6715N-B",
+            "col_letter": "EV",
+            "consume_mt": 1.0,
+            "prev_qty": 1.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6826N-D@FQ",
+            "lot_no": "6826N-D",
+            "col_letter": "FQ",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6827N-A@FR",
+            "lot_no": "6827N-A",
+            "col_letter": "FR",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6715N-A@EU",
+            "lot_no": "6715N-A",
+            "col_letter": "EU",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6566B@AI",
+            "lot_no": "6566B",
+            "col_letter": "AI",
+            "consume_mt": 9.0,
+            "prev_qty": 9.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6126A@H",
+            "lot_no": "6126A",
+            "col_letter": "H",
+            "consume_mt": 5.5,
+            "prev_qty": 5.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6124A@G",
+            "lot_no": "6124A",
+            "col_letter": "G",
+            "consume_mt": 2.0,
+            "prev_qty": 2.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6127A@I",
+            "lot_no": "6127A",
+            "col_letter": "I",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6561A@AC",
+            "lot_no": "6561A",
+            "col_letter": "AC",
+            "consume_mt": 9.0,
+            "prev_qty": 9.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6974N-B@GF",
+            "lot_no": "6974N-B",
+            "col_letter": "GF",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6561B@AD",
+            "lot_no": "6561B",
+            "col_letter": "AD",
+            "consume_mt": 4.5,
+            "prev_qty": 10.0,
+            "new_qty": 5.5
+          }
+        ]
+      }
+    ],
+    "edited_at": "2026-05-21T14:48:28"
+  }
+]

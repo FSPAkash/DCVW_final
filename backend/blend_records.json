@@ -1,0 +1,93 @@
+{
+  "blends": [
+    {
+      "blend_id": "BLEND-1779429522",
+      "ts": "2026-05-22T11:28:41",
+      "user": "Akash",
+      "output": {
+        "lot_id": "TEST_BLEND_1@LT",
+        "lot_no": "TEST_BLEND_1",
+        "grade": "122345",
+        "col_letter": "LT",
+        "qty_mt": 4.0
+      },
+      "sources": [
+        {
+          "lot_id": "6210B@E",
+          "lot_no": "6210B",
+          "grade": "129",
+          "mt_used": 2.0
+        },
+        {
+          "lot_id": "6130B@J",
+          "lot_no": "6130B",
+          "grade": "130",
+          "mt_used": 2.0
+        }
+      ]
+    },
+    {
+      "blend_id": "BLEND-1779431678",
+      "ts": "2026-05-22T12:04:38",
+      "user": "Akash",
+      "output": {
+        "lot_id": "TEST 2@LU",
+        "lot_no": "TEST 2",
+        "grade": "1122312",
+        "col_letter": "LU",
+        "qty_mt": 4.0
+      },
+      "sources": [
+        {
+          "lot_id": "6210B@E",
+          "lot_no": "6210B",
+          "grade": "129",
+          "mt_used": 1.0
+        },
+        {
+          "lot_id": "6130B@J",
+          "lot_no": "6130B",
+          "grade": "130",
+          "mt_used": 3.0
+        }
+      ],
+      "card_url": "/api/v3/master/blend/BLEND-1779431678/card.pdf"
+    }
+  ],
+  "notes_by_lot": {
+    "6210B@E": [
+      {
+        "ts": "2026-05-22T11:28:41",
+        "mt_used": 2.0,
+        "into_lot_no": "TEST_BLEND_1",
+        "into_lot_id": "TEST_BLEND_1@LT",
+        "note": "2.0 MT used for blending into TEST_BLEND_1"
+      },
+      {
+        "ts": "2026-05-22T12:04:38",
+        "mt_used": 1.0,
+        "into_lot_no": "TEST 2",
+        "into_lot_id": "TEST 2@LU",
+        "note": "1.0 MT used for blending into TEST 2",
+        "card_url": "/api/v3/master/blend/BLEND-1779431678/card.pdf"
+      }
+    ],
+    "6130B@J": [
+      {
+        "ts": "2026-05-22T11:28:41",
+        "mt_used": 2.0,
+        "into_lot_no": "TEST_BLEND_1",
+        "into_lot_id": "TEST_BLEND_1@LT",
+        "note": "2.0 MT used for blending into TEST_BLEND_1"
+      },
+      {
+        "ts": "2026-05-22T12:04:38",
+        "mt_used": 3.0,
+        "into_lot_no": "TEST 2",
+        "into_lot_id": "TEST 2@LU",
+        "note": "3.0 MT used for blending into TEST 2",
+        "card_url": "/api/v3/master/blend/BLEND-1779431678/card.pdf"
+      }
+    ]
+  }
+}

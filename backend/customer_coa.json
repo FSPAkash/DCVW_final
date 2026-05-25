@@ -1,0 +1,2773 @@
+{
+  "customers": [
+    {
+      "id": "Agsar paints",
+      "folder": "Agsar paints",
+      "name": "AGSARPAINTSTUTICORIN",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "21.04.2026",
+      "report_date_iso": "2026-04-21",
+      "mfg_date": "06.12.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6595N-A AGSAR PAINTS TUTICORIN  18.04.26.pdf",
+      "mass_tone": {
+        "DL": 0.24,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.43,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.69,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.85,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.3,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.24,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.93,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.0,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 101.15,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6595N-A AGSAR PAINTS TUTICORIN  18.04.26.pdf",
+          "report_date_iso": "2026-04-21"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Asian paints",
+      "folder": "Asian paints",
+      "name": "ASIANPAINTS,KASNA",
+      "city": "",
+      "grade": "R 145D",
+      "std": "4526N",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "19.02.2026",
+      "report_date_iso": "2026-02-19",
+      "mfg_date": "29.12.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test ceertificate of RIO 6627N-A ASIAN PAINTS,KASNA 19.02.26.pdf",
+      "mass_tone": {
+        "DL": 0.09,
+        "DL_lo": -0.5,
+        "DL_hi": 0.5,
+        "Da": -0.04,
+        "Da_lo": -0.5,
+        "Da_hi": 0.7,
+        "Db": 0.05,
+        "Db_lo": -0.4,
+        "Db_hi": 0.7,
+        "DE": 0.11,
+        "DE_lo": null,
+        "DE_hi": 1.2,
+        "DE_max": 1.2
+      },
+      "tint_tone": {
+        "DL": 0.04,
+        "DL_lo": -0.5,
+        "DL_hi": 0.5,
+        "Da": 0.14,
+        "Da_lo": -0.5,
+        "Da_hi": 0.7,
+        "Db": 0.18,
+        "Db_lo": -0.5,
+        "Db_hi": 1.0,
+        "DE": 0.24,
+        "DE_lo": null,
+        "DE_hi": 1.2,
+        "DE_max": 1.2,
+        "strength": 105.3,
+        "strength_lo": 95.0,
+        "strength_hi": 110.0
+      },
+      "all_files": [
+        {
+          "file": "Test ceertificate of RIO 6627N-A ASIAN PAINTS,KASNA 19.02.26.pdf",
+          "report_date_iso": "2026-02-19"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Asiatech",
+      "folder": "Asiatech",
+      "name": "ASIATECHPUNE",
+      "city": "",
+      "grade": "JSW 3097A",
+      "std": "2663N",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "13.04.2026",
+      "report_date_iso": "2026-04-13",
+      "mfg_date": "04.04.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6899N-D  ASIATECH PUNE 11.04.26.pdf",
+      "mass_tone": {
+        "DL": -0.13,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.38,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.13,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.42,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.32,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.19,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.9,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.97,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 100.61,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6899N-D  ASIATECH PUNE 11.04.26.pdf",
+          "report_date_iso": "2026-04-13"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "BR enterprises",
+      "folder": "BR enterprises",
+      "name": "B R ENTERPRISES",
+      "city": "",
+      "grade": "",
+      "std": "",
+      "product": "",
+      "colour_index": "",
+      "delivery_condition": "",
+      "report_date": "",
+      "report_date_iso": "",
+      "mfg_date": "",
+      "po_no": ":",
+      "latest_pdf": "Test Certificate of RIO L-6064A B R ENTERPRISES 20.09.25.pdf",
+      "mass_tone": {
+        "DL": -0.22,
+        "Da": -0.64,
+        "Db": -0.14,
+        "DE": 0.7
+      },
+      "tint_tone": {
+        "DL": 0.1,
+        "Da": -0.21,
+        "Db": 0.43,
+        "DE": 0.49,
+        "strength": 99.71
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L-6064A B R ENTERPRISES 20.09.25.pdf",
+          "report_date_iso": null
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "BTC",
+      "folder": "BTC",
+      "name": "BTC,NEW DELHI",
+      "city": "",
+      "grade": "130 S",
+      "std": "3563A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "16.04.2026",
+      "report_date_iso": "2026-04-16",
+      "mfg_date": "19.02.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6832B  BTC NEW DELHI  15.04.26.pdf",
+      "mass_tone": {
+        "DL": -0.08,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.25,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.19,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.33,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.02,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.03,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.05,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.07,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.68,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6832B  BTC NEW DELHI  15.04.26.pdf",
+          "report_date_iso": "2026-04-16"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "CHEM MATERIALS CHENNAI 31.01.26",
+      "folder": "CHEM MATERIALS CHENNAI 31.01.26",
+      "name": "CHEMMATERIALS,CHENNAI",
+      "city": "",
+      "grade": "136",
+      "std": "40D",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "02.02.2026",
+      "report_date_iso": "2026-02-02",
+      "mfg_date": "19.02.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of  RIO L5766B  CHEM MATERIALS CHENNAI 31.01.26.pdf",
+      "mass_tone": {
+        "DL": -0.63,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.92,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.62,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.28,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.2,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.42,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.87,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.99,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 101.56,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of  RIO L5746A  CHEM MATERIALS CHENNAI 31.01.26.pdf",
+          "report_date_iso": "2026-02-02"
+        },
+        {
+          "file": "Test Certificate of  RIO L5749A   CHEM MATERIALS CHENNAI 31.01.26.pdf",
+          "report_date_iso": "2026-02-02"
+        },
+        {
+          "file": "Test Certificate of  RIO L5766B  CHEM MATERIALS CHENNAI 31.01.26.pdf",
+          "report_date_iso": "2026-02-02"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Chem materilas",
+      "folder": "Chem materilas",
+      "name": "CHEMMATERIALS",
+      "city": "CHENNAI",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "09.05.2026",
+      "report_date_iso": "2026-05-09",
+      "mfg_date": "07.04.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6959A CHEM MATERIALS CHENNAI  07.05.26.pdf",
+      "mass_tone": {
+        "DL": 0.34,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.21,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.49,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.63,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.15,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.14,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.51,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.56,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.73,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6959A CHEM MATERIALS CHENNAI  07.05.26.pdf",
+          "report_date_iso": "2026-05-09"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "CHEM TECH KOLKATA 23.01.26",
+      "folder": "CHEM TECH KOLKATA 23.01.26",
+      "name": "CHEMTECH,KOLKATA",
+      "city": "",
+      "grade": "130 A",
+      "std": "3249B",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "23.01.2026",
+      "report_date_iso": "2026-01-23",
+      "mfg_date": "22.11.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L-6555A   CHEM TECH KOLKATA 23.01.26.pdf",
+      "mass_tone": {
+        "DL": -0.37,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.39,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.09,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.54,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.04,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.15,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.16,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.22,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 101.35,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L-6333A  CHEM TECH KOLKATA 23.01.26.pdf",
+          "report_date_iso": "2026-01-23"
+        },
+        {
+          "file": "Test Certificate of RIO L-6333B   CHEM TECH KOLKATA 23.01.26.pdf",
+          "report_date_iso": "2026-01-23"
+        },
+        {
+          "file": "Test Certificate of RIO L-6545A   CHEM TECH KOLKATA 23.01.26.pdf",
+          "report_date_iso": "2026-01-23"
+        },
+        {
+          "file": "Test Certificate of RIO L-6555A   CHEM TECH KOLKATA 23.01.26.pdf",
+          "report_date_iso": "2026-01-23"
+        },
+        {
+          "file": "Test Certificate of RIO L5197A CHEM TECH KOLKATA 23.01.26.pdf",
+          "report_date_iso": "2026-01-23"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Chemical impex .01.04.26",
+      "folder": "Chemical impex .01.04.26",
+      "name": "Chemical impex,Indore",
+      "city": "",
+      "grade": "",
+      "std": "",
+      "product": "",
+      "colour_index": "",
+      "delivery_condition": "",
+      "report_date": "",
+      "report_date_iso": "",
+      "mfg_date": "",
+      "po_no": ":",
+      "latest_pdf": "Test certficate of RIO-L 6913B Chemical impex ,Indore 31.03.26.pdf",
+      "mass_tone": {
+        "DL": null,
+        "Da": null,
+        "Db": null,
+        "DE": null
+      },
+      "tint_tone": {
+        "DL": null,
+        "Da": null,
+        "Db": null,
+        "DE": null
+      },
+      "all_files": [
+        {
+          "file": "Test certficate of RIO-L 6413A Chemical impex ,Indore 31.03.26..pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test certficate of RIO-L 6799A Chemical impex ,Indore 31.03.26..pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test certficate of RIO-L 6828N-D Chemical impex ,Indore 31.03.26..pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test certficate of RIO-L 6913B Chemical impex ,Indore 31.03.26.pdf",
+          "report_date_iso": null
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Chemical Impex 02.02.26",
+      "folder": "Chemical Impex 02.02.26",
+      "name": "CHEMICAL IMPEX",
+      "city": "",
+      "grade": "",
+      "std": "",
+      "product": "",
+      "colour_index": "",
+      "delivery_condition": "",
+      "report_date": "",
+      "report_date_iso": "",
+      "mfg_date": "",
+      "po_no": ":",
+      "latest_pdf": "Test Certificate of RIO L-6726A CHEMICAL IMPEX 02.02.26.pdf",
+      "mass_tone": {
+        "DL": null,
+        "Da": null,
+        "Db": null,
+        "DE": null
+      },
+      "tint_tone": {
+        "DL": null,
+        "Da": null,
+        "Db": null,
+        "DE": null
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L-6714N-D  CHEMICAL IMPEX 02.02.26.pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test Certificate of RIO L-6715N-A   CHEMICAL IMPEX 02.02.26.pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test Certificate of RIO L-6716N-A  CHEMICAL IMPEX 02.02.26.pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test Certificate of RIO L-6726A CHEMICAL IMPEX 02.02.26.pdf",
+          "report_date_iso": null
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Chemical Impex Indore 26.03.26",
+      "folder": "Chemical Impex Indore 26.03.26",
+      "name": "CHEMICAL IMPEX,INDORE",
+      "city": "",
+      "grade": "",
+      "std": "",
+      "product": "",
+      "colour_index": "",
+      "delivery_condition": "",
+      "report_date": "",
+      "report_date_iso": "",
+      "mfg_date": "",
+      "po_no": ":",
+      "latest_pdf": "Test Certificate of RIO L 6923B for Chemical Impex Indore 25.03.26.pdf",
+      "mass_tone": {
+        "DL": null,
+        "Da": null,
+        "Db": null,
+        "DE": null
+      },
+      "tint_tone": {
+        "DL": null,
+        "Da": null,
+        "Db": null,
+        "DE": null
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L 6781A for Chemical Impex Indore 25.03.26.pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test Certificate of RIO L 6923A for Chemical Impex Indore 25.03.26.pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test Certificate of RIO L 6923B for Chemical Impex Indore 25.03.26.pdf",
+          "report_date_iso": null
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "CHEMTECH 29.03.26",
+      "folder": "CHEMTECH 29.03.26",
+      "name": "Chemtech,Kolkata",
+      "city": "",
+      "grade": "130 E",
+      "std": "44",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "31.03.2026",
+      "report_date_iso": "2026-03-31",
+      "mfg_date": "02.02.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6768A Chemtech,Kolkata 27.03.26.pdf",
+      "mass_tone": {
+        "DL": -0.02,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.18,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.15,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.24,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.03,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.28,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.04,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.28,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.89,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certficate of RIO L 6768A CHEMTECH KOLKATA 29.03.26.-not.pdf",
+          "report_date_iso": "2026-03-29"
+        },
+        {
+          "file": "Test certficate of RIO L 6769A CHEM TECH KOLKATA 29.03.26..pdf",
+          "report_date_iso": "2026-03-29"
+        },
+        {
+          "file": "Test certficate of RIO L 6887A  CHEM TECH KOLKATA 29.03.26..pdf",
+          "report_date_iso": "2026-03-29"
+        },
+        {
+          "file": "Test certificate of RIO L 6768A Chemtech,Kolkata 27.03.26.pdf",
+          "report_date_iso": "2026-03-31"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "COA FOR INDUSTRIAL ASSO, BHIWANDI 27.01.26",
+      "folder": "COA FOR INDUSTRIAL ASSO, BHIWANDI 27.01.26",
+      "name": "INDUSTRIALASSOCIATES,BHIWANDI",
+      "city": "",
+      "grade": "129",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "27.01.2026",
+      "report_date_iso": "2026-01-27",
+      "mfg_date": "21.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of  RIO L-6737B for MS Industrial Associate bhiwandi 27.01.2026.pdf",
+      "mass_tone": {
+        "DL": 0.12,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.05,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.31,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.34,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.01,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.07,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.04,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.08,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.36,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of  RIO L-6737A for ms industrial associate bhiwandi 27.01.2026.pdf",
+          "report_date_iso": "2026-01-27"
+        },
+        {
+          "file": "Test certificate of  RIO L-6737B for MS Industrial Associate bhiwandi 27.01.2026.pdf",
+          "report_date_iso": "2026-01-27"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "COA RIO Durga 05.01.26",
+      "folder": "COA RIO Durga 05.01.26",
+      "name": "Durgaenterprises,Vishakhapatinam",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "12.01.2026",
+      "report_date_iso": "2026-01-12",
+      "mfg_date": "04.10.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6407A Durga enterprises 05.01.26.pdf",
+      "mass_tone": {
+        "DL": 0.33,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.19,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.43,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.58,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.53,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.3,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.94,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.12,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.13,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6021A Durga enterprises 05.01.26.pdf",
+          "report_date_iso": "2026-01-12"
+        },
+        {
+          "file": "Test certificate of RIO L 6407A Durga enterprises 05.01.26.pdf",
+          "report_date_iso": "2026-01-12"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "COA RIO Durga 08.01.26",
+      "folder": "COA RIO Durga 08.01.26",
+      "name": "Durgaenterprises,Vishakhapatinam",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "12.01.2026",
+      "report_date_iso": "2026-01-12",
+      "mfg_date": "15.10.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6434B Durga enterprises 08.01.26.pdf",
+      "mass_tone": {
+        "DL": -0.56,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.89,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.75,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.29,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.41,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.94,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.78,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.29,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 97.12,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6420A Durga enterprises 08.01.26.pdf",
+          "report_date_iso": "2026-01-12"
+        },
+        {
+          "file": "Test certificate of RIO L 6434B Durga enterprises 08.01.26.pdf",
+          "report_date_iso": "2026-01-12"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "COA SAP Berger paints 30.12.25",
+      "folder": "COA SAP Berger paints 30.12.25",
+      "name": "Bergerpaints,Assam",
+      "city": "",
+      "grade": "Berger Y 978",
+      "std": "1978",
+      "product": "Yellow Pigment",
+      "colour_index": "Pigment Yellow 42",
+      "delivery_condition": "Powder",
+      "report_date": "31.12.2025",
+      "report_date_iso": "2025-12-31",
+      "mfg_date": "31.10.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 4786 Berger paints,Assam 30.12.25.pdf",
+      "mass_tone": {},
+      "tint_tone": {},
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 4786 Berger paints,Assam 30.12.25.pdf",
+          "report_date_iso": "2025-12-31"
+        }
+      ],
+      "parsed_ok": false
+    },
+    {
+      "id": "Durga enterprises",
+      "folder": "Durga enterprises",
+      "name": "Durgaenterprises",
+      "city": "",
+      "grade": "129",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "13.04.2026",
+      "report_date_iso": "2026-04-13",
+      "mfg_date": "30.03.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of  RIO L 6938A   DURGA ENTERPRISES 11.04.26.pdf",
+      "mass_tone": {
+        "DL": -0.06,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.71,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.12,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.73,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.08,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.62,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.4,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.74,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.07,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of  RIO L 6938A   DURGA ENTERPRISES 11.04.26.pdf",
+          "report_date_iso": "2026-04-13"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "DURGA ENTERPRISES 27.02.26",
+      "folder": "DURGA ENTERPRISES 27.02.26",
+      "name": "DURGAENTERPRISES",
+      "city": "",
+      "grade": "129",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "27.02.2026",
+      "report_date_iso": "2026-02-27",
+      "mfg_date": "06.06.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L 6070B for MS DURGA ENTERPRISES 26.02.26.pdf",
+      "mass_tone": {
+        "DL": -0.12,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.72,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.1,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.74,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.1,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.24,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.4,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.48,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.57,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L 6070B for MS DURGA ENTERPRISES 26.02.26.pdf",
+          "report_date_iso": "2026-02-27"
+        },
+        {
+          "file": "Test Certificate of RIO L 6082A for MS DURGA ENTERPRISES 26.02.26.pdf",
+          "report_date_iso": "2026-02-27"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "DURGA ENTERPRISES 31.03.26",
+      "folder": "DURGA ENTERPRISES 31.03.26",
+      "name": "Durgaenterprises",
+      "city": "",
+      "grade": "129",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "31.03.2026",
+      "report_date_iso": "2026-03-31",
+      "mfg_date": "30.03.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6938A Durga enterprises 30.03.26.pdf",
+      "mass_tone": {
+        "DL": -0.06,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.71,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.12,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.73,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.08,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.62,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.4,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.74,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.07,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6938A Durga enterprises 30.03.26.pdf",
+          "report_date_iso": "2026-03-31"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "GOLCHA PIGMENTS KALUNGA 07.01.26",
+      "folder": "GOLCHA PIGMENTS KALUNGA 07.01.26",
+      "name": "GOLCHAPIGMENTSKALUNGA",
+      "city": "",
+      "grade": "130 E",
+      "std": "44",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "23.01.2026",
+      "report_date_iso": "2026-01-23",
+      "mfg_date": "08.07.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L-6155B  GOLCHAM PIGMENTS KALUNGA  07.01.26.pdf",
+      "mass_tone": {
+        "DL": 0.05,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.2,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.04,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.21,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.04,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.11,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.16,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.2,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 101.81,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of Black oxide B 65  GOLCHA PIGMENTS KALUNGA  07_01_26.pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test Certificate of RIO L-6155B  GOLCHAM PIGMENTS KALUNGA  07.01.26.pdf",
+          "report_date_iso": "2026-01-23"
+        },
+        {
+          "file": "Test Certificate of RIO L-6552B  GOLCHAM PIGMENTS KALUNGA  07.01.26.pdf",
+          "report_date_iso": "2026-01-23"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Himalaya paints",
+      "folder": "Himalaya paints",
+      "name": "HIMAALAYAAPAINTS",
+      "city": "CUDDALORE",
+      "grade": "130",
+      "std": "325",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "09.05.2026",
+      "report_date_iso": "2026-05-09",
+      "mfg_date": "22.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Demo COA.pdf",
+      "mass_tone": {
+        "DL": -0.23,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.4,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.55,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.72,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.23,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.5,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.69,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.89,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.15,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Demo COA.pdf",
+          "report_date_iso": "2026-05-09"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "INDUSTRIAL  ASSOCIATES BHIWANDI 17.01.26",
+      "folder": "INDUSTRIAL  ASSOCIATES BHIWANDI 17.01.26",
+      "name": "INDUSTRIALASSOCIATES,BHIWANDI",
+      "city": "",
+      "grade": "129",
+      "std": "129",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "17.01.2026",
+      "report_date_iso": "2026-01-17",
+      "mfg_date": "12.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L-6705A INDUSTRIAL ASSOCIATES BHIWANDI  17.01.26.pdf",
+      "mass_tone": {
+        "DL": -0.02,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.71,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.33,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.78,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.25,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.03,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.82,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.86,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.1,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L-6705A INDUSTRIAL ASSOCIATES BHIWANDI  17.01.26.pdf",
+          "report_date_iso": "2026-01-17"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Industrial associates",
+      "folder": "Industrial associates",
+      "name": "INDUSTRIALASSOCIATESBHIWANDI",
+      "city": "",
+      "grade": "129",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "29.04.2026",
+      "report_date_iso": "2026-04-29",
+      "mfg_date": "27.03.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6933 A INDUSTRIAL ASSOCIATES 29.04.26.pdf",
+      "mass_tone": {
+        "DL": 0.56,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.54,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.2,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.8,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.53,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.2,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.73,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.92,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.46,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6933 A INDUSTRIAL ASSOCIATES 29.04.26.pdf",
+          "report_date_iso": "2026-04-29"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Industrial associates 07.02.26",
+      "folder": "Industrial associates 07.02.26",
+      "name": "INDUSTRIALASSOCIATES",
+      "city": "",
+      "grade": "130 E",
+      "std": "44",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "10.02.2026",
+      "report_date_iso": "2026-02-10",
+      "mfg_date": "03.02.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L 6782A INDUSTRIAL ASSOCIATES 07.02.26.pdf",
+      "mass_tone": {
+        "DL": -0.37,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.63,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.43,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.84,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.17,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.56,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.43,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.73,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 101.26,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L  6781A  INDUSTRIAL ASSOCIATES 07.02.26.pdf",
+          "report_date_iso": "2026-02-10"
+        },
+        {
+          "file": "Test Certificate of RIO L 6782A INDUSTRIAL ASSOCIATES 07.02.26.pdf",
+          "report_date_iso": "2026-02-10"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "INDUSTRIAL ASSOCIATES BHIWANDI 29.03.26",
+      "folder": "INDUSTRIAL ASSOCIATES BHIWANDI 29.03.26",
+      "name": "INDUSTRIALASSOCIATES,BHIWANDI",
+      "city": "",
+      "grade": "129",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "30.03.2026",
+      "report_date_iso": "2026-03-30",
+      "mfg_date": "27.03.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L-6933A    INDUSTRIAL ASSOCIATES BHIWANDI  29.03.26.pdf",
+      "mass_tone": {
+        "DL": 0.56,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.54,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.2,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.8,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.53,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.2,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.73,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.92,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 97.46,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L-6567A   INDUSTRIAL ASSOCIATES BHIWANDI  29.03.26.pdf",
+          "report_date_iso": "2026-03-30"
+        },
+        {
+          "file": "Test Certificate of RIO L-6931A   INDUSTRIAL ASSOCIATES BHIWANDI  29.03.26.pdf",
+          "report_date_iso": "2026-03-30"
+        },
+        {
+          "file": "Test Certificate of RIO L-6931B  INDUSTRIAL ASSOCIATES BHIWANDI  29.03.26.pdf",
+          "report_date_iso": "2026-03-30"
+        },
+        {
+          "file": "Test Certificate of RIO L-6932A INDUSTRIAL ASSOCIATES BHIWANDI  29.03.26.pdf",
+          "report_date_iso": "2026-03-30"
+        },
+        {
+          "file": "Test Certificate of RIO L-6932B    INDUSTRIAL ASSOCIATES BHIWANDI  29.03.26.pdf",
+          "report_date_iso": "2026-03-30"
+        },
+        {
+          "file": "Test Certificate of RIO L-6933A    INDUSTRIAL ASSOCIATES BHIWANDI  29.03.26.pdf",
+          "report_date_iso": "2026-03-30"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "JSW paints",
+      "folder": "JSW paints",
+      "name": "JSW Paints,Vidyanagar",
+      "city": "",
+      "grade": "110",
+      "std": "4359B",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "02.05.2026",
+      "report_date_iso": "2026-05-02",
+      "mfg_date": "17.02.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6821N-A JSW Paints Vidyanagar 02.05.26.pdf",
+      "mass_tone": {
+        "DL": 0.32,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.24,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.23,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.46,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.13,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.31,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.38,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.5,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.12,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6821N-A JSW Paints Vidyanagar 02.05.26.pdf",
+          "report_date_iso": "2026-05-02"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Kings international",
+      "folder": "Kings international",
+      "name": "KINGSITERNATIONAL,MUMBAI",
+      "city": "",
+      "grade": "130",
+      "std": "325",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "28.04.2026",
+      "report_date_iso": "2026-04-28",
+      "mfg_date": "31.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO 6764B   Kings International Mumbai 27.04.26 .pdf",
+      "mass_tone": {
+        "DL": 0.14,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.01,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.19,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.24,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.02,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.1,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.08,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.13,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.25,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO 6764B   Kings International Mumbai 27.04.26 .pdf",
+          "report_date_iso": "2026-04-28"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "MS enterprises",
+      "folder": "MS enterprises",
+      "name": "MSENTERPRISES",
+      "city": "",
+      "grade": "445",
+      "std": "718B",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "16.03.2026",
+      "report_date_iso": "2026-03-16",
+      "mfg_date": "02.03.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L-5777N-C MS ENTERPRISES 25.06.25.pdf",
+      "mass_tone": {
+        "DL": -0.57,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.9,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.69,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.27,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.07,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.5,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.34,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.61,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 97.96,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L-5777N-C MS ENTERPRISES 25.06.25.pdf",
+          "report_date_iso": "2026-03-16"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "MS Enterprises RIO & OIO 31.12.25",
+      "folder": "MS Enterprises RIO & OIO 31.12.25",
+      "name": "Enterprises,Ahmedabad",
+      "city": "",
+      "grade": "130",
+      "std": "325",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "05.01.2026",
+      "report_date_iso": "2026-01-05",
+      "mfg_date": "27.06.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6122 B for MS Enterprises.,Ahmedabad 31.12.25.pdf",
+      "mass_tone": {
+        "DL": -0.19,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.71,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.25,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.77,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.23,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.61,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.68,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.94,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.81,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate for OIO L 9095 L MS Enterprises.Ahmedabad 31.12.25  .pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test certificate of RIO L 6034B for MS Enterprises.,Ahmedabad 31.12.25.pdf",
+          "report_date_iso": "2026-01-05"
+        },
+        {
+          "file": "Test certificate of RIO L 6122 B for MS Enterprises.,Ahmedabad 31.12.25.pdf",
+          "report_date_iso": "2026-01-05"
+        },
+        {
+          "file": "Test certificate of RIO L 6553 B for MS Enterprises.,Ahmedabad 31.12.25.pdf",
+          "report_date_iso": "2026-01-05"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "N R COLOURS WADA 05.02.26",
+      "folder": "N R COLOURS WADA 05.02.26",
+      "name": "NRCOLOURSWADA",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "09.02.2026",
+      "report_date_iso": "2026-02-09",
+      "mfg_date": "22.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L-6738A  N R COLOURS WADA  05.02.26 .pdf",
+      "mass_tone": {
+        "DL": 0.35,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.45,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.65,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.86,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.05,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.1,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.12,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.17,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.34,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L-5753B  N R COLOURS WADA  05.02.26 .pdf",
+          "report_date_iso": "2026-02-09"
+        },
+        {
+          "file": "Test Certificate of RIO L-6450N-B  N R COLOURS WADA  05.02.26 .pdf",
+          "report_date_iso": "2026-02-09"
+        },
+        {
+          "file": "Test Certificate of RIO L-6737B  N R COLOURS WADA  05.02.26 .pdf",
+          "report_date_iso": "2026-02-09"
+        },
+        {
+          "file": "Test Certificate of RIO L-6738A  N R COLOURS WADA  05.02.26 .pdf",
+          "report_date_iso": "2026-02-09"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "NR Colours RIO 31.03.26",
+      "folder": "NR Colours RIO 31.03.26",
+      "name": "NRcolours,Wada",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "01.04.2026",
+      "report_date_iso": "2026-04-01",
+      "mfg_date": "23.03.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6922B NR Colours,Wada 31.03.26.pdf",
+      "mass_tone": {
+        "DL": -0.22,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.69,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.29,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.78,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.05,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.41,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.25,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.48,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.82,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 5731A NR Colours,Wada 31.03.26.pdf",
+          "report_date_iso": "2026-04-01"
+        },
+        {
+          "file": "Test certificate of RIO L 6922B NR Colours,Wada 31.03.26.pdf",
+          "report_date_iso": "2026-04-01"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "SB Materials",
+      "folder": "SB Materials",
+      "name": "SBMATERIALSSALEM",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "19.02.2026",
+      "report_date_iso": "2026-02-19",
+      "mfg_date": "30.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L 6759A SB MATERIALS SALEM 18.02.26.pdf",
+      "mass_tone": {
+        "DL": -0.08,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.27,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.12,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.3,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.17,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.2,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.6,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.65,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.48,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L 6759A SB MATERIALS SALEM 18.02.26.pdf",
+          "report_date_iso": "2026-02-19"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "SB MATERIALS SALEM 23.01.26",
+      "folder": "SB MATERIALS SALEM 23.01.26",
+      "name": "SBMATERIALSSALEM",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "23.01.2026",
+      "report_date_iso": "2026-01-23",
+      "mfg_date": "17.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L-6726B  SB MATERIALS SALEM 23.01.26.pdf",
+      "mass_tone": {
+        "DL": 0.49,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.24,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.83,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.99,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.41,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.16,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.93,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.03,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.65,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L-5869B  SB MATERIALS SALEM 23.01.26.pdf",
+          "report_date_iso": "2026-01-23"
+        },
+        {
+          "file": "Test certificate of RIO L-6412B SB MATERIALS SALEM 23.01.26.pdf",
+          "report_date_iso": "2026-01-23"
+        },
+        {
+          "file": "Test certificate of RIO L-6726B  SB MATERIALS SALEM 23.01.26.pdf",
+          "report_date_iso": "2026-01-23"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "SHREE ADDITIVES DAMAN 31.01.26",
+      "folder": "SHREE ADDITIVES DAMAN 31.01.26",
+      "name": "SHREEADDITIVES,DAMAN",
+      "city": "",
+      "grade": "446",
+      "std": "",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "02.02.2026",
+      "report_date_iso": "2026-02-02",
+      "mfg_date": "26.11.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of  RIO L-6538N-B  SHREE ADDITIVES DAMAN 31.01.26.pdf",
+      "mass_tone": {
+        "DL": -0.45,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.82,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.1,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.94,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.11,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.78,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.59,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.99,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.03,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of  RIO L-6538N-B  SHREE ADDITIVES DAMAN 31.01.26.pdf",
+          "report_date_iso": "2026-02-02"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "SIDDIVINAY 05.02.26",
+      "folder": "SIDDIVINAY 05.02.26",
+      "name": "Siddivinayak Enterprises,Bangalore",
+      "city": "",
+      "grade": "129",
+      "std": "L30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "05.02.2026",
+      "report_date_iso": "2026-02-05",
+      "mfg_date": "26.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L 6748A  Siddivinayak Enterprises.05.02.26..pdf",
+      "mass_tone": {
+        "DL": 0.15,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.12,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.35,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.4,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.3,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.1,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.92,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.98,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 101.0,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L 3937N  Siddivinayak Enterprises.05.02.26.pdf",
+          "report_date_iso": "2026-02-05"
+        },
+        {
+          "file": "Test Certificate of RIO L 6591N C  Siddivinayak Enterprises.05.02.26..pdf",
+          "report_date_iso": "2026-02-05"
+        },
+        {
+          "file": "Test Certificate of RIO L 6593N C  Siddivinayak Enterprises.05.02.26..pdf",
+          "report_date_iso": "2026-02-05"
+        },
+        {
+          "file": "Test Certificate of RIO L 6704B  Siddivinayak Enterprises.05.02.26.pdf",
+          "report_date_iso": "2026-02-05"
+        },
+        {
+          "file": "Test Certificate of RIO L 6748A  Siddivinayak Enterprises.05.02.26..pdf",
+          "report_date_iso": "2026-02-05"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Sri karthikeya",
+      "folder": "Sri karthikeya",
+      "name": "SriKarthikeya,Hyderabad",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "27.04.2026",
+      "report_date_iso": "2026-04-27",
+      "mfg_date": "24.03.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6923B Sri karthikeya hyderabad  25.04.26.pdf",
+      "mass_tone": {
+        "DL": 0.0,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.53,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.07,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.53,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.19,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.19,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.63,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.69,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.11,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6923B Sri karthikeya hyderabad  25.04.26.pdf",
+          "report_date_iso": "2026-04-27"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "swastik chem ltd FREE TRADE 31.12.25 R Y B",
+      "folder": "swastik chem ltd FREE TRADE 31.12.25 R Y B",
+      "name": "swastik chem ltd FREE TRADE 31.12.25 R Y B",
+      "city": "",
+      "grade": "",
+      "std": "",
+      "product": "",
+      "colour_index": "Pigment Yellow 42",
+      "delivery_condition": "Powder",
+      "report_date": "",
+      "report_date_iso": "",
+      "mfg_date": "",
+      "po_no": "",
+      "latest_pdf": "Test certificate of YO Lot 3140  free trade sample Swastik chem ltd   31_12_25.pdf",
+      "mass_tone": {},
+      "tint_tone": {},
+      "all_files": [
+        {
+          "file": "Test certificate of Black oxide L DCW 330   Free trade sample  Swastik chem ltd   31_12_25.pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test certificate of Black oxide L DCW 780   Free trade sample  Swastik chem ltd   31_12_25.pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test certificate of RO-Lot 4863N  Free trade sample Swastik chem ltd,   31_12_25 .pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test certificate of RO-Lot 6057A Free trade sample Swastik chem ltd  31_12_25.pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "Test certificate of YO Lot 3140  free trade sample Swastik chem ltd   31_12_25.pdf",
+          "report_date_iso": null
+        }
+      ],
+      "parsed_ok": false
+    },
+    {
+      "id": "SYNA agencies",
+      "folder": "SYNA agencies",
+      "name": "SYNAAgencies,Hyderabad",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "06.05.2026",
+      "report_date_iso": "2026-05-06",
+      "mfg_date": "30.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of  RIO L 6760A   SYNA AGENCIES HYDERABAD 04.05.26 .pdf",
+      "mass_tone": {
+        "DL": -0.36,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.43,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.31,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.64,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.47,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.75,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.89,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.26,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 97.76,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of  RIO L 6760A   SYNA AGENCIES HYDERABAD 04.05.26 .pdf",
+          "report_date_iso": "2026-05-06"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "TC OF UNITECH SALES CHENNAI 07.01.26",
+      "folder": "TC OF UNITECH SALES CHENNAI 07.01.26",
+      "name": "UNITECHSALES,CHENNAI",
+      "city": "",
+      "grade": "129",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "07.01.2026",
+      "report_date_iso": "2026-01-07",
+      "mfg_date": "10.12.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "TESST CERTIFICATE OF RIO L 6610A FOR UNITECH SALES,MUMBAI 07.01.26.pdf",
+      "mass_tone": {
+        "DL": -0.26,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.02,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.69,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.74,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.06,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.07,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.26,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.28,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 98.89,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "TESST CERTIFICATE OF RIO L 6405A FOR UNITECH SALES,MUMBAI 07.01.26.pdf",
+          "report_date_iso": "2026-01-07"
+        },
+        {
+          "file": "TESST CERTIFICATE OF RIO L 6407A  FOR UNITECH SALES,CHENNAI  07.01.26.pdf",
+          "report_date_iso": "2026-01-07"
+        },
+        {
+          "file": "TESST CERTIFICATE OF RIO L 6610A FOR UNITECH SALES,MUMBAI 07.01.26.pdf",
+          "report_date_iso": "2026-01-07"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "TEST CERTIFICATE OF INDUSTRIAL ASSO,MUMBAI 03.01.26",
+      "folder": "TEST CERTIFICATE OF INDUSTRIAL ASSO,MUMBAI 03.01.26",
+      "name": "INDUSTRIALASSOCIATES,MUMBAI",
+      "city": "",
+      "grade": "101",
+      "std": "644",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "03.01.2026",
+      "report_date_iso": "2026-01-03",
+      "mfg_date": "11.11.2025",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "TEST CERTIFICATE OF RIO L 6531N-A FOR INDUSTRIAL ASSO,MUMBAI 03.01.26.pdf",
+      "mass_tone": {
+        "DL": -0.03,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.32,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.1,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.34,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.02,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.11,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.1,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.15,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.52,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "TEST CERTIFICATE OF RIO L 6531N-A FOR INDUSTRIAL ASSO,MUMBAI 03.01.26.pdf",
+          "report_date_iso": "2026-01-03"
+        },
+        {
+          "file": "TEST CERTIFICATE OF RIO L 6552A FOR INDUSTRIAL ASSO,MUMBAI 03.01.26.pdf",
+          "report_date_iso": "2026-01-03"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Test certificate of RIO L-6135 National Paints,Qatar 26.08.25",
+      "folder": "Test certificate of RIO L-6135 National Paints,Qatar 26.08.25",
+      "name": "Test certificate of RIO L-6135 National Paints,Qatar 26.08.25",
+      "city": "",
+      "grade": "",
+      "std": "",
+      "product": "",
+      "colour_index": "",
+      "delivery_condition": "",
+      "report_date": "",
+      "report_date_iso": "",
+      "mfg_date": "",
+      "po_no": "",
+      "latest_pdf": "Test certificate of RIO L 6135 National paints,Qatar 02.09.25.pdf",
+      "mass_tone": {},
+      "tint_tone": {},
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6135 National paints,Qatar 02.09.25.pdf",
+          "report_date_iso": null
+        }
+      ],
+      "parsed_ok": false
+    },
+    {
+      "id": "TGR Trading 10.01.26",
+      "folder": "TGR Trading 10.01.26",
+      "name": "TGRTrading",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "14.01.2026",
+      "report_date_iso": "2026-01-14",
+      "mfg_date": "07.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L-6628N-A TGR Trading 10.01.26.pdf",
+      "mass_tone": {
+        "DL": -0.15,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.02,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.12,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.19,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.19,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.14,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.52,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.57,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.63,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L-6627N-D TGR Trading 10.01.26.pdf",
+          "report_date_iso": "2026-01-14"
+        },
+        {
+          "file": "Test Certificate of RIO L-6628N-A TGR Trading 10.01.26.pdf",
+          "report_date_iso": "2026-01-14"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Unitech sales",
+      "folder": "Unitech sales",
+      "name": "UNITECHSALESAGENCYCHENNAI",
+      "city": "",
+      "grade": "129",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "18.02.2026",
+      "report_date_iso": "2026-02-18",
+      "mfg_date": "07.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test Certificate of RIO L-6628N-B UNITECH SALES AGENCY CHENNAI 12.02.26.pdf",
+      "mass_tone": {
+        "DL": 0.04,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.03,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.44,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.44,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.41,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.3,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.93,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.06,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.65,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test Certificate of RIO L-6628N-B UNITECH SALES AGENCY CHENNAI 12.02.26.pdf",
+          "report_date_iso": "2026-02-18"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Unitech sales agency chennai 12.02.26",
+      "folder": "Unitech sales agency chennai 12.02.26",
+      "name": "UNITECHSALESAGENCYCHENNAI",
+      "city": "",
+      "grade": "130",
+      "std": "325",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "12.02.2026",
+      "report_date_iso": "2026-02-12",
+      "mfg_date": "01.02.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6766B  UNITECH SALES AGENCY  12.02.26.pdf",
+      "mass_tone": {
+        "DL": 0.26,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.38,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.77,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.9,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.02,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.26,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.02,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.26,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 101.85,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6628N-A UNITECH SALES AGENCY  12.02.26.pdf",
+          "report_date_iso": "2026-02-12"
+        },
+        {
+          "file": "Test certificate of RIO L 6628N-B UNITECH SALES AGENCY  12.02.26.pdf",
+          "report_date_iso": "2026-02-12"
+        },
+        {
+          "file": "Test certificate of RIO L 6766B  UNITECH SALES AGENCY  12.02.26.pdf",
+          "report_date_iso": "2026-02-12"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Unitech Sales Agency,Bangalore  25.03.26",
+      "folder": "Unitech Sales Agency,Bangalore  25.03.26",
+      "name": "Unitechsalesagency,Bangalore",
+      "city": "",
+      "grade": "110",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "26.03.2026",
+      "report_date_iso": "2026-03-26",
+      "mfg_date": "15.03.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L-6890B Unitech sales agency Bangalore 25.03.26.pdf",
+      "mass_tone": {
+        "DL": -0.13,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.67,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.2,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.71,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.17,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.56,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.71,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.92,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 100.67,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L-6781B  Unitech sales agency Bangalore 25.03.26.pdf",
+          "report_date_iso": "2026-03-26"
+        },
+        {
+          "file": "Test certificate of RIO L-6890B Unitech sales agency Bangalore 25.03.26.pdf",
+          "report_date_iso": "2026-03-26"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "UNITECH SALES CHENNAI 21.01.26 RIO& OIO",
+      "folder": "UNITECH SALES CHENNAI 21.01.26 RIO& OIO",
+      "name": "UNITECHSALES,CHENNAI",
+      "city": "",
+      "grade": "120",
+      "std": "48B",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "21.01.2026",
+      "report_date_iso": "2026-01-21",
+      "mfg_date": "23.10.2024",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "TEST CERTIFICATE OF RIO L-5310A UNITECH SALES CHENNAI 21.01.26.pdf",
+      "mass_tone": {
+        "DL": -0.46,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.08,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.71,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.85,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": -0.32,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.14,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.92,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.98,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 101.04,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "TEST CERTIFICATE OF OIO L-6095L UNITECH SALES CHENNAI 21.01.26.pdf",
+          "report_date_iso": null
+        },
+        {
+          "file": "TEST CERTIFICATE OF RIO L-3937N  UNITECH SALES CHENNAI 21.01.26.pdf",
+          "report_date_iso": "2026-01-21"
+        },
+        {
+          "file": "TEST CERTIFICATE OF RIO L-5310A UNITECH SALES CHENNAI 21.01.26.pdf",
+          "report_date_iso": "2026-01-21"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Unitech sales RO 06.02.26",
+      "folder": "Unitech sales RO 06.02.26",
+      "name": "Unitechsales,Chennai",
+      "city": "",
+      "grade": "129",
+      "std": "30A",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "07.02.2026",
+      "report_date_iso": "2026-02-07",
+      "mfg_date": "27.01.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6751A  Unitech sales,Chennai 06.02.26.pdf",
+      "mass_tone": {
+        "DL": -0.05,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.79,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.2,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.81,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.1,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.27,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.39,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 0.49,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 100.76,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6751A  Unitech sales,Chennai 06.02.26.pdf",
+          "report_date_iso": "2026-02-07"
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Vega chemicals",
+      "folder": "Vega chemicals",
+      "name": "VEGA CHEMICALS",
+      "city": "",
+      "grade": "",
+      "std": "",
+      "product": "",
+      "colour_index": "",
+      "delivery_condition": "",
+      "report_date": "",
+      "report_date_iso": "",
+      "mfg_date": "",
+      "po_no": ":",
+      "latest_pdf": "Test certificate of RIO  L-5195B  Vega chemicals 13.09.25.pdf",
+      "mass_tone": {
+        "DL": -0.1,
+        "Da": 0.17,
+        "Db": 0.29,
+        "DE": 0.36
+      },
+      "tint_tone": {
+        "DL": -0.01,
+        "Da": -0.19,
+        "Db": 0.03,
+        "DE": 0.19,
+        "strength": 98.77
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO  L-5195B  Vega chemicals 13.09.25.pdf",
+          "report_date_iso": null
+        }
+      ],
+      "parsed_ok": true
+    },
+    {
+      "id": "Venus international",
+      "folder": "Venus international",
+      "name": "VENUSINTERNATIONAL,MUMBAI",
+      "city": "",
+      "grade": "136",
+      "std": "40D",
+      "product": "Red Pigment",
+      "colour_index": "Pigment Red 101",
+      "delivery_condition": "Powder",
+      "report_date": "02.05.2026",
+      "report_date_iso": "2026-05-02",
+      "mfg_date": "09.04.2026",
+      "po_no": "Sr Characteristics Quantitative Specs Result Test Method",
+      "latest_pdf": "Test certificate of RIO L 6972N-C   Venus International  Mumbai  30.04.26.pdf",
+      "mass_tone": {
+        "DL": -0.5,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": -0.74,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": -0.86,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.25,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3
+      },
+      "tint_tone": {
+        "DL": 0.25,
+        "DL_lo": -0.95,
+        "DL_hi": 0.95,
+        "Da": 0.87,
+        "Da_lo": -0.95,
+        "Da_hi": 0.95,
+        "Db": 0.89,
+        "Db_lo": -0.95,
+        "Db_hi": 0.95,
+        "DE": 1.27,
+        "DE_lo": null,
+        "DE_hi": 1.3,
+        "DE_max": 1.3,
+        "strength": 102.7,
+        "strength_lo": 95.0,
+        "strength_hi": 105.0
+      },
+      "all_files": [
+        {
+          "file": "Test certificate of RIO L 6972N-C   Venus International  Mumbai  30.04.26.pdf",
+          "report_date_iso": "2026-05-02"
+        }
+      ],
+      "parsed_ok": true
+    }
+  ],
+  "scanned_at": "2026-05-20T15:31:44"
+}

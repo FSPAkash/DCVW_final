@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import './App.css';
-import './redesign.css';
+import './v3.css';
+import './auth.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
