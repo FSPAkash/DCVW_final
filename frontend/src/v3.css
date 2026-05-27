@@ -170,50 +170,65 @@ button, input, select, textarea {
 
 /* Status bar */
 .statusbar {
-  height: 24px;
+  height: 34px;
+  flex-shrink: 0;
   background: var(--bg-chrome);
   border-top: 1px solid var(--line);
   display: flex;
   align-items: center;
-  padding: 0 10px;
-  gap: 14px;
-  font-size: 11px;
+  padding: 0 14px;
+  gap: 16px;
+  font-size: 12px;
   font-family: var(--font-mono);
   color: var(--ink-3);
   letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
 }
+.statusbar::-webkit-scrollbar { display: none; }
+.statusbar > span, .statusbar .right > span { flex-shrink: 0; }
 .statusbar .sep {
-  width: 1px; height: 12px; background: var(--line);
+  width: 1px; height: 16px; background: var(--line);
 }
 .statusbar .dot {
-  width: 6px; height: 6px; border-radius: 50%;
+  width: 7px; height: 7px; border-radius: 50%;
   background: var(--ok);
   box-shadow: 0 0 0 2px var(--ok-soft);
 }
-.statusbar .right { margin-left: auto; display: flex; gap: 14px; align-items: center; }
+.statusbar .right { margin-left: auto; display: flex; gap: 16px; align-items: center; }
 .status-signout {
-  background: transparent;
-  border: none;
-  color: var(--ink-3);
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--ink-2);
+  border: 1px solid var(--ink-2);
+  color: #fff;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   cursor: pointer;
-  padding: 0;
+  padding: 3px 12px;
+  border-radius: 4px;
+  transition: background 140ms, border-color 140ms;
 }
-.status-signout:hover { color: var(--accent-ink); }
+.status-signout:hover {
+  background: #000;
+  border-color: #000;
+}
+.status-signout:active { transform: translateY(1px); }
 
 .status-powered {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--ink-3);
 }
 .status-powered-logo {
-  height: 14px;
+  height: 16px;
   width: auto;
   object-fit: contain;
   opacity: 0.85;

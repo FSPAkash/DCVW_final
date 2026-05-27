@@ -122,15 +122,6 @@ function StatusBar({ screen, customer, ranked, qty, totals, user, onLogout }) {
       <span className="sep"></span>
       <span>USER · {user?.name || user?.username || '—'}</span>
       <div className="right">
-        {screen === 'results' && customer && (
-          <>
-            <span>VIEW · MATCH</span>
-            <span className="sep"></span>
-            <span>{customer.id} · {qty} MT · {ranked.length} CANDIDATES</span>
-          </>
-        )}
-        {screen === 'home' && <span>VIEW · INTAKE</span>}
-        <span className="sep"></span>
         <span>SAHUPURAM · TN</span>
         <span className="sep"></span>
         <span className="status-powered">
@@ -422,7 +413,7 @@ function HomeScreen({ customers, master, user, customerId, qty, requiredTests, g
             <span className="bar"></span>
             <span>Sales · Inventory · Operations Planning</span>
           </div>
-          <h1 className="home-title">Inventory Match Matrix<span className="caret"></span></h1>
+          <h1 className="home-title">Inventory Match Matrix</h1>
         </div>
         <div className="home-tabs-bar">
           <button className={'home-tab' + (tab === 'new' ? ' active' : '')} onClick={() => setTab('new')}>
