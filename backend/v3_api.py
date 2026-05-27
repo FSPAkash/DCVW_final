@@ -127,10 +127,8 @@ def customer_override(cid):
 
 @v3_bp.post("/customer/<cid>/override/clear")
 def customer_override_clear(cid):
-    body = request.get_json(force=True, silent=True) or {}
-    pin = str(body.get("pin", ""))
-    if pin != PIN:
-        return jsonify({"error": "invalid pin"}), 403
+    # No PIN: reverting to canonical COA is not a privileged change (just removes
+    # a customization). Privileged action is creating the override, not removing it.
     v3_coa.clear_override(cid)
     return jsonify({"ok": True, "effective": _sanitize(v3_coa.get_customer_effective(cid))})
 
@@ -305,6 +303,7 @@ def fulfill():
     user = body.get("user") or "operator"
     qty_requested = float(body.get("qty_requested") or 0)
     allocations = body.get("allocations") or []  # [{lot_id, lot_no, consume_mt}, ...]
+    snapshot = body.get("snapshot") or {}  # {lot_id: {ranks, mass_tone, tint_tone, within, direction, ...}}
     if not allocations:
         return jsonify({"error": "no allocations"}), 400
     cust = v3_coa.get_customer_effective(cid)
@@ -313,6 +312,7 @@ def fulfill():
     entry = v3_fulfillments.record_commit(
         user=user, customer_id=cid, customer_name=cust_name,
         qty_requested=qty_requested, write_result=result,
+        snapshot_by_lot=snapshot,
     )
     return jsonify({"ok": True, "fulfillment": entry, **result})
 

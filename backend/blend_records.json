@@ -52,6 +52,66 @@
         }
       ],
       "card_url": "/api/v3/master/blend/BLEND-1779431678/card.pdf"
+    },
+    {
+      "blend_id": "BLEND-1779700597",
+      "ts": "2026-05-25T14:46:37",
+      "user": "Administrator",
+      "output": {
+        "lot_id": "5666666@LV",
+        "lot_no": "5666666",
+        "grade": "1243",
+        "col_letter": "LV",
+        "qty_mt": 2.0
+      },
+      "sources": [
+        {
+          "lot_id": "6210B@E",
+          "lot_no": "6210B",
+          "grade": "129",
+          "mt_used": 1.0
+        },
+        {
+          "lot_id": "6933A@AZ",
+          "lot_no": "6933A",
+          "grade": "129",
+          "mt_used": 0.7
+        },
+        {
+          "lot_id": "6929B@AY",
+          "lot_no": "6929B",
+          "grade": "129",
+          "mt_used": 0.3
+        }
+      ],
+      "card_url": "/api/v3/master/blend/BLEND-1779700597/card.pdf"
+    },
+    {
+      "blend_id": "BLEND-1779701515",
+      "ts": "2026-05-25T15:01:55",
+      "user": "Administrator",
+      "output": {
+        "lot_id": "TEST3@LW",
+        "lot_no": "TEST3",
+        "grade": "130",
+        "col_letter": "LW",
+        "qty_mt": 3.0
+      },
+      "sources": [
+        {
+          "lot_id": "6134A@L",
+          "lot_no": "6134A",
+          "grade": "130",
+          "mt_used": 2.0
+        },
+        {
+          "lot_id": "6135A@N",
+          "lot_no": "6135A",
+          "grade": "130",
+          "mt_used": 1.0
+        }
+      ],
+      "card_url": "/api/v3/master/blend/BLEND-1779701515/card.pdf"
     }
   ],
   "notes_by_lot": {
@@ -70,6 +130,14 @@
         "into_lot_id": "TEST 2@LU",
         "note": "1.0 MT used for blending into TEST 2",
         "card_url": "/api/v3/master/blend/BLEND-1779431678/card.pdf"
+      },
+      {
+        "ts": "2026-05-25T14:46:37",
+        "mt_used": 1.0,
+        "into_lot_no": "5666666",
+        "into_lot_id": "5666666@LV",
+        "note": "1.0 MT used for blending into 5666666",
+        "card_url": "/api/v3/master/blend/BLEND-1779700597/card.pdf"
       }
     ],
     "6130B@J": [
@@ -87,6 +155,46 @@
         "into_lot_id": "TEST 2@LU",
         "note": "3.0 MT used for blending into TEST 2",
         "card_url": "/api/v3/master/blend/BLEND-1779431678/card.pdf"
+      }
+    ],
+    "6933A@AZ": [
+      {
+        "ts": "2026-05-25T14:46:37",
+        "mt_used": 0.7,
+        "into_lot_no": "5666666",
+        "into_lot_id": "5666666@LV",
+        "note": "0.7 MT used for blending into 5666666",
+        "card_url": "/api/v3/master/blend/BLEND-1779700597/card.pdf"
+      }
+    ],
+    "6929B@AY": [
+      {
+        "ts": "2026-05-25T14:46:37",
+        "mt_used": 0.3,
+        "into_lot_no": "5666666",
+        "into_lot_id": "5666666@LV",
+        "note": "0.3 MT used for blending into 5666666",
+        "card_url": "/api/v3/master/blend/BLEND-1779700597/card.pdf"
+      }
+    ],
+    "6134A@L": [
+      {
+        "ts": "2026-05-25T15:01:55",
+        "mt_used": 2.0,
+        "into_lot_no": "TEST3",
+        "into_lot_id": "TEST3@LW",
+        "note": "2.0 MT used for blending into TEST3",
+        "card_url": "/api/v3/master/blend/BLEND-1779701515/card.pdf"
+      }
+    ],
+    "6135A@N": [
+      {
+        "ts": "2026-05-25T15:01:55",
+        "mt_used": 1.0,
+        "into_lot_no": "TEST3",
+        "into_lot_id": "TEST3@LW",
+        "note": "1.0 MT used for blending into TEST3",
+        "card_url": "/api/v3/master/blend/BLEND-1779701515/card.pdf"
       }
     ]
   }

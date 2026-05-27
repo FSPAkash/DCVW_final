@@ -59,8 +59,16 @@ def list_all() -> List[Dict[str, Any]]:
 
 
 def record_commit(*, user: str, customer_id: str, customer_name: str, qty_requested: float,
-                   write_result: Dict[str, Any]) -> Dict[str, Any]:
-    """Called after v3_master.update_lot_qty succeeds. Persists the line items."""
+                   write_result: Dict[str, Any],
+                   snapshot_by_lot: Optional[Dict[str, Dict[str, Any]]] = None) -> Dict[str, Any]:
+    """Called after v3_master.update_lot_qty succeeds. Persists the line items.
+
+    snapshot_by_lot: optional {lot_id: {ranks, mass_tone, tint_tone, within,
+    direction, is_super, present_methods, ...}} captured from the /match result
+    that was on screen at commit time. Stored on each line so that edit-mode
+    can show the original ranking/spec/dir info even after the lot is depleted.
+    """
+    snap = snapshot_by_lot or {}
     rows = _load()
     entry = {
         "id": uuid.uuid4().hex[:12],
@@ -76,6 +84,7 @@ def record_commit(*, user: str, customer_id: str, customer_name: str, qty_reques
             "consume_mt": a["consume_mt"],
             "prev_qty": a["prev_qty"],
             "new_qty": a["new_qty"],
+            "snapshot": snap.get(a["lot_id"]),
         } for a in write_result.get("applied", [])],
         "edit_history": [],
     }
@@ -261,6 +270,10 @@ def edit_fulfillment(fid: str, *, user: str, new_lines: List[Dict[str, Any]],
         "applied": applied,
         "previous_lines": list(entry.get("lines", [])),
     })
+    # Preserve original snapshots so depleted lots keep their rank/spec info
+    # through the 24h edit window across multiple edits.
+    prev_snap_by_id = {pl.get("lot_id"): pl.get("snapshot")
+                       for pl in (entry.get("lines") or [])}
     entry["lines"] = [{
         "lot_id": a["lot_id"],
         "lot_no": a.get("lot_no"),
@@ -268,6 +281,7 @@ def edit_fulfillment(fid: str, *, user: str, new_lines: List[Dict[str, Any]],
         "consume_mt": a.get("consume_mt"),
         "prev_qty": a.get("prev_qty"),
         "new_qty": a.get("new_qty"),
+        "snapshot": prev_snap_by_id.get(a["lot_id"]),
     } for a in applied if "error" not in a]
     entry["edited_at"] = _now()
     _save(rows)

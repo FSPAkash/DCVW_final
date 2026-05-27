@@ -40,7 +40,41 @@ RT_METHOD = "Method I b"
 # Tunable
 STRENGTH_WEIGHT = 0.5         # half-weight of a color axis
 COSINE_DROP_THRESHOLD = 0.1   # if ||target|| < this, drop cosine signal
-BLEND_WEIGHTS = {"euclid": 1.0, "cosine": 1.0, "knn": 1.0}
+DIRECTION_FLOOR = 0.05        # |COA delta| below this -> axis direction-agnostic (noise floor)
+BLEND_WEIGHTS = {"euclid": 1.0, "cosine": 1.0, "knn": 1.0, "age": 0.5}
+
+
+def _direction_match(lot_mt: Dict[str, Any], lot_rt: Dict[str, Any],
+                     coa_mt: Dict[str, Any], coa_rt: Dict[str, Any]) -> Dict[str, Any]:
+    """Per-axis sign check vs COA target deltas.
+
+    Lot delta sign must match COA delta sign on each axis where |COA delta| >= floor.
+    Axes where COA is near zero are skipped (no meaningful direction).
+    Returns {"mt": {ax: True/False/None}, "rt": {...}, "all": bool, "reasons": [...]}.
+    """
+    out = {"mt": {}, "rt": {}, "reasons": []}
+    def check(block_label, lot_block, coa_block):
+        d = out["mt"] if block_label == "MT" else out["rt"]
+        for ax in ("DL", "Da", "Db"):
+            coa_v = coa_block.get(ax)
+            lot_v = lot_block.get(ax)
+            if coa_v is None or lot_v is None:
+                d[ax] = None
+                continue
+            if abs(coa_v) < DIRECTION_FLOOR:
+                d[ax] = None  # direction-agnostic
+                continue
+            ok = (coa_v >= 0 and lot_v >= 0) or (coa_v <= 0 and lot_v <= 0)
+            d[ax] = bool(ok)
+            if not ok:
+                out["reasons"].append(
+                    f"{block_label} {ax} sign mismatch: COA {coa_v:+.2f} vs lot {lot_v:+.2f}"
+                )
+    check("MT", lot_mt, coa_mt)
+    check("RT", lot_rt, coa_rt)
+    flags = [v for v in list(out["mt"].values()) + list(out["rt"].values()) if v is not None]
+    out["all"] = all(flags) if flags else True
+    return out
 
 
 def _strength_norm(s: Optional[float], coa_rt: Dict[str, Any]) -> Optional[float]:
@@ -206,9 +240,32 @@ def rank_lots(
             co_all[i] = co[j] if co is not None else np.nan
             kn_all[i] = kn[j]
 
+    # Age signal: older lots first (FIFO depletion).
+    # Master layout: per-grade columns are arranged L->R with newer to the right;
+    # within a grade, higher lot_no = newer. So older = lower (col, lot_no_numeric).
+    # Rank ordinally within grade so cross-grade pools don't bias by column position alone.
+    def _lot_no_num(s: str) -> float:
+        digits = "".join(ch for ch in (s or "") if ch.isdigit())
+        return float(digits) if digits else float("inf")  # unknown -> treat as newest
+
+    age_all = np.zeros(len(candidates))
+    # Group candidate indices by grade, then rank by (col, lot_no_num)
+    from collections import defaultdict
+    grade_groups: Dict[str, List[int]] = defaultdict(list)
+    for i, c in enumerate(candidates):
+        grade_groups[str(c["lot"].get("grade", "")).strip()].append(i)
+    for _g, idxs in grade_groups.items():
+        keys = [(int(candidates[i]["lot"].get("col", 0) or 0),
+                 _lot_no_num(candidates[i]["lot"].get("lot_no", ""))) for i in idxs]
+        order = sorted(range(len(idxs)), key=lambda k: keys[k])
+        # rank 0 = oldest -> lowest (best) age score
+        for rank_pos, k in enumerate(order):
+            age_all[idxs[k]] = float(rank_pos)
+
     # z-score each signal across whole pool
     z_eu = _zscore(eu_all)
     z_kn = _zscore(kn_all)
+    z_age = _zscore(age_all)
     cosine_valid = not np.isnan(co_all).all()
     if cosine_valid:
         # If some cosines are NaN (mixed targets), impute with mean before zscore
@@ -224,7 +281,12 @@ def rank_lots(
         w["cosine"] = 0.0
     total_w = sum(w.values())
     w = {k: v / total_w for k, v in w.items()}
-    blended = w["euclid"] * z_eu + w["knn"] * z_kn + (w["cosine"] * z_co if z_co is not None else 0.0)
+    blended = (
+        w["euclid"] * z_eu
+        + w["knn"] * z_kn
+        + (w["cosine"] * z_co if z_co is not None else 0.0)
+        + w["age"] * z_age
+    )
 
     # Ordinal ranks per signal — for the detail row only
     def ordinal_rank(arr: np.ndarray) -> np.ndarray:
@@ -236,18 +298,48 @@ def rank_lots(
     r_eu = ordinal_rank(eu_all)
     r_kn = ordinal_rank(kn_all)
     r_co = ordinal_rank(co_all if cosine_valid else np.zeros_like(eu_all))
-    r_blend = ordinal_rank(blended)
+    r_age = ordinal_rank(age_all)
 
-    for i, c in enumerate(candidates):
-        lot = c["lot"]
-        within = _within(c["mt"], c["rt"], coa_mt, coa_rt)
+    # Pre-compute final spec + direction status per candidate so overall rank
+    # respects tiers (in-spec lots always rank ahead of out-of-spec, etc.).
+    cand_within: List[Dict[str, Any]] = []
+    cand_direction: List[Dict[str, Any]] = []
+    cand_strength_in: List[bool] = []
+    for c in candidates:
+        w = _within(c["mt"], c["rt"], coa_mt, coa_rt)
+        d = _direction_match(c["mt"], c["rt"], coa_mt, coa_rt)
         s = c["rt"].get("Strength")
         s_lo, s_hi = coa_rt.get("strength_lo"), coa_rt.get("strength_hi")
         strength_in = True
         if s is not None and (s_lo is not None or s_hi is not None):
             if s_lo is not None and s < s_lo: strength_in = False
             elif s_hi is not None and s > s_hi: strength_in = False
-        within["strength"] = strength_in
+        w["strength"] = strength_in
+        w["all"] = w["all"] and strength_in
+        cand_within.append(w)
+        cand_direction.append(d)
+        cand_strength_in.append(strength_in)
+
+    def _tier_for(idx: int) -> int:
+        spec_ok = bool(cand_within[idx]["all"])
+        dir_ok = bool(cand_direction[idx]["all"])
+        return (0 if spec_ok else 2) + (0 if dir_ok else 1)
+
+    # Overall rank = order by (tier asc, blended asc). Out-of-spec gets ranked
+    # only after every in-spec lot.
+    composite_keys = [(_tier_for(i), float(blended[i])) for i in range(len(candidates))]
+    order_overall = sorted(range(len(candidates)), key=lambda k: composite_keys[k])
+    r_blend = np.empty(len(candidates), dtype=int)
+    for pos, k in enumerate(order_overall):
+        r_blend[k] = pos + 1
+
+    for i, c in enumerate(candidates):
+        lot = c["lot"]
+        within = cand_within[i]
+        direction = cand_direction[i]
+        s = c["rt"].get("Strength")
+        s_lo, s_hi = coa_rt.get("strength_lo"), coa_rt.get("strength_hi")
+        strength_in = cand_strength_in[i]
 
         reasons: List[str] = []
         for ax in ("DL", "Da", "Db", "DE"):
@@ -268,7 +360,6 @@ def rank_lots(
         if strength_in is False and s is not None:
             reasons.append(f"Strength {s:.2f} outside [{s_lo}, {s_hi}]")
         within["reasons"] = reasons
-        within["all"] = within["all"] and strength_in
 
         out.append({
             "lot_id": lot.get("lot_id") or lot["lot_no"],
@@ -281,6 +372,7 @@ def rank_lots(
             "tint_tone": c["rt"],
             "all_blocks": lot.get("blocks", {}),
             "present_methods": lot.get("present_methods", []),
+            "is_super": len(lot.get("present_methods", []) or []) > 2,
             "scores": {
                 "euclid": float(eu_all[i]),
                 "cosine": float(co_all[i]) if cosine_valid and not np.isnan(co_all[i]) else None,
@@ -288,6 +380,8 @@ def rank_lots(
                 "z_euclid": float(z_eu[i]),
                 "z_cosine": float(z_co[i]) if z_co is not None else None,
                 "z_knn": float(z_kn[i]),
+                "age": float(age_all[i]),
+                "z_age": float(z_age[i]),
                 "blended": float(blended[i]),
                 "blend_weights": w,
                 "strength_dim_used": len(c["vec"]) == 7,
@@ -297,24 +391,46 @@ def rank_lots(
                 "euclid": int(r_eu[i]),
                 "cosine": int(r_co[i]) if cosine_valid else None,
                 "knn": int(r_kn[i]),
+                "age": int(r_age[i]),
                 "consensus": int(r_blend[i]),  # field name kept for back-compat; now = blended rank
             },
             "within": within,
+            "direction": direction,
         })
 
-    out.sort(key=lambda r: r["scores"]["blended"])
+    # Hard tiers (best -> worst):
+    #   tier 0: in-spec  + direction OK
+    #   tier 1: in-spec  + direction mismatch
+    #   tier 2: out-spec + direction OK
+    #   tier 3: out-spec + direction mismatch
+    # Blended score (color + age) only re-orders within a tier.
+    def _tier(r):
+        spec_ok = bool(r["within"]["all"])
+        dir_ok = bool(r["direction"]["all"])
+        return (0 if spec_ok else 2) + (0 if dir_ok else 1)
+    out.sort(key=lambda r: (_tier(r), r["scores"]["blended"]))
     if in_spec_only:
         out = [r for r in out if r["within"]["all"]]
     return out
 
 
 def fulfill_exact(ranked: List[Dict[str, Any]], qty: float) -> List[Dict[str, Any]]:
-    """Greedy: pick top lots, partial cut on last to hit qty exactly."""
+    """Greedy: pick top lots, partial cut on last to hit qty exactly.
+
+    Super lots (those with extra test methods beyond MT+RT) are *deprioritized*:
+    we exhaust all eligible non-super lots first, then dip into super lots only
+    if the request can't be filled without them.
+    """
     remaining = float(qty)
     picks: List[Dict[str, Any]] = []
-    for r in ranked:
+    # Two passes preserve ranked order within each group.
+    non_super = [r for r in ranked if not r.get("is_super")]
+    super_lots = [r for r in ranked if r.get("is_super")]
+    for r in non_super + super_lots:
         if remaining <= 1e-6:
             break
+        if not (r.get("within") or {}).get("all"):
+            continue  # never auto-fulfill from out-of-spec lots
         avail = float(r.get("qty_mt", 0))
         if avail <= 0:
             continue

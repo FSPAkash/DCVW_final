@@ -40,7 +40,10 @@
       "Read(//c/Users/AkashPatil/**)",
       "PowerShell(python _audit_tmp.py)",
       "PowerShell(python -c \"import ast; ast.parse\\(open\\('backend/v3_match.py'\\).read\\(\\)\\); print\\('OK'\\)\")",
-      "Bash(curl -s -o NUL -w \"%{http_code}\\\\n\" \"http://localhost:5000/api/v3/master/blend/BLEND-1779431678/card.pdf\")"
+      "Bash(curl -s -o NUL -w \"%{http_code}\\\\n\" \"http://localhost:5000/api/v3/master/blend/BLEND-1779431678/card.pdf\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('backend/v3_match.py'\\).read\\(\\)\\); print\\('ok'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('backend/v3_api.py'\\).read\\(\\)\\); print\\('ok'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('backend/v3_fulfillments.py'\\).read\\(\\)\\); ast.parse\\(open\\('backend/v3_api.py'\\).read\\(\\)\\); print\\('ok'\\)\")"
     ]
   }
 }

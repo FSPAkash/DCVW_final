@@ -166,9 +166,10 @@ function CoaTargetCard({ customer, onSaveOverride, onRevertOverride }) {
   const rt = customer.tint_tone || {};
 
   function openPin() { setPin(''); setPinErr(false); setPinOpen(true); }
-  function submitPin(e) {
+  async function submitPin(e) {
     e?.preventDefault();
     if (pin.length !== 4) return;
+    sessionStorage.setItem('v3_pin', pin);
     setDraft({
       mt_DL: mt.DL ?? 0, mt_Da: mt.Da ?? 0, mt_Db: mt.Db ?? 0,
       rt_DL: rt.DL ?? 0, rt_Da: rt.Da ?? 0, rt_Db: rt.Db ?? 0,
@@ -177,8 +178,6 @@ function CoaTargetCard({ customer, onSaveOverride, onRevertOverride }) {
     });
     setEditing(true);
     setPinOpen(false);
-    // PIN check on backend; we store PIN for save call
-    sessionStorage.setItem('v3_pin', pin);
   }
   async function save() {
     const patch = {
@@ -198,7 +197,7 @@ function CoaTargetCard({ customer, onSaveOverride, onRevertOverride }) {
   }
   function cancelEdit() { setEditing(false); setDraft(null); }
   async function revert() {
-    await onRevertOverride(sessionStorage.getItem('v3_pin') || '');
+    try { await onRevertOverride(); } catch (_e) { /* silent */ }
     setEditing(false); setDraft(null);
   }
   function patch(k, v) { setDraft((d) => ({ ...d, [k]: v })); }
@@ -344,10 +343,77 @@ function CoaMini({ customer }) {
 }
 
 // ============== HOME secondary panels ==============
+
+function CustomerCombo({ id, customers, customerId, onSelect }) {
+  const selected = customers.find((c) => c.id === customerId);
+  const [text, setText] = useState(selected ? selected.name : '');
+  const [open, setOpen] = useState(false);
+  const [hi, setHi] = useState(0);
+  const wrapRef = useRef(null);
+
+  useEffect(() => {
+    const s = customers.find((c) => c.id === customerId);
+    if (s && s.name !== text) setText(s.name);
+  }, [customerId, customers]);
+
+  useEffect(() => {
+    const onDoc = (e) => { if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', onDoc);
+    return () => document.removeEventListener('mousedown', onDoc);
+  }, []);
+
+  const q = text.trim().toLowerCase();
+  const matches = q
+    ? customers.filter((c) => (c.name || '').toLowerCase().includes(q) || String(c.grade || '').toLowerCase().includes(q))
+    : customers;
+  const showList = open && matches.length > 0;
+
+  const pick = (c) => { onSelect(c.id); setText(c.name); setOpen(false); };
+
+  const onKey = (e) => {
+    if (!open) { if (e.key === 'ArrowDown' || e.key === 'Enter') setOpen(true); return; }
+    if (e.key === 'ArrowDown') { e.preventDefault(); setHi((h) => Math.min(matches.length - 1, h + 1)); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setHi((h) => Math.max(0, h - 1)); }
+    else if (e.key === 'Enter') { e.preventDefault(); if (matches[hi]) pick(matches[hi]); }
+    else if (e.key === 'Escape') { setOpen(false); }
+  };
+
+  return (
+    <div className="combo" ref={wrapRef}>
+      <input
+        id={id}
+        type="text"
+        value={text}
+        placeholder="— Select a customer —"
+        onChange={(e) => { setText(e.target.value); setOpen(true); setHi(0); }}
+        onFocus={() => setOpen(true)}
+        onKeyDown={onKey}
+        autoComplete="off"
+      />
+      {showList && (
+        <div className="combo-list">
+          {matches.slice(0, 50).map((c, i) => (
+            <div
+              key={c.id}
+              className={'combo-item' + (i === hi ? ' hi' : '') + (c.id === customerId ? ' sel' : '')}
+              onMouseDown={(e) => { e.preventDefault(); pick(c); }}
+              onMouseEnter={() => setHi(i)}
+            >
+              <span className="combo-name">{c.name}</span>
+              {c.grade && <span className="combo-grade">grade {c.grade}</span>}
+              {!c.parsed_ok && <span className="combo-warn">⚠</span>}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ============== HOME ==============
-function HomeScreen({ customers, master, user, customerId, qty, requiredTests, gradeStrict, onSelect, onQty, onTests, onGradeStrict, onMatch, coaPreview, loadingPreview, onEditFulfillment, onReloadMaster }) {
+function HomeScreen({ customers, master, user, customerId, qty, requiredTests, gradeStrict, onSelect, onQty, onTests, onGradeStrict, onMatch, coaPreview, loadingPreview, onEditFulfillment, onReloadMaster, tab, onTabChange }) {
   const dups = master.duplicates || [];
-  const [tab, setTab] = useState('new');
+  const setTab = onTabChange;
   return (
     <div className="home home-v2">
       <div className="home-topbar">
@@ -422,15 +488,8 @@ function HomeScreen({ customers, master, user, customerId, qty, requiredTests, g
             <form className="input-panel-form" onSubmit={(e) => { e.preventDefault(); if (customerId) onMatch(); }}>
               <div className="field">
                 <label className="field-label" htmlFor="cust">Customer</label>
-                <select id="cust" value={customerId || ''} onChange={(e) => onSelect(e.target.value)}>
-                  <option value="" disabled>— Select a customer —</option>
-                  {customers.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.name} {c.grade ? `— grade ${c.grade}` : ''} {c.parsed_ok ? '' : '⚠'}
-                    </option>
-                  ))}
-                </select>
-                <span className="field-hint">COA is parsed from backend/COA/&lt;customer&gt;/ PDFs. Newest selected.</span>
+                <CustomerCombo id="cust" customers={customers} customerId={customerId} onSelect={onSelect} />
+                <span className="field-hint">Type to search · COA parsed from backend/COA/&lt;customer&gt;/ PDFs. Newest selected.</span>
               </div>
 
               <div className="qty-row">
@@ -1416,16 +1475,17 @@ function MasterOverviewChat({ user }) {
         type="button"
         aria-label="ask anirudh"
       >
+        <span className="anirudh-fab-text" aria-hidden="true">
+          <span className="anirudh-fab-typed">Ask Anirudh</span>
+          <span className="anirudh-fab-caret">|</span>
+        </span>
         <span className="anirudh-fab-orb" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="8" r="3.6" fill="currentColor" />
-            <path d="M4.5 21c0-4.2 3.4-7 7.5-7s7.5 2.8 7.5 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+          <span className="anirudh-fab-ring" aria-hidden="true"></span>
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8.5" r="3.6" />
+            <path d="M5 20.5c0-3.7 3.2-6.2 7-6.2s7 2.5 7 6.2" />
           </svg>
           <span className="anirudh-fab-pulse" aria-hidden="true"></span>
-        </span>
-        <span className="anirudh-fab-copy">
-          <span className="anirudh-fab-label">Ask Anirudh</span>
-          <span className="anirudh-fab-sub">master overview genie</span>
         </span>
       </button>
 
@@ -1743,24 +1803,54 @@ function NewLotForm({ onAdd, onCancel }) {
     rt_DL: '', rt_Da: '', rt_Db: '', rt_DE: '', strength: '',
     qty_consume: '',
   });
-  function set(k, v) { setF((x) => ({ ...x, [k]: v })); }
+  const [errs, setErrs] = useState({});
+  function set(k, v) {
+    setF((x) => ({ ...x, [k]: v }));
+    if (errs[k]) setErrs((e) => { const n = { ...e }; delete n[k]; return n; });
+  }
+  // Every field is required: new lots bypass ranking, so we cannot
+  // tolerate missing color/strength values that the rest of the app assumes.
+  const REQUIRED = [
+    ['lot_no', 'Lot No', 'text'],
+    ['grade', 'Grade', 'text'],
+    ['qty_mt', 'Stock MT', 'num-pos'],
+    ['qty_consume', 'Consume MT', 'num-pos'],
+    ['mt_DL', 'MT ΔL', 'num'], ['mt_Da', 'MT Δa', 'num'], ['mt_Db', 'MT Δb', 'num'], ['mt_DE', 'MT ΔE', 'num'],
+    ['rt_DL', 'RT ΔL', 'num'], ['rt_Da', 'RT Δa', 'num'], ['rt_Db', 'RT Δb', 'num'], ['rt_DE', 'RT ΔE', 'num'],
+    ['strength', 'Strength', 'num-pos'],
+  ];
   function submit() {
-    if (!f.lot_no || !f.grade || !f.qty_mt) return;
+    const missing = {};
+    for (const [k, label, kind] of REQUIRED) {
+      const v = String(f[k] ?? '').trim();
+      if (v === '') { missing[k] = `${label} required`; continue; }
+      if (kind === 'num' || kind === 'num-pos') {
+        const n = Number(v);
+        if (!Number.isFinite(n)) { missing[k] = `${label} must be a number`; continue; }
+        if (kind === 'num-pos' && n < 0) { missing[k] = `${label} must be ≥ 0`; continue; }
+      }
+    }
+    if (Object.keys(missing).length) { setErrs(missing); return; }
+    if (Number(f.qty_consume) > Number(f.qty_mt)) {
+      setErrs({ qty_consume: 'Consume cannot exceed stock' }); return;
+    }
+    setErrs({});
     onAdd({
       lot_no: f.lot_no.trim(),
       grade: f.grade.trim(),
       qty_mt: Number(f.qty_mt),
-      qty_consume: Number(f.qty_consume || 0),
+      qty_consume: Number(f.qty_consume),
       mass_tone: { DL: Number(f.mt_DL), Da: Number(f.mt_Da), Db: Number(f.mt_Db), DE: Number(f.mt_DE) },
       tint_tone: { DL: Number(f.rt_DL), Da: Number(f.rt_Da), Db: Number(f.rt_Db), DE: Number(f.rt_DE), Strength: Number(f.strength) },
     });
   }
   const F = (k, label, props = {}) => (
-    <label className="edit-field">
+    <label className={'edit-field' + (errs[k] ? ' has-err' : '')}>
       <span className="k">{label}</span>
       <input value={f[k]} onChange={(e) => set(k, e.target.value)} {...props} />
     </label>
   );
+  const errList = Object.values(errs);
   return (
     <div style={{ background: 'var(--bg-stripe)', padding: 10, borderRadius: 4, marginTop: 8, border: '1px solid var(--line)' }}>
       <div className="tiny muted" style={{ marginBottom: 6 }}>NEW LOT · Method I a (MT) + I b (RT) required</div>
@@ -1781,6 +1871,11 @@ function NewLotForm({ onAdd, onCancel }) {
         {F('rt_DE', 'RT ΔE', { type: 'number', step: '0.01' })}
         {F('strength', 'Strength', { type: 'number', step: '0.01' })}
       </div>
+      {errList.length > 0 && (
+        <div style={{ marginTop: 8, padding: '6px 10px', background: 'var(--warn-soft)', color: 'var(--err)', borderRadius: 3, fontSize: 11.5, lineHeight: 1.5 }}>
+          {errList.map((m, i) => <div key={i}>· {m}</div>)}
+        </div>
+      )}
       <div className="pin-actions" style={{ marginTop: 8 }}>
         <button className="btn btn-ghost btn-sm" onClick={onCancel}>Cancel</button>
         <button className="btn btn-primary btn-sm" onClick={submit}>Add lot to fulfillment</button>
@@ -1790,15 +1885,40 @@ function NewLotForm({ onAdd, onCancel }) {
 }
 
 // ============== RESULTS ==============
-function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onSetAllocateQty, onAllocateFullLot, onRemoveAllocate, onAutoFulfill, onClear, onCommit, onSaveOverride, onRevertOverride, onBack, topN, showOnlyWithin, onTopN, onShowOnlyWithin, committing, editingFulfillment, newLots, onAddNewLot, onRemoveNewLot }) {
+function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onSetAllocateQty, onAllocateFullLot, onRemoveAllocate, onAutoFulfill, onClear, onCommit, onSaveOverride, onRevertOverride, onBack, topN, showOnlyWithin, showOnlyDirection, onTopN, onShowOnlyWithin, onShowOnlyDirection, committing, editingFulfillment, newLots, onAddNewLot, onRemoveNewLot }) {
   const isEdit = !!editingFulfillment;
   const [showNewLotForm, setShowNewLotForm] = useState(false);
   const [showOriginalReport, setShowOriginalReport] = useState(false);
   const [expandedRow, setExpandedRow] = useState(null);
-  const allocatedList = ranked.filter((l) => allocated.has(l.lot_id)).map((l) => ({ ...l, _alloc: allocated.get(l.lot_id) }));
+
+  // Synthetic ranked entries for manually-added new lots (edit mode only).
+  // New lots bypass the ranking pipeline — they are operator-trusted overrides
+  // and need to appear in the allocated zone + master sheet post-commit.
+  const newLotRows = (newLots || []).map((nl) => ({
+    lot_id: `${nl.lot_no}@__new__`,
+    lot_no: nl.lot_no,
+    col_letter: '__new__',
+    grade: nl.grade,
+    qty_mt: Number(nl.qty_mt || 0),
+    last_edited: null,
+    mass_tone: nl.mass_tone || {},
+    tint_tone: nl.tint_tone || {},
+    all_blocks: {},
+    present_methods: [],
+    scores: {},
+    ranks: { euclid: '—', cosine: '—', knn: '—', age: '—', consensus: 0 },
+    within: { all: true, mt: {}, rt: {}, strength: true, reasons: [] },
+    direction: { all: true, mt: {}, rt: {}, reasons: [] },
+    _isNewLot: true,
+  }));
+  const rankedAll = newLotRows.length ? [...newLotRows, ...ranked] : ranked;
+  const allocatedList = rankedAll.filter((l) => allocated.has(l.lot_id)).map((l) => ({ ...l, _alloc: allocated.get(l.lot_id) }));
   const allocatedQty = allocatedList.reduce((s, l) => s + l._alloc, 0);
   const shortfall = Math.max(0, qty - allocatedQty);
-  const visible = ranked.slice(0, topN);
+  const directionFiltered = showOnlyDirection
+    ? ranked.filter((l) => (l.direction?.all ?? true))
+    : ranked;
+  const visible = directionFiltered.slice(0, topN);
   const availableLots = visible.filter((l) => !allocated.has(l.lot_id));
   const maxScore = Math.max(...ranked.slice(0, topN).map((l) => l.ranks.consensus), 1);
 
@@ -1806,8 +1926,17 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
     <div className="results">
       <aside className="results-side">
         <button className="btn btn-ghost btn-sm" onClick={onBack} style={{ alignSelf: 'flex-start' }}>
-          <svg width="12" height="12" viewBox="0 0 12 12"><path d="M9 6 H3 M6 3 L3 6 L6 9" stroke="currentColor" fill="none" strokeWidth="1.4"/></svg>
-          New request
+          {editingFulfillment ? (
+            <>
+              <svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 3 L9 9 M9 3 L3 9" stroke="currentColor" fill="none" strokeWidth="1.4"/></svg>
+              Finish editing
+            </>
+          ) : (
+            <>
+              <svg width="12" height="12" viewBox="0 0 12 12"><path d="M9 6 H3 M6 3 L3 6 L6 9" stroke="currentColor" fill="none" strokeWidth="1.4"/></svg>
+              New request
+            </>
+          )}
         </button>
 
         <div className="cust-card">
@@ -1844,13 +1973,29 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
               <div className="toolbar-view">
                 <label className="toolbar-view-item">
                   <input type="checkbox" checked={showOnlyWithin} onChange={(e) => onShowOnlyWithin(e.target.checked)} />
-                  <span>In-spec only</span>
+                  <span>In-spec</span>
+                </label>
+                <label className="toolbar-view-item">
+                  <input type="checkbox" checked={showOnlyDirection} onChange={(e) => onShowOnlyDirection(e.target.checked)} />
+                  <span>Direction</span>
                 </label>
                 <label className="toolbar-view-item">
                   <span>Show lots</span>
-                  <input type="number" min={5} max={Math.max(50, ranked.length)} value={topN}
-                         onChange={(e) => onTopN(Math.max(5, Math.min(Math.max(50, ranked.length), Number(e.target.value) || 12)))} />
-                  <span className="tiny muted">of {ranked.length}</span>
+                  <input type="number" min={1} value={topN}
+                         onChange={(e) => {
+                           const raw = e.target.value;
+                           if (raw === '') { onTopN(''); return; }
+                           const n = Number(raw);
+                           if (!Number.isFinite(n)) return;
+                           onTopN(n);
+                         }}
+                         onBlur={(e) => {
+                           const n = Number(e.target.value);
+                           const max = Math.max(1, directionFiltered.length);
+                           const clamped = !Number.isFinite(n) || n < 1 ? 12 : Math.min(max, Math.max(1, Math.floor(n)));
+                           onTopN(clamped);
+                         }} />
+                  <span className="tiny muted">of {directionFiltered.length}</span>
                 </label>
               </div>
             </div>
@@ -1872,16 +2017,6 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
           {isEdit && showOriginalReport && (
             <OriginalReportModal fulfillment={editingFulfillment} onClose={() => setShowOriginalReport(false)} />
           )}
-          {isEdit && (newLots || []).length > 0 && (
-            <div style={{ margin: '8px 18px 0', display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {newLots.map((nl) => (
-                <span key={nl.lot_no} className="chip accent">
-                  NEW · {nl.lot_no} · {fmt(nl.qty_consume, 2)} MT
-                  <button onClick={() => onRemoveNewLot(nl.lot_no)} style={{ background: 'transparent', border: 'none', color: 'inherit', cursor: 'pointer', marginLeft: 4 }}>×</button>
-                </span>
-              ))}
-            </div>
-          )}
           {isEdit && showNewLotForm && (
             <div style={{ margin: '8px 18px 0' }}>
               <NewLotForm onAdd={(spec) => { onAddNewLot(spec); setShowNewLotForm(false); }} onCancel={() => setShowNewLotForm(false)} />
@@ -1896,7 +2031,28 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
                   <th>Lot</th>
                   <th className="num">Stock</th>
                   <th>Match</th>
-                  <th>Spec</th>
+                  <th style={{ width: 64, textAlign: 'center' }}>
+                    <span className="th-with-info">
+                      Spec
+                      <span className="info-dot" tabIndex={0} data-tip={
+`Within COA tolerance band on every axis (MT + RT ΔL/Δa/Δb/ΔE + strength). Out-of-spec lots rank after all in-spec lots; auto-fulfill skips them.
+
+✓  Limit Da ±0.95, lot Da −0.42
+✕  Limit Da ±0.95, lot Da −1.36`
+                      }>i</span>
+                    </span>
+                  </th>
+                  <th style={{ width: 64, textAlign: 'center' }}>
+                    <span className="th-with-info">
+                      Dir
+                      <span className="info-dot" tabIndex={0} data-tip={
+`Sign of lot delta matches sign of COA delta on each axis — captures which side of standard the shade leans (lighter/darker etc.). Axes with |COA| < 0.05 skipped. Wrong-direction lots drop a tier; auto-fulfill skips them.
+
+✓  COA Da −0.40, lot Da −0.20
+✕  COA Da −0.40, lot Da +0.30`
+                      }>i</span>
+                    </span>
+                  </th>
                   <th className="num">Strength</th>
                   <th style={{ width: 170 }}>Allocate · MT</th>
                 </tr>
@@ -1904,13 +2060,14 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
               <tbody>
                 {allocatedList.length > 0 && (
                   <tr className="zone-row zone-row-alloc">
-                    <td colSpan="7">
+                    <td colSpan="8">
                       ALLOCATED · {allocatedList.length} lot{allocatedList.length === 1 ? '' : 's'} · {fmt(allocatedQty, 2)} MT
                     </td>
                   </tr>
                 )}
                 {allocatedList.map((lot, idx) => {
                   const w = lot.within || { mt: {}, rt: {}, all: true };
+                  const d = lot.direction || { mt: {}, rt: {}, all: true, reasons: [] };
                   const allocAmt = lot._alloc;
                   const isExpanded = expandedRow === lot.lot_id;
                   const ranks = lot.ranks || { consensus: '—', euclid: '—', cosine: '—', knn: '—' };
@@ -1930,6 +2087,7 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
                           </button>
                           <b>{lot.lot_no}</b>
                           <span className="tiny muted" style={{ marginLeft: 4 }}>@{lot.col_letter}</span>
+                          {lot.is_super && <span className="chip super-chip" title={`Tested on ${(lot.present_methods || []).length} methods — auto-fulfill avoids these unless required`}>super</span>}
                           {lot._original && <span className="chip" style={{ marginLeft: 6, fontSize: 9.5 }}>original</span>}
                           <span className="tiny muted" style={{ marginLeft: 8 }}>{fmt(effectiveStock, 1)} → {fmt(after, 1)} {fullTake && '· depleted'}</span>
                         </td>
@@ -1940,9 +2098,18 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
                             <span className="tiny muted" style={{ marginLeft: 6 }}>#{ranks.consensus}</span>
                           </div>
                         </td>
-                        <td>{w.all
-                          ? <span className="chip ok">in spec</span>
-                          : <span className="chip warn" title={(w.reasons || []).join(' • ') || 'out of spec'}>out</span>}</td>
+                        <td style={{ textAlign: 'center' }}>
+                          <span className={'flag-mark ' + (w.all ? 'ok' : 'bad')}
+                                title={w.all ? 'in spec' : ((w.reasons || []).join(' • ') || 'out of spec')}>
+                            {w.all ? '✓' : '✕'}
+                          </span>
+                        </td>
+                        <td style={{ textAlign: 'center' }}>
+                          <span className={'flag-mark ' + (d.all ? 'ok' : 'bad')}
+                                title={d.all ? 'direction matches COA' : ((d.reasons || []).join(' • ') || 'wrong direction')}>
+                            {d.all ? '✓' : '✕'}
+                          </span>
+                        </td>
                         <td className={'num ' + (strengthIn ? '' : 'delta-bad')}>{fmt(lot.tint_tone?.Strength, 1)}</td>
                         <td>
                           <AllocCell lot={lot} allocAmt={allocAmt} onSetAllocateQty={onSetAllocateQty}
@@ -1955,7 +2122,7 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
                       {isExpanded && (
                         <tr className="lot-detail">
                           <td></td>
-                          <td colSpan="6">
+                          <td colSpan="7">
                             <LotDetail lot={lot} w={w} />
                           </td>
                         </tr>
@@ -1965,12 +2132,13 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
                 })}
                 {allocatedList.length > 0 && availableLots.length > 0 && (
                   <tr className="zone-row">
-                    <td colSpan="7">RANKED · {availableLots.length} candidate{availableLots.length === 1 ? '' : 's'}</td>
+                    <td colSpan="8">RANKED · {availableLots.length} candidate{availableLots.length === 1 ? '' : 's'}</td>
                   </tr>
                 )}
                 {availableLots.map((lot, idx) => {
                   const selected = allocated.has(lot.lot_id);
                   const w = lot.within;
+                  const d = lot.direction || { mt: {}, rt: {}, all: true, reasons: [] };
                   const allocAmt = allocated.get(lot.lot_id) || 0;
                   const isExpanded = expandedRow === lot.lot_id;
                   const matchPct = Math.max(8, Math.min(100, 100 * (1 - (lot.ranks.consensus - 3) / Math.max(1, maxScore))));
@@ -1987,6 +2155,7 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
                           </button>
                           <b>{lot.lot_no}</b>
                           <span className="tiny muted" style={{ marginLeft: 4 }}>@{lot.col_letter}</span>
+                          {lot.is_super && <span className="chip super-chip" title={`Tested on ${(lot.present_methods || []).length} methods — auto-fulfill avoids these unless required`}>super</span>}
                           {lot._original && <span className="chip" style={{ marginLeft: 6, fontSize: 9.5 }}>original</span>}
                           {lot.last_edited && <span className="tiny muted" style={{ marginLeft: 6 }}>edt {lot.last_edited}</span>}
                         </td>
@@ -1997,9 +2166,18 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
                             <span className="tiny muted" style={{ marginLeft: 6 }}>#{lot.ranks.consensus}</span>
                           </div>
                         </td>
-                        <td>{w.all
-                          ? <span className="chip ok">in spec</span>
-                          : <span className="chip warn" title={(w.reasons || []).join(' • ') || 'out of spec'}>out</span>}</td>
+                        <td style={{ textAlign: 'center' }}>
+                          <span className={'flag-mark ' + (w.all ? 'ok' : 'bad')}
+                                title={w.all ? 'in spec' : ((w.reasons || []).join(' • ') || 'out of spec')}>
+                            {w.all ? '✓' : '✕'}
+                          </span>
+                        </td>
+                        <td style={{ textAlign: 'center' }}>
+                          <span className={'flag-mark ' + (d.all ? 'ok' : 'bad')}
+                                title={d.all ? 'direction matches COA' : ((d.reasons || []).join(' • ') || 'wrong direction')}>
+                            {d.all ? '✓' : '✕'}
+                          </span>
+                        </td>
                         <td className={'num ' + (strengthIn ? '' : 'delta-bad')}>{fmt(lot.tint_tone.Strength, 1)}</td>
                         <td>
                           <AllocCell lot={lot} allocAmt={selected ? allocAmt : ''}
@@ -2013,14 +2191,14 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
                       {isExpanded && (
                         <tr className="lot-detail">
                           <td></td>
-                          <td colSpan="6"><LotDetail lot={lot} w={w} /></td>
+                          <td colSpan="7"><LotDetail lot={lot} w={w} /></td>
                         </tr>
                       )}
                     </React.Fragment>
                   );
                 })}
                 {visible.length === 0 && (
-                  <tr><td colSpan="7" style={{ textAlign: 'center', padding: 24, color: 'var(--ink-3)', fontStyle: 'italic' }}>
+                  <tr><td colSpan="8" style={{ textAlign: 'center', padding: 24, color: 'var(--ink-3)', fontStyle: 'italic' }}>
                     No candidates. Adjust filters or grade-strict.
                   </td></tr>
                 )}
@@ -2331,9 +2509,11 @@ export default function DashboardV3({ user, onLogout }) {
   const [allocated, setAllocated] = useState(new Map());
   const [topN, setTopN] = useState(12);
   const [showOnlyWithin, setShowOnlyWithin] = useState(true);
+  const [showOnlyDirection, setShowOnlyDirection] = useState(false);
   const [committing, setCommitting] = useState(false);
   const [error, setError] = useState(null);
   const [editingFulfillment, setEditingFulfillment] = useState(null);
+  const [homeTab, setHomeTab] = useState('new');
   const [newLots, setNewLots] = useState([]);
 
   function addNewLot(spec) {
@@ -2488,6 +2668,26 @@ export default function DashboardV3({ user, onLogout }) {
         setEditingFulfillment(null);
         setNewLots([]);
       } else {
+      // Snapshot per-lot match info so edit-mode (within 24h) can still show
+      // ranks/spec/dir/super even after the lot is depleted in master.
+      const snapshot = {};
+      allocations.forEach(({ lot_id }) => {
+        const lot = ranked.find((l) => l.lot_id === lot_id);
+        if (!lot) return;
+        snapshot[lot_id] = {
+          grade: lot.grade,
+          mass_tone: lot.mass_tone,
+          tint_tone: lot.tint_tone,
+          ranks: lot.ranks,
+          scores: lot.scores,
+          within: lot.within,
+          direction: lot.direction,
+          is_super: lot.is_super,
+          present_methods: lot.present_methods,
+          all_blocks: lot.all_blocks,
+          last_edited: lot.last_edited,
+        };
+      });
       await api('/fulfill', {
         method: 'POST',
         body: JSON.stringify({
@@ -2495,6 +2695,7 @@ export default function DashboardV3({ user, onLogout }) {
           user: user?.username,
           qty_requested: Number(qty),
           allocations,
+          snapshot,
         }),
       });
       }
@@ -2562,19 +2763,34 @@ export default function DashboardV3({ user, onLogout }) {
         merged.push({ ...inRanked, _original: true, _origConsume: Number(l.consume_mt) });
         next.set(inRanked.lot_id, Number(l.consume_mt));
       } else {
-        // Lot was filtered out of /match (qty=0, wrong grade, missing methods, or out of spec).
-        // Pull qty from master so effectiveStock = master_qty + origConsume is accurate.
+        // Lot was filtered out of /match — usually because it's now depleted
+        // (qty_mt == 0 after the original commit). Prefer the snapshot captured
+        // at commit time so ranks/spec/dir/super persist through the 24h edit
+        // window. Fall back to master block data if snapshot wasn't captured
+        // (older fulfillments pre-snapshot rollout).
         const m = masterById.get(lotId);
         const masterQty = m ? Number(m.qty_mt || 0) : 0;
+        const snap = l.snapshot || {};
+        const blocks = snap.all_blocks || (m && m.blocks) || {};
+        const mtB = snap.mass_tone || blocks['Method I a'] || {};
+        const rtB = snap.tint_tone || blocks['Method I b'] || {};
+        const present = snap.present_methods || (m && m.present_methods) || [];
         merged.push({
           lot_id: lotId,
           lot_no: l.lot_no,
           col_letter: l.col_letter,
+          grade: snap.grade ?? (m ? m.grade : ''),
           qty_mt: masterQty,
-          mass_tone: { DL: null, Da: null, Db: null },
-          tint_tone: { DL: null, Da: null, Db: null, Strength: null },
-          ranks: { euclid: '—', cosine: '—', knn: '—', consensus: 0 },
-          within: { all: true, mt: {}, rt: {}, reasons: [] },
+          last_edited: snap.last_edited ?? (m ? m.last_edited : null),
+          mass_tone: { DL: mtB.DL ?? null, Da: mtB.Da ?? null, Db: mtB.Db ?? null, DE: mtB.DE ?? null },
+          tint_tone: { DL: rtB.DL ?? null, Da: rtB.Da ?? null, Db: rtB.Db ?? null, DE: rtB.DE ?? null, Strength: rtB.Strength ?? null },
+          all_blocks: blocks,
+          present_methods: present,
+          is_super: snap.is_super ?? (present.length > 2),
+          scores: snap.scores || {},
+          ranks: snap.ranks || { euclid: '—', cosine: '—', knn: '—', age: '—', consensus: 0 },
+          within: snap.within || { all: true, mt: {}, rt: {}, strength: true, reasons: [] },
+          direction: snap.direction || { all: true, mt: {}, rt: {}, reasons: [] },
           _original: true,
           _origConsume: Number(l.consume_mt),
         });
@@ -2590,17 +2806,31 @@ export default function DashboardV3({ user, onLogout }) {
     setScreen('results');
   }
 
-  async function onRevertOverride(pin) {
+  async function onRevertOverride() {
     const r = await fetch(`${API}/api/v3/customer/${encodeURIComponent(customerId)}/override/clear`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pin }),
+      body: JSON.stringify({}),
     });
-    if (!r.ok) throw new Error('PIN rejected');
+    if (!r.ok) throw new Error('revert failed');
     const d = await r.json();
     setCoaPreview(d.effective);
     setShowOnlyWithin(true);
     await onMatch({ in_spec_only: true });
   }
+
+  // Overrides are session-scoped: clear any active override when switching
+  // customers or leaving the app entirely so they don't carry over.
+  useEffect(() => {
+    const cid = customerId;
+    return () => {
+      if (!cid) return;
+      // Fire-and-forget; failure (e.g. backend down) shouldn't block teardown.
+      fetch(`${API}/api/v3/customer/${encodeURIComponent(cid)}/override/clear`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}',
+        keepalive: true,
+      }).catch(() => {});
+    };
+  }, [customerId]);
 
   const customer = matchResp?.customer || coaPreview;
 
@@ -2624,6 +2854,7 @@ export default function DashboardV3({ user, onLogout }) {
               coaPreview={coaPreview} loadingPreview={loadingPreview}
               onEditFulfillment={onEditFulfillment}
               onReloadMaster={async () => { const ms = await api('/master'); setMaster(ms); }}
+              tab={homeTab} onTabChange={setHomeTab}
             />
           ) : (
             customer && <ResultsScreen
@@ -2638,9 +2869,15 @@ export default function DashboardV3({ user, onLogout }) {
               onCommit={onCommit}
               onSaveOverride={onSaveOverride}
               onRevertOverride={onRevertOverride}
-              onBack={() => { setEditingFulfillment(null); setNewLots([]); setScreen('home'); }}
-              topN={topN} showOnlyWithin={showOnlyWithin}
-              onTopN={setTopN} onShowOnlyWithin={setShowOnlyWithin}
+              onBack={() => {
+                const wasEditing = !!editingFulfillment;
+                setEditingFulfillment(null);
+                setNewLots([]);
+                if (wasEditing) setHomeTab('recent');
+                setScreen('home');
+              }}
+              topN={topN} showOnlyWithin={showOnlyWithin} showOnlyDirection={showOnlyDirection}
+              onTopN={setTopN} onShowOnlyWithin={setShowOnlyWithin} onShowOnlyDirection={setShowOnlyDirection}
               committing={committing}
               editingFulfillment={editingFulfillment}
               newLots={newLots}

@@ -2776,5 +2776,1480 @@
       }
     ],
     "edited_at": "2026-05-21T14:48:28"
+  },
+  {
+    "id": "a224e336c74d",
+    "ts": "2026-05-25T14:51:52",
+    "user": "admin",
+    "customer_id": "Himalaya paints",
+    "customer_name": "HIMAALAYAAPAINTS",
+    "qty_requested": 45.0,
+    "lines": [
+      {
+        "lot_id": "6978N-C@GO",
+        "lot_no": "6978N-C",
+        "col_letter": "GO",
+        "consume_mt": 4.0,
+        "prev_qty": 4.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6978N-D@GP",
+        "lot_no": "6978N-D",
+        "col_letter": "GP",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6979N-D@GS",
+        "lot_no": "6979N-D",
+        "col_letter": "GS",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6980N-A@GT",
+        "lot_no": "6980N-A",
+        "col_letter": "GT",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6975N-D@GG",
+        "lot_no": "6975N-D",
+        "col_letter": "GG",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6566B@AI",
+        "lot_no": "6566B",
+        "col_letter": "AI",
+        "consume_mt": 1.0,
+        "prev_qty": 1.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6972N-A@GB",
+        "lot_no": "6972N-A",
+        "col_letter": "GB",
+        "consume_mt": 4.0,
+        "prev_qty": 4.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6561B@AD",
+        "lot_no": "6561B",
+        "col_letter": "AD",
+        "consume_mt": 5.5,
+        "prev_qty": 5.5,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6830N -D@FU",
+        "lot_no": "6830N -D",
+        "col_letter": "FU",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6980N-B@GU",
+        "lot_no": "6980N-B",
+        "col_letter": "GU",
+        "consume_mt": 5.0,
+        "prev_qty": 5.0,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6565B@AH",
+        "lot_no": "6565B",
+        "col_letter": "AH",
+        "consume_mt": 0.5,
+        "prev_qty": 2.0,
+        "new_qty": 1.5
+      }
+    ],
+    "edit_history": []
+  },
+  {
+    "id": "515840baffdd",
+    "ts": "2026-05-27T11:46:42",
+    "user": "admin",
+    "customer_id": "Himalaya paints",
+    "customer_name": "HIMAALAYAAPAINTS",
+    "qty_requested": 10.0,
+    "lines": [
+      {
+        "lot_id": "6565B@AH",
+        "lot_no": "6565B",
+        "col_letter": "AH",
+        "consume_mt": 1.5,
+        "prev_qty": 1.5,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6564B@AF",
+        "lot_no": "6564B",
+        "col_letter": "AF",
+        "consume_mt": 1.5,
+        "prev_qty": 1.5,
+        "new_qty": 0.0
+      },
+      {
+        "lot_id": "6979N-B@GR",
+        "lot_no": "6979N-B",
+        "col_letter": "GR",
+        "consume_mt": 1.0,
+        "prev_qty": 5.0,
+        "new_qty": 4.0
+      },
+      {
+        "lot_id": "123456789@LX",
+        "lot_no": "123456789",
+        "col_letter": "LX",
+        "consume_mt": 6.0,
+        "prev_qty": 10.0,
+        "new_qty": 4.0
+      }
+    ],
+    "edit_history": [
+      {
+        "ts": "2026-05-27T12:02:14",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6565B@AH",
+            "restored": 1.5,
+            "qty_now": 1.5
+          },
+          {
+            "lot_id": "6565A@AG",
+            "restored": 6.0,
+            "qty_now": 6.0
+          },
+          {
+            "lot_id": "6564B@AF",
+            "restored": 1.5,
+            "qty_now": 1.5
+          },
+          {
+            "lot_id": "6979N-B@GR",
+            "restored": 1.0,
+            "qty_now": 5.0
+          }
+        ],
+        "appended_lots": [
+          {
+            "col": 336,
+            "col_letter": "LX",
+            "lot_id": "123456789@LX",
+            "lot_no": "123456789"
+          }
+        ],
+        "applied": [
+          {
+            "lot_id": "6565B@AH",
+            "lot_no": "6565B",
+            "col_letter": "AH",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564B@AF",
+            "lot_no": "6564B",
+            "col_letter": "AF",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6979N-B@GR",
+            "lot_no": "6979N-B",
+            "col_letter": "GR",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          },
+          {
+            "lot_id": "123456789@LX",
+            "lot_no": "123456789",
+            "col_letter": "LX",
+            "consume_mt": 6.0,
+            "prev_qty": 10.0,
+            "new_qty": 4.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6565B@AH",
+            "lot_no": "6565B",
+            "col_letter": "AH",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6565A@AG",
+            "lot_no": "6565A",
+            "col_letter": "AG",
+            "consume_mt": 6.0,
+            "prev_qty": 6.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6564B@AF",
+            "lot_no": "6564B",
+            "col_letter": "AF",
+            "consume_mt": 1.5,
+            "prev_qty": 1.5,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6979N-B@GR",
+            "lot_no": "6979N-B",
+            "col_letter": "GR",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          }
+        ]
+      }
+    ],
+    "edited_at": "2026-05-27T12:02:14"
+  },
+  {
+    "id": "ef1be7d2429a",
+    "ts": "2026-05-27T12:16:55",
+    "user": "admin",
+    "customer_id": "Himalaya paints",
+    "customer_name": "HIMAALAYAAPAINTS",
+    "qty_requested": 10.0,
+    "lines": [
+      {
+        "lot_id": "6979N-B@GR",
+        "lot_no": "6979N-B",
+        "col_letter": "GR",
+        "consume_mt": 4.0,
+        "prev_qty": 4.0,
+        "new_qty": 0.0,
+        "snapshot": {
+          "grade": "130",
+          "mass_tone": {
+            "DE": 0.34,
+            "DL": -0.1,
+            "Da": 0.24,
+            "Db": 0.21
+          },
+          "tint_tone": {
+            "DE": 0.16,
+            "DL": -0.02,
+            "Da": -0.15,
+            "Db": -0.05,
+            "Strength": 102.21
+          },
+          "ranks": {
+            "age": 19,
+            "consensus": 2,
+            "cosine": 4,
+            "euclid": 1,
+            "knn": 1
+          },
+          "scores": {
+            "age": 18,
+            "blend_weights": {
+              "all": true,
+              "mt": {
+                "DE": true,
+                "DL": true,
+                "Da": true,
+                "Db": true
+              },
+              "reasons": [],
+              "rt": {
+                "DE": true,
+                "DL": true,
+                "Da": true,
+                "Db": true
+              },
+              "strength": true
+            },
+            "blended": -0.8875337809407132,
+            "cosine": 1.1516530336351802,
+            "cosine_used": true,
+            "euclid": 1.2763780787838686,
+            "knn": 3.2386536638380354,
+            "strength_dim_used": true,
+            "z_age": 1.182165609358651,
+            "z_cosine": -0.7032946475140417,
+            "z_euclid": -1.4481982038570376,
+            "z_knn": -1.5459581866007426
+          },
+          "within": {
+            "all": true,
+            "mt": {
+              "DE": true,
+              "DL": true,
+              "Da": true,
+              "Db": true
+            },
+            "reasons": [],
+            "rt": {
+              "DE": true,
+              "DL": true,
+              "Da": true,
+              "Db": true
+            },
+            "strength": true
+          },
+          "direction": {
+            "all": false,
+            "mt": {
+              "DL": true,
+              "Da": false,
+              "Db": false
+            },
+            "reasons": [
+              "MT Da sign mismatch: COA -0.40 vs lot +0.24",
+              "MT Db sign mismatch: COA -0.55 vs lot +0.21"
+            ],
+            "rt": {
+              "DL": true,
+              "Da": true,
+              "Db": true
+            }
+          },
+          "is_super": false,
+          "present_methods": [
+            "Method I a",
+            "Method I b"
+          ],
+          "all_blocks": {
+            "Method I a": {
+              "DE": 0.34,
+              "DL": -0.1,
+              "Da": 0.24,
+              "Db": 0.21
+            },
+            "Method I b": {
+              "DE": 0.16,
+              "DL": -0.02,
+              "Da": -0.15,
+              "Db": -0.05,
+              "Strength": 102.21
+            },
+            "Method II": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method III": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method IV": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method V a": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null
+            },
+            "Method V b": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method VI b": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method VIa": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null
+            }
+          },
+          "last_edited": "2026-05-27"
+        }
+      },
+      {
+        "lot_id": "6822N-C@FJ",
+        "lot_no": "6822N-C",
+        "col_letter": "FJ",
+        "consume_mt": 1.0,
+        "prev_qty": 5.0,
+        "new_qty": 4.0,
+        "snapshot": {
+          "grade": "130",
+          "mass_tone": {
+            "DE": 0.63,
+            "DL": 0.33,
+            "Da": 0.25,
+            "Db": 0.48
+          },
+          "tint_tone": {
+            "DE": 0.37,
+            "DL": -0.04,
+            "Da": -0.36,
+            "Db": -0.07,
+            "Strength": 98.37
+          },
+          "ranks": {
+            "age": 13,
+            "consensus": 6,
+            "cosine": 7,
+            "euclid": 6,
+            "knn": 5
+          },
+          "scores": {
+            "age": 12,
+            "blend_weights": {
+              "all": true,
+              "mt": {
+                "DE": true,
+                "DL": true,
+                "Da": true,
+                "Db": true
+              },
+              "reasons": [],
+              "rt": {
+                "DE": true,
+                "DL": true,
+                "Da": true,
+                "Db": true
+              },
+              "strength": true
+            },
+            "blended": -0.5230968177560193,
+            "cosine": 1.2367861019338693,
+            "cosine_used": true,
+            "euclid": 1.5045494342161043,
+            "knn": 3.956412238528802,
+            "strength_dim_used": true,
+            "z_age": 0.23643312187173018,
+            "z_cosine": -0.5031307034338612,
+            "z_euclid": -0.7458457706750385,
+            "z_knn": -0.7000789489730335
+          },
+          "within": {
+            "all": true,
+            "mt": {
+              "DE": true,
+              "DL": true,
+              "Da": true,
+              "Db": true
+            },
+            "reasons": [],
+            "rt": {
+              "DE": true,
+              "DL": true,
+              "Da": true,
+              "Db": true
+            },
+            "strength": true
+          },
+          "direction": {
+            "all": false,
+            "mt": {
+              "DL": false,
+              "Da": false,
+              "Db": false
+            },
+            "reasons": [
+              "MT DL sign mismatch: COA -0.23 vs lot +0.33",
+              "MT Da sign mismatch: COA -0.40 vs lot +0.25",
+              "MT Db sign mismatch: COA -0.55 vs lot +0.48"
+            ],
+            "rt": {
+              "DL": true,
+              "Da": true,
+              "Db": true
+            }
+          },
+          "is_super": false,
+          "present_methods": [
+            "Method I a",
+            "Method I b"
+          ],
+          "all_blocks": {
+            "Method I a": {
+              "DE": 0.63,
+              "DL": 0.33,
+              "Da": 0.25,
+              "Db": 0.48
+            },
+            "Method I b": {
+              "DE": 0.37,
+              "DL": -0.04,
+              "Da": -0.36,
+              "Db": -0.07,
+              "Strength": 98.37
+            },
+            "Method II": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method III": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method IV": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method V a": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null
+            },
+            "Method V b": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method VI b": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method VIa": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null
+            }
+          },
+          "last_edited": "2026-05-18"
+        }
+      },
+      {
+        "lot_id": "6565A@AG",
+        "lot_no": "6565A",
+        "col_letter": "AG",
+        "consume_mt": 5.0,
+        "prev_qty": 6.0,
+        "new_qty": 1.0,
+        "snapshot": null
+      }
+    ],
+    "edit_history": [
+      {
+        "ts": "2026-05-27T12:17:33",
+        "user": "admin",
+        "rewinds": [
+          {
+            "lot_id": "6979N-B@GR",
+            "restored": 4.0,
+            "qty_now": 4.0
+          },
+          {
+            "lot_id": "6980N-C@GV",
+            "restored": 5.0,
+            "qty_now": 5.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "restored": 1.0,
+            "qty_now": 5.0
+          }
+        ],
+        "appended_lots": [],
+        "applied": [
+          {
+            "lot_id": "6979N-B@GR",
+            "lot_no": "6979N-B",
+            "col_letter": "GR",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "lot_no": "6822N-C",
+            "col_letter": "FJ",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0
+          },
+          {
+            "lot_id": "6565A@AG",
+            "lot_no": "6565A",
+            "col_letter": "AG",
+            "consume_mt": 5.0,
+            "prev_qty": 6.0,
+            "new_qty": 1.0
+          }
+        ],
+        "previous_lines": [
+          {
+            "lot_id": "6979N-B@GR",
+            "lot_no": "6979N-B",
+            "col_letter": "GR",
+            "consume_mt": 4.0,
+            "prev_qty": 4.0,
+            "new_qty": 0.0,
+            "snapshot": {
+              "grade": "130",
+              "mass_tone": {
+                "DE": 0.34,
+                "DL": -0.1,
+                "Da": 0.24,
+                "Db": 0.21
+              },
+              "tint_tone": {
+                "DE": 0.16,
+                "DL": -0.02,
+                "Da": -0.15,
+                "Db": -0.05,
+                "Strength": 102.21
+              },
+              "ranks": {
+                "age": 19,
+                "consensus": 2,
+                "cosine": 4,
+                "euclid": 1,
+                "knn": 1
+              },
+              "scores": {
+                "age": 18,
+                "blend_weights": {
+                  "all": true,
+                  "mt": {
+                    "DE": true,
+                    "DL": true,
+                    "Da": true,
+                    "Db": true
+                  },
+                  "reasons": [],
+                  "rt": {
+                    "DE": true,
+                    "DL": true,
+                    "Da": true,
+                    "Db": true
+                  },
+                  "strength": true
+                },
+                "blended": -0.8875337809407132,
+                "cosine": 1.1516530336351802,
+                "cosine_used": true,
+                "euclid": 1.2763780787838686,
+                "knn": 3.2386536638380354,
+                "strength_dim_used": true,
+                "z_age": 1.182165609358651,
+                "z_cosine": -0.7032946475140417,
+                "z_euclid": -1.4481982038570376,
+                "z_knn": -1.5459581866007426
+              },
+              "within": {
+                "all": true,
+                "mt": {
+                  "DE": true,
+                  "DL": true,
+                  "Da": true,
+                  "Db": true
+                },
+                "reasons": [],
+                "rt": {
+                  "DE": true,
+                  "DL": true,
+                  "Da": true,
+                  "Db": true
+                },
+                "strength": true
+              },
+              "direction": {
+                "all": false,
+                "mt": {
+                  "DL": true,
+                  "Da": false,
+                  "Db": false
+                },
+                "reasons": [
+                  "MT Da sign mismatch: COA -0.40 vs lot +0.24",
+                  "MT Db sign mismatch: COA -0.55 vs lot +0.21"
+                ],
+                "rt": {
+                  "DL": true,
+                  "Da": true,
+                  "Db": true
+                }
+              },
+              "is_super": false,
+              "present_methods": [
+                "Method I a",
+                "Method I b"
+              ],
+              "all_blocks": {
+                "Method I a": {
+                  "DE": 0.34,
+                  "DL": -0.1,
+                  "Da": 0.24,
+                  "Db": 0.21
+                },
+                "Method I b": {
+                  "DE": 0.16,
+                  "DL": -0.02,
+                  "Da": -0.15,
+                  "Db": -0.05,
+                  "Strength": 102.21
+                },
+                "Method II": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method III": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method IV": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method V a": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null
+                },
+                "Method V b": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method VI b": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method VIa": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null
+                }
+              },
+              "last_edited": "2026-05-27"
+            }
+          },
+          {
+            "lot_id": "6980N-C@GV",
+            "lot_no": "6980N-C",
+            "col_letter": "GV",
+            "consume_mt": 5.0,
+            "prev_qty": 5.0,
+            "new_qty": 0.0,
+            "snapshot": {
+              "grade": "130",
+              "mass_tone": {
+                "DE": 0.26,
+                "DL": -0.26,
+                "Da": 0,
+                "Db": 0.05
+              },
+              "tint_tone": {
+                "DE": 0.26,
+                "DL": 0.08,
+                "Da": -0.05,
+                "Db": 0.24,
+                "Strength": 97.06
+              },
+              "ranks": {
+                "age": 20,
+                "consensus": 3,
+                "cosine": 6,
+                "euclid": 2,
+                "knn": 3
+              },
+              "scores": {
+                "age": 19,
+                "blend_weights": {
+                  "all": true,
+                  "mt": {
+                    "DE": true,
+                    "DL": true,
+                    "Da": true,
+                    "Db": true
+                  },
+                  "reasons": [],
+                  "rt": {
+                    "DE": true,
+                    "DL": true,
+                    "Da": true,
+                    "Db": true
+                  },
+                  "strength": true
+                },
+                "blended": -0.6809495335294279,
+                "cosine": 1.2358060149455534,
+                "cosine_used": true,
+                "euclid": 1.3307276205144312,
+                "knn": 3.4754600664383037,
+                "strength_dim_used": true,
+                "z_age": 1.3397876906064712,
+                "z_cosine": -0.5054350732991019,
+                "z_euclid": -1.2809005480909348,
+                "z_knn": -1.2668815912661968
+              },
+              "within": {
+                "all": true,
+                "mt": {
+                  "DE": true,
+                  "DL": true,
+                  "Da": true,
+                  "Db": true
+                },
+                "reasons": [],
+                "rt": {
+                  "DE": true,
+                  "DL": true,
+                  "Da": true,
+                  "Db": true
+                },
+                "strength": true
+              },
+              "direction": {
+                "all": false,
+                "mt": {
+                  "DL": true,
+                  "Da": true,
+                  "Db": false
+                },
+                "reasons": [
+                  "MT Db sign mismatch: COA -0.55 vs lot +0.05",
+                  "RT DL sign mismatch: COA -0.23 vs lot +0.08",
+                  "RT Db sign mismatch: COA -0.69 vs lot +0.24"
+                ],
+                "rt": {
+                  "DL": false,
+                  "Da": true,
+                  "Db": false
+                }
+              },
+              "is_super": false,
+              "present_methods": [
+                "Method I a",
+                "Method I b"
+              ],
+              "all_blocks": {
+                "Method I a": {
+                  "DE": 0.26,
+                  "DL": -0.26,
+                  "Da": 0,
+                  "Db": 0.05
+                },
+                "Method I b": {
+                  "DE": 0.26,
+                  "DL": 0.08,
+                  "Da": -0.05,
+                  "Db": 0.24,
+                  "Strength": 97.06
+                },
+                "Method II": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method III": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method IV": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method V a": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null
+                },
+                "Method V b": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method VI b": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method VIa": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null
+                }
+              },
+              "last_edited": "2026-05-18"
+            }
+          },
+          {
+            "lot_id": "6822N-C@FJ",
+            "lot_no": "6822N-C",
+            "col_letter": "FJ",
+            "consume_mt": 1.0,
+            "prev_qty": 5.0,
+            "new_qty": 4.0,
+            "snapshot": {
+              "grade": "130",
+              "mass_tone": {
+                "DE": 0.63,
+                "DL": 0.33,
+                "Da": 0.25,
+                "Db": 0.48
+              },
+              "tint_tone": {
+                "DE": 0.37,
+                "DL": -0.04,
+                "Da": -0.36,
+                "Db": -0.07,
+                "Strength": 98.37
+              },
+              "ranks": {
+                "age": 13,
+                "consensus": 6,
+                "cosine": 7,
+                "euclid": 6,
+                "knn": 5
+              },
+              "scores": {
+                "age": 12,
+                "blend_weights": {
+                  "all": true,
+                  "mt": {
+                    "DE": true,
+                    "DL": true,
+                    "Da": true,
+                    "Db": true
+                  },
+                  "reasons": [],
+                  "rt": {
+                    "DE": true,
+                    "DL": true,
+                    "Da": true,
+                    "Db": true
+                  },
+                  "strength": true
+                },
+                "blended": -0.5230968177560193,
+                "cosine": 1.2367861019338693,
+                "cosine_used": true,
+                "euclid": 1.5045494342161043,
+                "knn": 3.956412238528802,
+                "strength_dim_used": true,
+                "z_age": 0.23643312187173018,
+                "z_cosine": -0.5031307034338612,
+                "z_euclid": -0.7458457706750385,
+                "z_knn": -0.7000789489730335
+              },
+              "within": {
+                "all": true,
+                "mt": {
+                  "DE": true,
+                  "DL": true,
+                  "Da": true,
+                  "Db": true
+                },
+                "reasons": [],
+                "rt": {
+                  "DE": true,
+                  "DL": true,
+                  "Da": true,
+                  "Db": true
+                },
+                "strength": true
+              },
+              "direction": {
+                "all": false,
+                "mt": {
+                  "DL": false,
+                  "Da": false,
+                  "Db": false
+                },
+                "reasons": [
+                  "MT DL sign mismatch: COA -0.23 vs lot +0.33",
+                  "MT Da sign mismatch: COA -0.40 vs lot +0.25",
+                  "MT Db sign mismatch: COA -0.55 vs lot +0.48"
+                ],
+                "rt": {
+                  "DL": true,
+                  "Da": true,
+                  "Db": true
+                }
+              },
+              "is_super": false,
+              "present_methods": [
+                "Method I a",
+                "Method I b"
+              ],
+              "all_blocks": {
+                "Method I a": {
+                  "DE": 0.63,
+                  "DL": 0.33,
+                  "Da": 0.25,
+                  "Db": 0.48
+                },
+                "Method I b": {
+                  "DE": 0.37,
+                  "DL": -0.04,
+                  "Da": -0.36,
+                  "Db": -0.07,
+                  "Strength": 98.37
+                },
+                "Method II": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method III": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method IV": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method V a": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null
+                },
+                "Method V b": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method VI b": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null,
+                  "Strength": null
+                },
+                "Method VIa": {
+                  "DE": null,
+                  "DL": null,
+                  "Da": null,
+                  "Db": null
+                }
+              },
+              "last_edited": "2026-05-18"
+            }
+          }
+        ]
+      }
+    ],
+    "edited_at": "2026-05-27T12:17:33"
+  },
+  {
+    "id": "3ff4e2278e49",
+    "ts": "2026-05-27T12:19:24",
+    "user": "admin",
+    "customer_id": "MS Enterprises RIO & OIO 31.12.25",
+    "customer_name": "Enterprises,Ahmedabad",
+    "qty_requested": 5.0,
+    "lines": [
+      {
+        "lot_id": "6822N-C@FJ",
+        "lot_no": "6822N-C",
+        "col_letter": "FJ",
+        "consume_mt": 4.0,
+        "prev_qty": 4.0,
+        "new_qty": 0.0,
+        "snapshot": {
+          "grade": "130",
+          "mass_tone": {
+            "DE": 0.63,
+            "DL": 0.33,
+            "Da": 0.25,
+            "Db": 0.48
+          },
+          "tint_tone": {
+            "DE": 0.37,
+            "DL": -0.04,
+            "Da": -0.36,
+            "Db": -0.07,
+            "Strength": 98.37
+          },
+          "ranks": {
+            "age": 13,
+            "consensus": 2,
+            "cosine": 4,
+            "euclid": 3,
+            "knn": 4
+          },
+          "scores": {
+            "age": 12,
+            "blend_weights": {
+              "all": true,
+              "mt": {
+                "DE": true,
+                "DL": true,
+                "Da": true,
+                "Db": true
+              },
+              "reasons": [],
+              "rt": {
+                "DE": true,
+                "DL": true,
+                "Da": true,
+                "Db": true
+              },
+              "strength": true
+            },
+            "blended": -0.6886750329204508,
+            "cosine": 1.0913726589929857,
+            "cosine_used": true,
+            "euclid": 1.4906941336169535,
+            "knn": 3.915850006227608,
+            "strength_dim_used": true,
+            "z_age": 0.3302891295379082,
+            "z_cosine": -0.7125290438676997,
+            "z_euclid": -0.9815959037240077,
+            "z_knn": -0.8813822323988246
+          },
+          "within": {
+            "all": true,
+            "mt": {
+              "DE": true,
+              "DL": true,
+              "Da": true,
+              "Db": true
+            },
+            "reasons": [],
+            "rt": {
+              "DE": true,
+              "DL": true,
+              "Da": true,
+              "Db": true
+            },
+            "strength": true
+          },
+          "direction": {
+            "all": false,
+            "mt": {
+              "DL": false,
+              "Da": false,
+              "Db": false
+            },
+            "reasons": [
+              "MT DL sign mismatch: COA -0.19 vs lot +0.33",
+              "MT Da sign mismatch: COA -0.71 vs lot +0.25",
+              "MT Db sign mismatch: COA -0.25 vs lot +0.48"
+            ],
+            "rt": {
+              "DL": true,
+              "Da": true,
+              "Db": true
+            }
+          },
+          "is_super": false,
+          "present_methods": [
+            "Method I a",
+            "Method I b"
+          ],
+          "all_blocks": {
+            "Method I a": {
+              "DE": 0.63,
+              "DL": 0.33,
+              "Da": 0.25,
+              "Db": 0.48
+            },
+            "Method I b": {
+              "DE": 0.37,
+              "DL": -0.04,
+              "Da": -0.36,
+              "Db": -0.07,
+              "Strength": 98.37
+            },
+            "Method II": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method III": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method IV": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method V a": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null
+            },
+            "Method V b": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method VI b": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method VIa": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null
+            }
+          },
+          "last_edited": "2026-05-27"
+        }
+      },
+      {
+        "lot_id": "6980N-C@GV",
+        "lot_no": "6980N-C",
+        "col_letter": "GV",
+        "consume_mt": 1.0,
+        "prev_qty": 5.0,
+        "new_qty": 4.0,
+        "snapshot": {
+          "grade": "130",
+          "mass_tone": {
+            "DE": 0.26,
+            "DL": -0.26,
+            "Da": 0,
+            "Db": 0.05
+          },
+          "tint_tone": {
+            "DE": 0.26,
+            "DL": 0.08,
+            "Da": -0.05,
+            "Db": 0.24,
+            "Strength": 97.06
+          },
+          "ranks": {
+            "age": 19,
+            "consensus": 3,
+            "cosine": 7,
+            "euclid": 1,
+            "knn": 1
+          },
+          "scores": {
+            "age": 18,
+            "blend_weights": {
+              "all": true,
+              "mt": {
+                "DE": true,
+                "DL": true,
+                "Da": true,
+                "Db": true
+              },
+              "reasons": [],
+              "rt": {
+                "DE": true,
+                "DL": true,
+                "Da": true,
+                "Db": true
+              },
+              "strength": true
+            },
+            "blended": -0.6807639660829965,
+            "cosine": 1.198093813513752,
+            "cosine_used": true,
+            "euclid": 1.3933901104859328,
+            "knn": 3.5915241949033376,
+            "strength_dim_used": true,
+            "z_age": 1.3211565181516327,
+            "z_cosine": -0.4499446785742506,
+            "z_euclid": -1.2990805272483397,
+            "z_knn": -1.294226934543714
+          },
+          "within": {
+            "all": true,
+            "mt": {
+              "DE": true,
+              "DL": true,
+              "Da": true,
+              "Db": true
+            },
+            "reasons": [],
+            "rt": {
+              "DE": true,
+              "DL": true,
+              "Da": true,
+              "Db": true
+            },
+            "strength": true
+          },
+          "direction": {
+            "all": false,
+            "mt": {
+              "DL": true,
+              "Da": true,
+              "Db": false
+            },
+            "reasons": [
+              "MT Db sign mismatch: COA -0.25 vs lot +0.05",
+              "RT DL sign mismatch: COA -0.23 vs lot +0.08",
+              "RT Db sign mismatch: COA -0.68 vs lot +0.24"
+            ],
+            "rt": {
+              "DL": false,
+              "Da": true,
+              "Db": false
+            }
+          },
+          "is_super": false,
+          "present_methods": [
+            "Method I a",
+            "Method I b"
+          ],
+          "all_blocks": {
+            "Method I a": {
+              "DE": 0.26,
+              "DL": -0.26,
+              "Da": 0,
+              "Db": 0.05
+            },
+            "Method I b": {
+              "DE": 0.26,
+              "DL": 0.08,
+              "Da": -0.05,
+              "Db": 0.24,
+              "Strength": 97.06
+            },
+            "Method II": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method III": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method IV": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method V a": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null
+            },
+            "Method V b": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method VI b": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null,
+              "Strength": null
+            },
+            "Method VIa": {
+              "DE": null,
+              "DL": null,
+              "Da": null,
+              "Db": null
+            }
+          },
+          "last_edited": "2026-05-27"
+        }
+      }
+    ],
+    "edit_history": []
   }
 ]
