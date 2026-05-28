@@ -5,6 +5,10 @@ from __future__ import annotations
 
 import json
 import math
+import os
+import platform
+import subprocess
+from datetime import datetime
 from typing import Any
 
 from flask import Blueprint, jsonify, request, send_file
@@ -15,6 +19,43 @@ import v3_coa
 import v3_fulfillments
 import v3_master
 import v3_match
+
+
+def _master_lock_owner() -> dict | None:
+    """Return lock info if Master.xlsx is currently open in Excel, else None.
+
+    Excel writes a sidecar lock file `~$Master.xlsx` while the workbook is open.
+    The file contains the locking username (legacy header format). We read the
+    first ~100 bytes and pull printable ASCII; if Excel isn't the locker but the
+    file still can't be opened for write, we report a generic 'unknown' owner.
+    """
+    p = v3_master.MASTER_FILE
+    side = p.parent / f"~${p.name}"
+    if side.exists():
+        owner = None
+        try:
+            raw = side.read_bytes()[:128]
+            # Skip the 0x40-prefixed length byte at offset 1, take ASCII chunk
+            chunk = raw[2:54] if len(raw) >= 54 else raw[2:]
+            cleaned = "".join(ch for ch in chunk.decode("latin-1", errors="ignore") if ch.isprintable()).strip()
+            owner = cleaned or None
+        except Exception:
+            owner = None
+        try:
+            mtime = datetime.fromtimestamp(side.stat().st_mtime).isoformat(timespec="seconds")
+        except Exception:
+            mtime = None
+        return {"locked": True, "owner": owner or "unknown", "since": mtime, "source": "excel_lockfile"}
+    # Fallback: try to open file exclusively. If it fails, something has it.
+    try:
+        with open(p, "rb+"):
+            pass
+    except PermissionError:
+        return {"locked": True, "owner": "unknown", "since": None, "source": "permission_denied"}
+    except FileNotFoundError:
+        return None
+    return None
+
 
 v3_bp = Blueprint("v3", __name__, url_prefix="/api/v3")
 
@@ -133,6 +174,57 @@ def customer_override_clear(cid):
     return jsonify({"ok": True, "effective": _sanitize(v3_coa.get_customer_effective(cid))})
 
 
+@v3_bp.get("/master/lock")
+def master_lock_status():
+    """Lightweight poll endpoint: is Master.xlsx currently held by Excel?"""
+    info = _master_lock_owner()
+    if info:
+        return jsonify(info)
+    return jsonify({"locked": False})
+
+
+@v3_bp.post("/master/open")
+def master_open():
+    """Open Master.xlsx in the host machine's default app (Excel) so the lab
+    tech can edit it directly. Returns the lock state immediately afterwards
+    so the client can flip into offline mode.
+
+    Only works when the Flask backend runs on the same machine the user wants
+    to edit on (typical SIOP deployment). For remote/cloud hosting this is a
+    no-op and the client should surface a 'open the file manually' message.
+    """
+    body = request.get_json(force=True, silent=True) or {}
+    if str(body.get("pin", "")) != PIN:
+        return jsonify({"error": "invalid pin"}), 403
+    p = v3_master.MASTER_FILE
+    if not p.exists():
+        return jsonify({"error": "master file not found", "path": str(p)}), 404
+    try:
+        if platform.system() == "Windows":
+            os.startfile(str(p))  # type: ignore[attr-defined]
+        elif platform.system() == "Darwin":
+            subprocess.Popen(["open", str(p)])
+        else:
+            subprocess.Popen(["xdg-open", str(p)])
+    except Exception as e:
+        return jsonify({"error": f"could not open file: {e}"}), 500
+    # Excel takes a moment to create the lock file; client should poll /lock.
+    return jsonify({"ok": True, "path": str(p), "lock": _master_lock_owner() or {"locked": False}})
+
+
+def _reject_if_locked():
+    """Return a (response, status) tuple if master is locked, else None.
+    Use at the top of any write endpoint that touches Master.xlsx."""
+    info = _master_lock_owner()
+    if info:
+        return jsonify({
+            "error": "master_locked",
+            "message": "Master.xlsx is being edited and the app is offline. Try again once the file is closed.",
+            "lock": info,
+        }), 409
+    return None
+
+
 @v3_bp.get("/master")
 def master():
     m = v3_master.parse_master()
@@ -221,6 +313,8 @@ def master_blend_preview():
 
 @v3_bp.post("/master/blend")
 def master_blend_create():
+    blocked = _reject_if_locked()
+    if blocked: return blocked
     body = request.get_json(force=True, silent=True) or {}
     pin = str(body.get("pin", ""))
     if pin != PIN:
@@ -261,6 +355,8 @@ def master_chat_report_download(report_id, fmt):
 
 @v3_bp.post("/match")
 def match():
+    blocked = _reject_if_locked()
+    if blocked: return blocked
     body = request.get_json(force=True, silent=True) or {}
     cid = body.get("customer_id")
     qty = float(body.get("qty") or 0)
@@ -298,6 +394,8 @@ def match():
 
 @v3_bp.post("/fulfill")
 def fulfill():
+    blocked = _reject_if_locked()
+    if blocked: return blocked
     body = request.get_json(force=True, silent=True) or {}
     cid = body.get("customer_id") or ""
     user = body.get("user") or "operator"
@@ -324,6 +422,8 @@ def fulfillments_list():
 
 @v3_bp.post("/fulfillments/<fid>/edit")
 def fulfillments_edit(fid):
+    blocked = _reject_if_locked()
+    if blocked: return blocked
     body = request.get_json(force=True, silent=True) or {}
     user = body.get("user") or "operator"
     new_lines = body.get("lines") or []
@@ -331,6 +431,23 @@ def fulfillments_edit(fid):
     try:
         entry = v3_fulfillments.edit_fulfillment(fid, user=user, new_lines=new_lines, new_lots=new_lots)
         return jsonify({"ok": True, "fulfillment": entry})
+    except PermissionError as e:
+        return jsonify({"error": str(e)}), 403
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+
+@v3_bp.post("/fulfillments/<fid>/cancel")
+def fulfillments_cancel(fid):
+    blocked = _reject_if_locked()
+    if blocked: return blocked
+    body = request.get_json(force=True, silent=True) or {}
+    if str(body.get("pin", "")) != PIN:
+        return jsonify({"error": "invalid pin"}), 403
+    user = body.get("user") or "operator"
+    try:
+        result = v3_fulfillments.cancel_fulfillment(fid, user=user)
+        return jsonify({"ok": True, **result})
     except PermissionError as e:
         return jsonify({"error": str(e)}), 403
     except ValueError as e:

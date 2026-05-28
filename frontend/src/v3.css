@@ -315,6 +315,58 @@ input[type="text"]:focus, input[type="number"]:focus, select:focus {
   background: var(--accent-ink);
   border-color: var(--accent-ink);
 }
+.btn-danger {
+  background: transparent;
+  border: 1px solid var(--err);
+  color: var(--err);
+}
+.btn-danger:hover {
+  background: var(--err);
+  border-color: var(--err);
+  color: #fff;
+}
+.btn-danger:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-edit-master {
+  background: var(--accent-ink);
+  border: 1px solid var(--accent-ink);
+  color: #fff;
+  font-weight: 600;
+}
+.btn-edit-master:hover { background: var(--accent); border-color: var(--accent); }
+.btn-edit-master:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* App offline (master locked) */
+.offline-banner {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 14px;
+  background: oklch(0.95 0.06 60);
+  color: var(--ink-2);
+  border-bottom: 2px solid var(--warn);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+.offline-banner b { color: var(--err); letter-spacing: 0.1em; }
+.offline-banner .sep { color: var(--ink-4); }
+.offline-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--err);
+  box-shadow: 0 0 0 3px oklch(0.96 0.04 25);
+  animation: blink 1.4s ease-in-out infinite;
+}
+.window.app-offline .body { /* leave content visible but discourage edits */ }
+
+.coa-locked-note {
+  margin-top: 6px;
+  padding: 8px 10px;
+  background: var(--bg-stripe);
+  border: 1px dashed var(--line-strong);
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
 .btn-ghost {
   background: transparent;
   border-color: transparent;
@@ -448,11 +500,10 @@ table.fulfill-table td.lot-cell {
   font-weight: 400;
   font-size: 13px;
   letter-spacing: 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 36px;
+  vertical-align: middle;
 }
+table.fulfill-table td.lot-cell > * { vertical-align: middle; }
+table.fulfill-table td.lot-cell .fulfill-cust-edited { margin-left: 8px; }
 table.fulfill-table td.lot-cell .fulfill-cust-name {
   flex: 0 1 auto;
   font-size: 13px;
@@ -860,6 +911,15 @@ table.lots {
   padding: 12px;
   display: flex; flex-direction: column; gap: 10px;
 }
+.side-tests-card {
+  background: var(--bg-paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 12px;
+}
+.side-tests-card .field { margin: 0; }
+.side-tests-card .field-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 6px; display: block; }
+.side-tests-card .chip { font-size: 10.5px; height: 20px; padding: 0 7px; }
 .target-card-head {
   display: flex; align-items: center; gap: 8px;
   font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3);

@@ -146,7 +146,7 @@ function StatusBar({ screen, customer, ranked, qty, totals, user, onLogout }) {
 }
 
 // ============== COA TARGET CARD ==============
-function CoaTargetCard({ customer, onSaveOverride, onRevertOverride }) {
+function CoaTargetCard({ customer, onSaveOverride, onRevertOverride, locked }) {
   const [editing, setEditing] = useState(false);
   const [pinOpen, setPinOpen] = useState(false);
   const [pin, setPin] = useState('');
@@ -200,7 +200,7 @@ function CoaTargetCard({ customer, onSaveOverride, onRevertOverride }) {
         <span style={{ flex: 1 }}></span>
         {overridden && !editing && <span className="badge override">OVERRIDDEN</span>}
         {!overridden && !editing && <span className="badge">FROM COA</span>}
-        {!editing ? (
+        {locked ? null : !editing ? (
           <button className="override-btn" onClick={openPin} title="Override (PIN)">
             <svg width="10" height="10" viewBox="0 0 12 12"><path d="M8 2 L10 4 L5 9 L2 10 L3 7 Z" stroke="currentColor" fill="none" strokeWidth="1.2"/></svg>
             Override
@@ -234,8 +234,13 @@ function CoaTargetCard({ customer, onSaveOverride, onRevertOverride }) {
               <b>{rt.strength_lo != null ? `${fmt(rt.strength_lo, 0)}–${fmt(rt.strength_hi, 0)}` : '—'}</b>
             </div>
           </div>
-          {overridden && (
+          {overridden && !locked && (
             <button className="revert-link" onClick={revert}>⟲ Revert to COA</button>
+          )}
+          {locked && (
+            <div className="coa-locked-note">
+              Cancel fulfillment and initiate a new lot match to override COA and edit required tests.
+            </div>
           )}
         </>
       ) : (
@@ -288,6 +293,61 @@ function CoaTargetCard({ customer, onSaveOverride, onRevertOverride }) {
           </form>
         </div>
       )}
+    </div>
+  );
+}
+
+/**
+ * Reusable PIN gate modal. Verifies the 4-digit PIN against the backend, then
+ * calls `onConfirm(pin)` on success. Used to protect destructive actions.
+ */
+function PinPrompt({ open, title, message, confirmLabel = 'Confirm', danger, onConfirm, onCancel }) {
+  const [pin, setPin] = useState('');
+  const [err, setErr] = useState(false);
+  const [busy, setBusy] = useState(false);
+  useEffect(() => { if (!open) { setPin(''); setErr(false); setBusy(false); } }, [open]);
+  if (!open) return null;
+  async function submit(e) {
+    e?.preventDefault();
+    if (pin.length !== 4) return;
+    setBusy(true);
+    try {
+      const r = await fetch(`${API}/api/v3/verify_pin`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pin }),
+      });
+      if (!r.ok) { setErr(true); setBusy(false); return; }
+      sessionStorage.setItem('v3_pin', pin);
+      await onConfirm(pin);
+    } catch {
+      setErr(true);
+    } finally {
+      setBusy(false);
+    }
+  }
+  return (
+    <div className="pin-overlay" onClick={() => !busy && onCancel()}>
+      <form className="pin-dialog" onClick={(e) => e.stopPropagation()} onSubmit={submit}>
+        <div className="pin-header">
+          <svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 7 V5 a4 4 0 0 1 8 0 V7 M3 7 H11 V13 H3 Z" stroke="currentColor" fill="none" strokeWidth="1.2"/></svg>
+          <b>{title || 'Supervisor PIN required'}</b>
+        </div>
+        {message && <p className="tiny muted" style={{ margin: '6px 0 10px', lineHeight: 1.5 }}>{message}</p>}
+        <input
+          autoFocus type="password" inputMode="numeric" maxLength={4}
+          className={'pin-input' + (err ? ' err' : '')}
+          value={pin}
+          onChange={(e) => { setPin(e.target.value.replace(/\D/g, '').slice(0, 4)); setErr(false); }}
+          placeholder="• • • •"
+        />
+        {err && <div className="pin-err">Incorrect PIN. Try again.</div>}
+        <div className="pin-actions">
+          <button type="button" className="btn btn-ghost btn-sm" onClick={onCancel} disabled={busy}>Cancel</button>
+          <button type="submit" className={'btn btn-sm ' + (danger ? 'btn-danger' : 'btn-primary')} disabled={busy || pin.length !== 4}>
+            {busy ? 'Verifying…' : confirmLabel}
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
@@ -401,8 +461,34 @@ function CustomerCombo({ id, customers, customerId, onSelect }) {
   );
 }
 
+function RequiredTestsField({ methods, requiredTests, onTests, compact }) {
+  return (
+    <div className="field">
+      <label className="field-label">
+        Required tests {compact ? '' : '(filter — MT + RT always required)'}
+      </label>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+        {(methods || []).map((m) => {
+          const checked = requiredTests.includes(m);
+          const isBase = m === 'Method I a' || m === 'Method I b';
+          return (
+            <button type="button" key={m}
+              onClick={() => isBase ? null : onTests(checked ? requiredTests.filter((x) => x !== m) : [...requiredTests, m])}
+              className={'chip' + (checked || isBase ? ' accent' : '')}
+              style={{ cursor: isBase ? 'default' : 'pointer', opacity: isBase ? 0.85 : 1 }}
+              title={isBase ? 'Required for matching' : ''}>
+              {m}{isBase ? ' ✓' : ''}
+            </button>
+          );
+        })}
+      </div>
+      {!compact && <span className="field-hint">Lots missing any checked test are excluded from results.</span>}
+    </div>
+  );
+}
+
 // ============== HOME ==============
-function HomeScreen({ customers, master, user, customerId, qty, requiredTests, gradeStrict, onSelect, onQty, onTests, onGradeStrict, onMatch, coaPreview, loadingPreview, onEditFulfillment, onReloadMaster, tab, onTabChange }) {
+function HomeScreen({ customers, master, user, customerId, qty, requiredTests, gradeStrict, onSelect, onQty, onTests, onGradeStrict, onMatch, coaPreview, loadingPreview, onEditFulfillment, onReloadMaster, tab, onTabChange, masterLock }) {
   const dups = master.duplicates || [];
   const setTab = onTabChange;
   return (
@@ -502,25 +588,8 @@ function HomeScreen({ customers, master, user, customerId, qty, requiredTests, g
                 </div>
               </div>
 
-              <div className="field">
-                <label className="field-label">Required tests (filter — MT + RT always required)</label>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                  {(master.methods || []).map((m) => {
-                    const checked = requiredTests.includes(m);
-                    const isBase = m === 'Method I a' || m === 'Method I b';
-                    return (
-                      <button type="button" key={m}
-                        onClick={() => isBase ? null : onTests(checked ? requiredTests.filter((x) => x !== m) : [...requiredTests, m])}
-                        className={'chip' + (checked || isBase ? ' accent' : '')}
-                        style={{ cursor: isBase ? 'default' : 'pointer', opacity: isBase ? 0.85 : 1 }}
-                        title={isBase ? 'Required for matching' : ''}>
-                        {m}{isBase ? ' ✓' : ''}
-                      </button>
-                    );
-                  })}
-                </div>
-                <span className="field-hint">Lots missing any checked test are excluded from results.</span>
-              </div>
+              <RequiredTestsField methods={master.methods || []} requiredTests={requiredTests} onTests={onTests} />
+
 
               <div className="field">
                 <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
@@ -534,9 +603,11 @@ function HomeScreen({ customers, master, user, customerId, qty, requiredTests, g
 
               <div className="run-row">
                 <span className="tiny muted">{master.totals?.lot_count || 0} lots in Master</span>
-                <button type="submit" className="btn btn-primary" disabled={!customerId || !qty || Number(qty) <= 0}>
-                  Match Available Lots
-                  <svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 7 H11 M8 4 L11 7 L8 10" stroke="currentColor" fill="none" strokeWidth="1.4"/></svg>
+                <button type="submit" className="btn btn-primary"
+                        title={masterLock?.locked ? 'Master.xlsx is being edited — matching disabled' : ''}
+                        disabled={!customerId || !qty || Number(qty) <= 0 || !!masterLock?.locked}>
+                  {masterLock?.locked ? 'Offline · master in use' : 'Match Available Lots'}
+                  {!masterLock?.locked && <svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 7 H11 M8 4 L11 7 L8 10" stroke="currentColor" fill="none" strokeWidth="1.4"/></svg>}
                 </button>
               </div>
             </form>
@@ -550,17 +621,17 @@ function HomeScreen({ customers, master, user, customerId, qty, requiredTests, g
       )}
 
       {tab === 'master' && (
-        <div className="home-tab-full"><MasterOverview master={master} user={user} /></div>
+        <div className="home-tab-full"><MasterOverview master={master} user={user} masterLock={masterLock} onReloadMaster={onReloadMaster} /></div>
       )}
 
       {tab === 'blending' && (
-        <div className="home-tab-full"><BlendingTab master={master} user={user} onReloadMaster={onReloadMaster} /></div>
+        <div className="home-tab-full"><BlendingTab master={master} user={user} onReloadMaster={onReloadMaster} masterLock={masterLock} /></div>
       )}
     </div>
   );
 }
 
-function BlendingTab({ master, user, onReloadMaster }) {
+function BlendingTab({ master, user, onReloadMaster, masterLock }) {
   const lots = (master.lots || []).filter((l) => (l.qty_mt || 0) > 0);
   const methods = master.methods || [];
   const methodAxes = master.method_axes || {};
@@ -975,9 +1046,11 @@ function BlendingTab({ master, user, onReloadMaster }) {
             {hasOverAlloc && <span className="chip err">over inventory</span>}
             {!hasOverAlloc && selectedList.length > 0 && <span className="chip ok">in range</span>}
           </div>
-          <button className="btn btn-primary" type="button" onClick={openConfirm} disabled={hasOverAlloc || selectedList.length === 0}>
-            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6 L5 9 L10 3" stroke="currentColor" fill="none" strokeWidth="1.6"/></svg>
-            Commit · {fmt(Number(output.qty_mt) || 0, 1)} MT
+          <button className="btn btn-primary" type="button" onClick={openConfirm}
+                  title={masterLock?.locked ? 'Master.xlsx is being edited — blending disabled' : ''}
+                  disabled={hasOverAlloc || selectedList.length === 0 || !!masterLock?.locked}>
+            {!masterLock?.locked && <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6 L5 9 L10 3" stroke="currentColor" fill="none" strokeWidth="1.6"/></svg>}
+            {masterLock?.locked ? 'Offline · master in use' : `Commit · ${fmt(Number(output.qty_mt) || 0, 1)} MT`}
           </button>
         </div>
       </section>
@@ -1028,7 +1101,11 @@ function BlendingTab({ master, user, onReloadMaster }) {
             </div>
             <div className="pin-actions">
               <button type="button" className="btn btn-ghost" onClick={() => setConfirmOpen(false)}>Cancel</button>
-              <button type="button" className="btn btn-primary" onClick={proceedToPin}>Continue · enter PIN</button>
+              <button type="button" className="btn btn-primary" onClick={proceedToPin}
+                      title={masterLock?.locked ? 'Master.xlsx is being edited' : ''}
+                      disabled={!!masterLock?.locked}>
+                {masterLock?.locked ? 'Offline · master in use' : 'Continue · enter PIN'}
+              </button>
             </div>
           </div>
         </div>
@@ -1144,8 +1221,10 @@ function BlendingTab({ master, user, onReloadMaster }) {
             {pinErr && <div className="pin-err">Invalid PIN.</div>}
             <div className="pin-actions">
               <button type="button" className="btn btn-ghost" onClick={() => setPinOpen(false)}>Cancel</button>
-              <button type="submit" className="btn btn-primary" disabled={submitting || pin.length !== 4}>
-                {submitting ? 'Saving…' : 'Confirm blend'}
+              <button type="submit" className="btn btn-primary"
+                      title={masterLock?.locked ? 'Master.xlsx is being edited' : ''}
+                      disabled={submitting || pin.length !== 4 || !!masterLock?.locked}>
+                {submitting ? 'Saving…' : masterLock?.locked ? 'Offline · master in use' : 'Confirm blend'}
               </button>
             </div>
           </form>
@@ -1155,7 +1234,26 @@ function BlendingTab({ master, user, onReloadMaster }) {
   );
 }
 
-function MasterOverview({ master, user }) {
+function MasterOverview({ master, user, masterLock, onReloadMaster }) {
+  const [openingMaster, setOpeningMaster] = useState(false);
+  const [openError, setOpenError] = useState(null);
+  const [pinForEdit, setPinForEdit] = useState(false);
+  async function doOpenMaster() {
+    setOpenError(null);
+    setOpeningMaster(true);
+    try {
+      const r = await fetch(`${API}/api/v3/master/open`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pin: sessionStorage.getItem('v3_pin') || '' }),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || `${r.status}`);
+    } catch (e) {
+      setOpenError(String(e.message || e));
+    } finally {
+      setOpeningMaster(false);
+    }
+  }
   const lots = master.lots || [];
   const gradeAgg = {};
   for (const l of lots) {
@@ -1203,7 +1301,39 @@ function MasterOverview({ master, user }) {
             <div className="mo-stat warn"><b>{duplicates.length}</b><span className="tiny muted"> duplicates</span></div>
           </>
         )}
+        <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
+          {masterLock?.locked && (
+            <span className="chip warn" title={masterLock.owner ? `Held by ${masterLock.owner}` : 'Master is open in Excel'}>
+              IN USE{masterLock.owner && masterLock.owner !== 'unknown' ? ` · ${masterLock.owner}` : ''}
+            </span>
+          )}
+          <button
+            className="btn btn-sm btn-edit-master"
+            onClick={() => setPinForEdit(true)}
+            disabled={openingMaster || !!masterLock?.locked}
+            title={masterLock?.locked ? 'Master is already open' : 'Open Master.xlsx in Excel. The app will go offline until you close the file.'}
+          >
+            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M8 2 L10 4 L5 9 L2 10 L3 7 Z" stroke="currentColor" fill="none" strokeWidth="1.2"/></svg>
+            {openingMaster ? 'Opening…' : 'Edit Master'}
+          </button>
+          {onReloadMaster && (
+            <button className="btn btn-sm btn-ghost" onClick={onReloadMaster} title="Reload from disk">Refresh</button>
+          )}
+        </div>
       </div>
+      {openError && (
+        <div style={{ margin: '8px 0', padding: '6px 10px', background: 'var(--warn-soft)', color: 'var(--err)', borderRadius: 3, fontSize: 12 }}>
+          {openError}
+        </div>
+      )}
+      <PinPrompt
+        open={pinForEdit}
+        title="Edit Master.xlsx?"
+        message="This will open the workbook in Excel and take the app offline for every user until the file is closed. Enter supervisor PIN to continue."
+        confirmLabel="Open in Excel"
+        onCancel={() => setPinForEdit(false)}
+        onConfirm={async () => { setPinForEdit(false); await doOpenMaster(); }}
+      />
 
       {/* Grade table */}
       <div className="mo-section">
@@ -1876,10 +2006,11 @@ function NewLotForm({ onAdd, onCancel }) {
 }
 
 // ============== RESULTS ==============
-function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onSetAllocateQty, onAllocateFullLot, onRemoveAllocate, onAutoFulfill, onClear, onCommit, onSaveOverride, onRevertOverride, onBack, topN, showOnlyWithin, showOnlyDirection, onTopN, onShowOnlyWithin, onShowOnlyDirection, committing, editingFulfillment, newLots, onAddNewLot, onRemoveNewLot }) {
+function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onSetAllocateQty, onAllocateFullLot, onRemoveAllocate, onAutoFulfill, onClear, onCommit, onSaveOverride, onRevertOverride, onBack, topN, showOnlyWithin, showOnlyDirection, onTopN, onShowOnlyWithin, onShowOnlyDirection, committing, editingFulfillment, newLots, onAddNewLot, onRemoveNewLot, methods, requiredTests, onTests, onCancelFulfillment, masterLock }) {
   const isEdit = !!editingFulfillment;
   const [showNewLotForm, setShowNewLotForm] = useState(false);
   const [showOriginalReport, setShowOriginalReport] = useState(false);
+  const [confirmCancel, setConfirmCancel] = useState(false);
   const [expandedRow, setExpandedRow] = useState(null);
 
   // Synthetic ranked entries for manually-added new lots (edit mode only).
@@ -1945,7 +2076,17 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
         </div>
 
         <div className="side-section-h"><span>COA Targets</span></div>
-        <CoaTargetCard customer={customer} onSaveOverride={onSaveOverride} onRevertOverride={onRevertOverride} />
+        <CoaTargetCard customer={customer} onSaveOverride={onSaveOverride} onRevertOverride={onRevertOverride} locked={!!editingFulfillment} />
+
+        {!editingFulfillment && (
+          <>
+            <div className="side-section-h"><span>Required Tests</span></div>
+            <div className="side-tests-card">
+              <RequiredTestsField methods={methods} requiredTests={requiredTests} onTests={onTests} compact />
+              <div className="tiny muted" style={{ marginTop: 4 }}>Toggle to re-rank · lots missing any checked test excluded.</div>
+            </div>
+          </>
+        )}
 
       </aside>
 
@@ -2000,13 +2141,34 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
               <span className="tiny muted">{editingFulfillment.ts}</span>
               <span className="sep">·</span>
               <span>{(editingFulfillment.lines || []).length} lot{(editingFulfillment.lines || []).length === 1 ? '' : 's'} originally</span>
-              <button className="btn btn-sm" style={{ marginLeft: 'auto' }} onClick={() => setShowOriginalReport(true)}>
-                View original report
-              </button>
+              <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
+                <button className="btn btn-sm" onClick={() => setShowOriginalReport(true)}>
+                  View original report
+                </button>
+                <button
+                  className="btn btn-sm btn-danger"
+                  onClick={() => setConfirmCancel(true)}
+                  disabled={committing || !!masterLock?.locked}
+                  title={masterLock?.locked ? 'Master.xlsx is being edited' : ''}
+                >
+                  Cancel fulfillment
+                </button>
+              </div>
             </div>
           )}
           {isEdit && showOriginalReport && (
             <OriginalReportModal fulfillment={editingFulfillment} onClose={() => setShowOriginalReport(false)} />
+          )}
+          {isEdit && (
+            <PinPrompt
+              open={confirmCancel}
+              title="Cancel this fulfillment?"
+              message={`All ${(editingFulfillment.lines || []).length} line${(editingFulfillment.lines || []).length === 1 ? '' : 's'} will be returned to master and the record will be removed. This cannot be undone. Enter supervisor PIN to confirm.`}
+              confirmLabel="Yes, cancel"
+              danger
+              onCancel={() => setConfirmCancel(false)}
+              onConfirm={async () => { setConfirmCancel(false); await onCancelFulfillment(); }}
+            />
           )}
           {isEdit && showNewLotForm && (
             <div style={{ margin: '8px 18px 0' }}>
@@ -2212,9 +2374,10 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
           </div>
           <button className="btn btn-primary"
                   onClick={onCommit}
-                  disabled={committing || allocatedList.length === 0 || allocatedQty > qty + 1e-3}>
+                  title={masterLock?.locked ? 'Master.xlsx is being edited — commit disabled' : ''}
+                  disabled={committing || allocatedList.length === 0 || allocatedQty > qty + 1e-3 || !!masterLock?.locked}>
             <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6 L5 9 L10 3" stroke="currentColor" fill="none" strokeWidth="1.6"/></svg>
-            {committing ? 'Committing…' : (isEdit ? `Save · ${fmt(allocatedQty, 1)} MT` : `Commit · ${fmt(allocatedQty, 1)} MT`)}
+            {committing ? 'Committing…' : masterLock?.locked ? 'Offline · master in use' : (isEdit ? `Save · ${fmt(allocatedQty, 1)} MT` : `Commit · ${fmt(allocatedQty, 1)} MT`)}
           </button>
         </div>
       </section>
@@ -2490,6 +2653,7 @@ export default function DashboardV3({ user, onLogout }) {
   const [screen, setScreen] = useState('home');
   const [customers, setCustomers] = useState([]);
   const [master, setMaster] = useState({ methods: [], lots: [], totals: {} });
+  const [masterLock, setMasterLock] = useState({ locked: false });
   const [customerId, setCustomerId] = useState('');
   const [qty, setQty] = useState('');
   const [requiredTests, setRequiredTests] = useState([]);
@@ -2535,6 +2699,33 @@ export default function DashboardV3({ user, onLogout }) {
     })();
   }, []);
 
+  // Poll master lock state every 5s. When the lab tech opens Master.xlsx in
+  // Excel (either via the "Edit Master" button OR directly on the filesystem),
+  // every open browser session flips into offline mode within ~5s. When the
+  // file is closed, sessions auto-refresh master and resume.
+  useEffect(() => {
+    let cancelled = false;
+    let wasLocked = false;
+    async function tick() {
+      try {
+        const r = await fetch(`${API}/api/v3/master/lock`);
+        const d = await r.json();
+        if (cancelled) return;
+        setMasterLock(d);
+        if (wasLocked && !d.locked) {
+          // Just came back online — refresh master so any external edits propagate.
+          try { const ms = await api('/master'); if (!cancelled) setMaster(ms); } catch {}
+        }
+        wasLocked = !!d.locked;
+      } catch {
+        /* network blip — keep previous state */
+      }
+    }
+    tick();
+    const id = setInterval(tick, 5000);
+    return () => { cancelled = true; clearInterval(id); };
+  }, []);
+
   // load COA preview when customer changes
   useEffect(() => {
     if (!customerId) { setCoaPreview(null); return; }
@@ -2568,11 +2759,11 @@ export default function DashboardV3({ user, onLogout }) {
   // Re-fetch when the spec-toggle changes while on results screen
   // SKIP during edit-fulfillment: pre-populated allocations would be wiped.
   useEffect(() => {
-    if (screen === 'results' && customerId && !editingFulfillment) {
+    if (screen === 'results' && customerId && !editingFulfillment && !masterLock.locked) {
       onMatch({ goResults: false, keepAlloc: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showOnlyWithin]);
+  }, [showOnlyWithin, requiredTests, masterLock.locked]);
 
   const onAutoFulfill = useCallback(() => {
     if (!matchResp) return;
@@ -2704,6 +2895,32 @@ export default function DashboardV3({ user, onLogout }) {
     } finally { setCommitting(false); }
   }
 
+  async function onCancelFulfillment() {
+    if (!editingFulfillment) return;
+    setCommitting(true);
+    try {
+      const r = await fetch(`${API}/api/v3/fulfillments/${editingFulfillment.id}/cancel`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user: user?.username, pin: sessionStorage.getItem('v3_pin') || '' }),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || `${r.status}`);
+      const ms = await api('/master');
+      setMaster(ms);
+      setEditingFulfillment(null);
+      setNewLots([]);
+      setAllocated(new Map());
+      setMatchResp(null);
+      setCustomerId('');
+      setQty('');
+      setRequiredTests([]);
+      setHomeTab('recent');
+      setScreen('home');
+    } catch (e) {
+      setError(String(e));
+    } finally { setCommitting(false); }
+  }
+
   async function onSaveOverride(patch, pin) {
     const r = await fetch(`${API}/api/v3/customer/${encodeURIComponent(customerId)}/override`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -2827,7 +3044,17 @@ export default function DashboardV3({ user, onLogout }) {
 
   return (
     <div className="desktop">
-      <div className="window" data-screen-label={screen === 'home' ? '01 Intake' : '02 Match Results'}>
+      <div className={'window' + (masterLock.locked ? ' app-offline' : '')} data-screen-label={screen === 'home' ? '01 Intake' : '02 Match Results'}>
+        {masterLock.locked && (
+          <div className="offline-banner">
+            <span className="offline-dot" />
+            <b>APP OFFLINE</b>
+            <span className="sep">·</span>
+            <span>Master.xlsx is being edited{masterLock.owner && masterLock.owner !== 'unknown' ? ` by ${masterLock.owner}` : ''}.</span>
+            <span className="sep">·</span>
+            <span className="tiny muted">Close the file to resume. The app will auto-recover within 5 s.</span>
+          </div>
+        )}
         {error && (
           <div style={{ background: 'var(--warn-soft)', color: 'var(--ink)', padding: '6px 12px', fontSize: 12, borderBottom: '1px solid var(--line)' }}>
             ⚠ {error} <button onClick={() => setError(null)} style={{ marginLeft: 8 }}>dismiss</button>
@@ -2846,6 +3073,7 @@ export default function DashboardV3({ user, onLogout }) {
               onEditFulfillment={onEditFulfillment}
               onReloadMaster={async () => { const ms = await api('/master'); setMaster(ms); }}
               tab={homeTab} onTabChange={setHomeTab}
+              masterLock={masterLock}
             />
           ) : (
             customer && <ResultsScreen
@@ -2869,6 +3097,9 @@ export default function DashboardV3({ user, onLogout }) {
               }}
               topN={topN} showOnlyWithin={showOnlyWithin} showOnlyDirection={showOnlyDirection}
               onTopN={setTopN} onShowOnlyWithin={setShowOnlyWithin} onShowOnlyDirection={setShowOnlyDirection}
+              methods={master.methods || []} requiredTests={requiredTests} onTests={setRequiredTests}
+              onCancelFulfillment={onCancelFulfillment}
+              masterLock={masterLock}
               committing={committing}
               editingFulfillment={editingFulfillment}
               newLots={newLots}

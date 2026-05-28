@@ -288,6 +288,65 @@ def edit_fulfillment(fid: str, *, user: str, new_lines: List[Dict[str, Any]],
     return entry
 
 
+def cancel_fulfillment(fid: str, *, user: str) -> Dict[str, Any]:
+    """Rewind every line back into Master and remove the fulfillment record.
+
+    Only allowed within the 24h edit window — same gate as edit. Any lots that
+    were appended via prior edits are NOT removed (the column stays in master);
+    only their consumed qty is restored. This keeps master history intact.
+
+    Returns {restored: [{lot_id, restored, qty_now}], removed_entry: <id>}.
+    """
+    entry, rows = _find(fid)
+    if entry is None:
+        raise ValueError(f"fulfillment not found: {fid}")
+    if not is_editable(entry):
+        raise PermissionError("fulfillment is past 24h edit window")
+
+    wb = v3_master._load_wb(read_only=False)
+    ws = wb[v3_master.SHEET_NAME]
+    id_to_col, name_to_cols = _build_col_maps(ws)
+
+    prev_lines = entry.get("lines", []) or []
+    prev_by_key: Dict[str, float] = {}
+    for line in prev_lines:
+        k = line.get("lot_id") or line.get("lot_no")
+        if not k:
+            continue
+        prev_by_key[k] = prev_by_key.get(k, 0.0) + float(line.get("consume_mt") or 0)
+
+    restored: List[Dict[str, Any]] = []
+    for key, consumed in prev_by_key.items():
+        if consumed <= 0:
+            continue
+        try:
+            _, after, col = _adjust_lot_qty(key, +consumed, ws, id_to_col, name_to_cols)
+            real_lot_no = v3_master._norm(ws.cell(v3_master.ROW_LOT, col).value)
+            real_col_letter = v3_master._col_letter(col)
+            restored.append({
+                "lot_id": f"{real_lot_no}@{real_col_letter}",
+                "restored": consumed,
+                "qty_now": after,
+            })
+        except ValueError as e:
+            restored.append({"lot_id": key, "restored": 0, "qty_now": None, "error": str(e)})
+
+    wb.save(v3_master.MASTER_FILE)
+
+    # Stamp edit_dates for everything touched.
+    edit_dates = v3_master._read_edit_dates()
+    today = datetime.now().strftime("%Y-%m-%d")
+    for r in restored:
+        if r.get("lot_id"):
+            edit_dates[r["lot_id"]] = today
+    v3_master._write_edit_dates(edit_dates)
+
+    removed_id = entry.get("id")
+    new_rows = [r for r in rows if r.get("id") != removed_id]
+    _save(new_rows)
+    return {"restored": restored, "removed_entry": removed_id, "cancelled_by": user, "cancelled_at": _now()}
+
+
 if __name__ == "__main__":
     for r in list_all()[:5]:
         print(r["ts"], r["customer_name"], "lines:", len(r["lines"]), "editable:", r["editable"])
