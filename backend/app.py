@@ -4,6 +4,7 @@ V3-only Flask backend entrypoint.
 
 from __future__ import annotations
 
+from datetime import datetime
 from pathlib import Path
 
 from flask import Flask, jsonify, send_from_directory
@@ -16,6 +17,13 @@ except Exception:  # pylint: disable=broad-except
 
 import runtime_paths
 runtime_paths.ensure_data_layout()
+
+try:
+    from keep_alive import init_keep_alive
+    KEEP_ALIVE_AVAILABLE = True
+except Exception as exc:  # pylint: disable=broad-except
+    print(f"Keep-alive service unavailable: {exc}")
+    KEEP_ALIVE_AVAILABLE = False
 
 from v3_api import v3_bp
 
@@ -50,7 +58,12 @@ def create_app() -> Flask:
 
     @app.get("/api/health")
     def health():
-        return jsonify({"ok": True, "app": "dcw-siop-v3"})
+        return jsonify({
+            "ok": True,
+            "app": "dcw-siop-v3",
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat(timespec="seconds"),
+        })
 
     @app.get("/<path:path>")
     def frontend(path: str):
@@ -68,6 +81,14 @@ def create_app() -> Flask:
 
 
 app = create_app()
+
+if KEEP_ALIVE_AVAILABLE:
+    try:
+        keep_alive_service = init_keep_alive()
+        if keep_alive_service is not None:
+            print("Keep-alive service initialized")
+    except Exception as exc:  # pylint: disable=broad-except
+        print(f"Failed to initialize keep-alive service: {exc}")
 
 
 if __name__ == "__main__":

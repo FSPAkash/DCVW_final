@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import config from './config';
+import { fetchWithRenderWake } from './network';
 
 const API = config.API_URL || '';
 
@@ -15,7 +16,7 @@ function signedFmt(n, d = 2) {
 }
 async function downloadBlob(href, filename) {
   try {
-    const res = await fetch(href);
+    const res = await fetchWithRenderWake(href);
     if (!res.ok) throw new Error('download failed');
     const blob = await res.blob();
     const blobUrl = URL.createObjectURL(blob);
@@ -101,7 +102,7 @@ function renderChatContent(text) {
 }
 
 async function api(path, opts = {}) {
-  const r = await fetch(`${API}/api/v3${path}`, {
+  const r = await fetchWithRenderWake(`${API}/api/v3${path}`, {
     headers: { 'Content-Type': 'application/json' },
     ...opts,
   });
@@ -317,7 +318,7 @@ function PinPrompt({ open, title, message, confirmLabel = 'Confirm', danger, onC
     if (pin.length !== 4) return;
     setBusy(true);
     try {
-      const r = await fetch(`${API}/api/v3/verify_pin`, {
+      const r = await fetchWithRenderWake(`${API}/api/v3/verify_pin`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pin }),
       });
@@ -710,7 +711,7 @@ function BlendingTab({ master, user, onReloadMaster, masterLock }) {
     if (selectedList.length === 0) return;
     setPreviewLoading(true);
     try {
-      const res = await fetch(`${API}/api/v3/master/blend/preview`, {
+      const res = await fetchWithRenderWake(`${API}/api/v3/master/blend/preview`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sources: selectedList }),
@@ -776,7 +777,7 @@ function BlendingTab({ master, user, onReloadMaster, masterLock }) {
           methods: values,
         },
       };
-      const res = await fetch(`${API}/api/v3/master/blend`, {
+      const res = await fetchWithRenderWake(`${API}/api/v3/master/blend`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pin, payload, user: user?.name || user?.username || 'operator' }),
@@ -1274,7 +1275,7 @@ function MasterOverview({ master, user, masterLock, onReloadMaster }) {
     setUploadNotice(null);
     setOpeningMaster(true);
     try {
-      const r = await fetch(`${API}/api/v3/master/open`, {
+      const r = await fetchWithRenderWake(`${API}/api/v3/master/open`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pin: sessionStorage.getItem('v3_pin') || '' }),
       });
@@ -1322,7 +1323,7 @@ function MasterOverview({ master, user, masterLock, onReloadMaster }) {
       formData.append('pin', uploadPin);
       formData.append('file', uploadFile);
 
-      const r = await fetch(`${API}/api/v3/master/file`, {
+      const r = await fetchWithRenderWake(`${API}/api/v3/master/file`, {
         method: 'POST',
         body: formData,
       });
@@ -1703,7 +1704,7 @@ function MasterOverviewChat({ user }) {
     setSending(true);
 
     try {
-      const response = await fetch(`${API}/api/v3/master/chat`, {
+      const response = await fetchWithRenderWake(`${API}/api/v3/master/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1745,7 +1746,7 @@ function MasterOverviewChat({ user }) {
     if (!fileInfo?.url) return;
     setError('');
     try {
-      const response = await fetch(url);
+      const response = await fetchWithRenderWake(url);
       if (!response.ok) {
         throw new Error(`${response.status} ${response.statusText}`);
       }
@@ -2887,7 +2888,7 @@ export default function DashboardV3({ user, onLogout }) {
     let wasLocked = false;
     async function tick() {
       try {
-        const r = await fetch(`${API}/api/v3/master/lock`);
+        const r = await fetchWithRenderWake(`${API}/api/v3/master/lock`);
         const d = await r.json();
         if (cancelled) return;
         setMasterLock(d);
@@ -3016,7 +3017,7 @@ export default function DashboardV3({ user, onLogout }) {
           const lot = ranked.find((l) => l.lot_id === lot_id);
           return { lot_id, lot_no: lot?.lot_no, consume_mt };
         });
-        const r = await fetch(`${API}/api/v3/fulfillments/${editingFulfillment.id}/edit`, {
+        const r = await fetchWithRenderWake(`${API}/api/v3/fulfillments/${editingFulfillment.id}/edit`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             user: user?.username,
@@ -3078,7 +3079,7 @@ export default function DashboardV3({ user, onLogout }) {
     if (!editingFulfillment) return;
     setCommitting(true);
     try {
-      const r = await fetch(`${API}/api/v3/fulfillments/${editingFulfillment.id}/cancel`, {
+      const r = await fetchWithRenderWake(`${API}/api/v3/fulfillments/${editingFulfillment.id}/cancel`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user: user?.username, pin: sessionStorage.getItem('v3_pin') || '' }),
       });
@@ -3101,7 +3102,7 @@ export default function DashboardV3({ user, onLogout }) {
   }
 
   async function onSaveOverride(patch, pin) {
-    const r = await fetch(`${API}/api/v3/customer/${encodeURIComponent(customerId)}/override`, {
+    const r = await fetchWithRenderWake(`${API}/api/v3/customer/${encodeURIComponent(customerId)}/override`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ pin, patch }),
     });
@@ -3114,7 +3115,7 @@ export default function DashboardV3({ user, onLogout }) {
   }
 
   async function onEditFulfillment(f, pin) {
-    const v = await fetch(`${API}/api/v3/verify_pin`, {
+    const v = await fetchWithRenderWake(`${API}/api/v3/verify_pin`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ pin }),
     });
@@ -3194,7 +3195,7 @@ export default function DashboardV3({ user, onLogout }) {
   }
 
   async function onRevertOverride() {
-    const r = await fetch(`${API}/api/v3/customer/${encodeURIComponent(customerId)}/override/clear`, {
+    const r = await fetchWithRenderWake(`${API}/api/v3/customer/${encodeURIComponent(customerId)}/override/clear`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({}),
     });
@@ -3212,7 +3213,7 @@ export default function DashboardV3({ user, onLogout }) {
     return () => {
       if (!cid) return;
       // Fire-and-forget; failure (e.g. backend down) shouldn't block teardown.
-      fetch(`${API}/api/v3/customer/${encodeURIComponent(cid)}/override/clear`, {
+      fetchWithRenderWake(`${API}/api/v3/customer/${encodeURIComponent(cid)}/override/clear`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}',
         keepalive: true,
       }).catch(() => {});

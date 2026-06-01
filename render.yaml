@@ -15,3 +15,5 @@ services:
         value: gpt-4o-mini
       - key: MASTER_OVERVIEW_OPENAI_API_KEY
         sync: false
+      - key: RENDER_EXTERNAL_URL
+        sync: false

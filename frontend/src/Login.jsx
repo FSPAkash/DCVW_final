@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import config from './config';
+import { fetchWithRenderWake } from './network';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
@@ -13,7 +14,7 @@ function Login({ onLogin }) {
     setLoading(true);
 
     try {
-      const res = await fetch(`${config.API_URL}/api/v3/login`, {
+      const res = await fetchWithRenderWake(`${config.API_URL}/api/v3/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
