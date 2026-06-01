@@ -30,7 +30,9 @@ def create_app() -> Flask:
         load_dotenv(ROOT_DIR / ".env")
         load_dotenv(BASE_DIR / ".env")
 
-    app = Flask(__name__)
+    # Disable Flask's default /static handler so React build assets under
+    # frontend/build/static are served by our catch-all route instead.
+    app = Flask(__name__, static_folder=None)
     app.secret_key = "dcw-siop-v3-2026"
     CORS(app, supports_credentials=True)
     app.register_blueprint(v3_bp)
