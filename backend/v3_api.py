@@ -7,14 +7,18 @@ import json
 import math
 import os
 import platform
+import shutil
 import subprocess
 from datetime import datetime
+from pathlib import Path
 from typing import Any
 
+import openpyxl
 from flask import Blueprint, jsonify, request, send_file
 
 import master_overview_chat
 import master_overview_reports
+import runtime_paths
 import v3_coa
 import v3_fulfillments
 import v3_master
@@ -183,6 +187,17 @@ def master_lock_status():
     return jsonify({"locked": False})
 
 
+@v3_bp.get("/runtime")
+def runtime_info():
+    return jsonify({
+        "render": bool(os.getenv("RENDER")),
+        "master_edit_mode": runtime_paths.master_edit_mode(),
+        "supports_local_open": runtime_paths.supports_local_master_open(),
+        "supports_master_upload": True,
+        "data_dir": str(runtime_paths.DATA_DIR),
+    })
+
+
 @v3_bp.post("/master/open")
 def master_open():
     """Open Master.xlsx in the host machine's default app (Excel) so the lab
@@ -196,6 +211,11 @@ def master_open():
     body = request.get_json(force=True, silent=True) or {}
     if str(body.get("pin", "")) != PIN:
         return jsonify({"error": "invalid pin"}), 403
+    if not runtime_paths.supports_local_master_open():
+        return jsonify({
+            "error": "local_open_disabled",
+            "message": "This deployment cannot open Excel on the server. Download Master.xlsx, edit it locally, and upload the edited workbook instead.",
+        }), 400
     p = v3_master.MASTER_FILE
     if not p.exists():
         return jsonify({"error": "master file not found", "path": str(p)}), 404
@@ -210,6 +230,82 @@ def master_open():
         return jsonify({"error": f"could not open file: {e}"}), 500
     # Excel takes a moment to create the lock file; client should poll /lock.
     return jsonify({"ok": True, "path": str(p), "lock": _master_lock_owner() or {"locked": False}})
+
+
+@v3_bp.get("/master/file")
+def master_file_download():
+    p = v3_master.MASTER_FILE
+    if not p.exists():
+        return jsonify({"error": "master file not found", "path": str(p)}), 404
+    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    return send_file(p, as_attachment=True, download_name=f"Master-{stamp}.xlsx")
+
+
+@v3_bp.post("/master/file")
+def master_file_upload():
+    blocked = _reject_if_locked()
+    if blocked:
+        return blocked
+
+    if str(request.form.get("pin", "")) != PIN:
+        return jsonify({"error": "invalid pin"}), 403
+
+    upload = request.files.get("file")
+    if upload is None or not upload.filename:
+        return jsonify({"error": "file is required"}), 400
+    if not upload.filename.lower().endswith(".xlsx"):
+        return jsonify({"error": "only .xlsx files are supported"}), 400
+
+    tmp_dir = runtime_paths.DATA_DIR / "tmp"
+    tmp_dir.mkdir(parents=True, exist_ok=True)
+    tmp_path = tmp_dir / f"master-upload-{datetime.now().strftime('%Y%m%d-%H%M%S-%f')}.xlsx"
+    backup_path: Path | None = None
+
+    try:
+        upload.save(tmp_path)
+        wb = openpyxl.load_workbook(tmp_path, read_only=True, data_only=True)
+        if v3_master.SHEET_NAME not in wb.sheetnames:
+            wb.close()
+            return jsonify({"error": f"uploaded workbook must contain sheet '{v3_master.SHEET_NAME}'"}), 400
+        wb.close()
+
+        master_path = v3_master.MASTER_FILE
+        backup_dir = runtime_paths.DATA_DIR / "backups" / "master_uploads"
+        backup_dir.mkdir(parents=True, exist_ok=True)
+        if master_path.exists():
+            backup_path = backup_dir / f"Master-{datetime.now().strftime('%Y%m%d-%H%M%S-%f')}.xlsx"
+            shutil.copy2(master_path, backup_path)
+
+        shutil.copy2(tmp_path, master_path)
+
+        parsed = v3_master.parse_master()
+        allowed_edit_keys = {lot["lot_id"] for lot in parsed.get("lots", [])}
+        allowed_edit_keys.update(lot["lot_no"] for lot in parsed.get("lots", []) if lot.get("lot_no"))
+        existing_dates = v3_master._read_edit_dates()
+        filtered_dates = {k: v for k, v in existing_dates.items() if k in allowed_edit_keys}
+        v3_master._write_edit_dates(filtered_dates)
+
+        return jsonify({
+            "ok": True,
+            "message": "Master workbook replaced successfully. A backup of the previous file was created before upload.",
+            "backup_file": backup_path.name if backup_path else None,
+            "totals": {
+                "lot_count": len(parsed.get("lots", [])),
+                "total_qty_mt": round(sum((lot.get("qty_mt") or 0) for lot in parsed.get("lots", [])), 3),
+            },
+        })
+    except Exception as e:  # pylint: disable=broad-except
+        if backup_path and backup_path.exists():
+            try:
+                shutil.copy2(backup_path, v3_master.MASTER_FILE)
+            except Exception:
+                pass
+        return jsonify({"error": f"master upload failed: {e}"}), 400
+    finally:
+        try:
+            tmp_path.unlink(missing_ok=True)
+        except Exception:
+            pass
 
 
 def _reject_if_locked():

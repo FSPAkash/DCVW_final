@@ -13,6 +13,8 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
 from reportlab.platypus import Image, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
+import runtime_paths
+
 
 ACCENT = colors.HexColor("#B84A2E")        # iron-oxide red
 ACCENT_INK = colors.HexColor("#8C2F1A")
@@ -28,15 +30,16 @@ ACCENT_TINT = colors.HexColor("#FBEDE8")
 
 def _logo_path() -> Optional[Path]:
     for name in ("partner2.png", "main-logo.png"):
-        p = BASE_DIR.parent / "frontend" / "public" / "logos" / name
+        p = runtime_paths.FRONTEND_PUBLIC_DIR / "logos" / name
         if p.exists():
             return p
     return None
 
 
 BASE_DIR = Path(__file__).resolve().parent
-REPORTS_DIR = BASE_DIR / "generated_reports"
-REPORTS_DIR.mkdir(exist_ok=True)
+DATA_DIR = runtime_paths.ensure_data_layout()
+REPORTS_DIR = DATA_DIR / "generated_reports"
+REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def maybe_build_report(question: str, snapshot: Dict[str, Any]) -> Optional[Dict[str, Any]]:

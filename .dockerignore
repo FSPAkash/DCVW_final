@@ -1,0 +1,11 @@
+.git
+.claude
+backend/__pycache__
+frontend/node_modules
+frontend/build
+frontend/*.log
+frontend/*.err
+backend/*.log
+backend/*.err
+backend/generated_reports
+backend/blend_cards

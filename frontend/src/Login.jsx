@@ -140,6 +140,7 @@ function Login({ onLogin }) {
           <span className="sep"></span>
           <span>USER · —</span>
           <div className="right">
+            <span className="testing-tag compact">USER TESTING ONLY</span>
             <span>VIEW · SIGN-IN</span>
             <span className="sep"></span>
             <span>SAHUPURAM · TN</span>

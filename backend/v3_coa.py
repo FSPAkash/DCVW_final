@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import pdfplumber
+import runtime_paths
 
 try:
     import pytesseract
@@ -35,9 +36,10 @@ except Exception:
     OCR_OK = False
 
 BASE_DIR = Path(__file__).resolve().parent
-COA_DIR = BASE_DIR / "COA"
-COA_CACHE_FILE = BASE_DIR / "customer_coa.json"
-COA_OVERRIDES_FILE = BASE_DIR / "customer_overrides.json"
+DATA_DIR = runtime_paths.ensure_data_layout()
+COA_DIR = DATA_DIR / "COA"
+COA_CACHE_FILE = DATA_DIR / "customer_coa.json"
+COA_OVERRIDES_FILE = DATA_DIR / "customer_overrides.json"
 
 
 _TONE_KEY_RE = re.compile(

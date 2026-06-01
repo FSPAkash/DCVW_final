@@ -110,6 +110,10 @@ async function api(path, opts = {}) {
   return data;
 }
 
+function TestingTag({ compact = false }) {
+  return <span className={'testing-tag' + (compact ? ' compact' : '')}>USER TESTING ONLY</span>;
+}
+
 function StatusBar({ screen, customer, ranked, qty, totals, user, onLogout }) {
   return (
     <div className="statusbar">
@@ -134,6 +138,7 @@ function StatusBar({ screen, customer, ranked, qty, totals, user, onLogout }) {
           />
           FINDABILITY SCIENCES
         </span>
+        <TestingTag compact />
         {onLogout && (
           <>
             <span className="sep"></span>
@@ -1045,6 +1050,7 @@ function BlendingTab({ master, user, onReloadMaster, masterLock }) {
             <span className="tiny muted">→ {output.qty_mt ? fmt(Number(output.qty_mt), 2) : '—'} MT output · {selectedList.length} source{selectedList.length === 1 ? '' : 's'}</span>
             {hasOverAlloc && <span className="chip err">over inventory</span>}
             {!hasOverAlloc && selectedList.length > 0 && <span className="chip ok">in range</span>}
+            <TestingTag compact />
           </div>
           <button className="btn btn-primary" type="button" onClick={openConfirm}
                   title={masterLock?.locked ? 'Master.xlsx is being edited — blending disabled' : ''}
@@ -1238,8 +1244,34 @@ function MasterOverview({ master, user, masterLock, onReloadMaster }) {
   const [openingMaster, setOpeningMaster] = useState(false);
   const [openError, setOpenError] = useState(null);
   const [pinForEdit, setPinForEdit] = useState(false);
+  const [runtimeInfo, setRuntimeInfo] = useState({
+    render: false,
+    master_edit_mode: 'hybrid',
+    supports_local_open: true,
+    supports_master_upload: true,
+  });
+  const [uploadOpen, setUploadOpen] = useState(false);
+  const [uploadingMaster, setUploadingMaster] = useState(false);
+  const [uploadPin, setUploadPin] = useState('');
+  const [uploadFile, setUploadFile] = useState(null);
+  const [uploadError, setUploadError] = useState(null);
+  const [uploadNotice, setUploadNotice] = useState(null);
+  const [gradesExpanded, setGradesExpanded] = useState(false);
+  const uploadInputRef = useRef(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    api('/runtime')
+      .then((info) => {
+        if (!cancelled) setRuntimeInfo((prev) => ({ ...prev, ...info }));
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
   async function doOpenMaster() {
     setOpenError(null);
+    setUploadNotice(null);
     setOpeningMaster(true);
     try {
       const r = await fetch(`${API}/api/v3/master/open`, {
@@ -1254,6 +1286,69 @@ function MasterOverview({ master, user, masterLock, onReloadMaster }) {
       setOpeningMaster(false);
     }
   }
+
+  async function downloadMaster() {
+    setOpenError(null);
+    setUploadNotice(null);
+    await downloadBlob(`${API}/api/v3/master/file`, 'Master.xlsx');
+  }
+
+  function closeUploadModal() {
+    setUploadOpen(false);
+    setUploadPin('');
+    setUploadFile(null);
+    setUploadError(null);
+    if (uploadInputRef.current) uploadInputRef.current.value = '';
+  }
+
+  async function submitMasterUpload(e) {
+    e?.preventDefault();
+    if (!uploadFile) {
+      setUploadError('Choose the edited .xlsx file first.');
+      return;
+    }
+    if (uploadPin.length !== 4) {
+      setUploadError('Enter the 4-digit supervisor PIN.');
+      return;
+    }
+
+    setUploadingMaster(true);
+    setUploadError(null);
+    setOpenError(null);
+    setUploadNotice(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('pin', uploadPin);
+      formData.append('file', uploadFile);
+
+      const r = await fetch(`${API}/api/v3/master/file`, {
+        method: 'POST',
+        body: formData,
+      });
+      const d = await r.json().catch(() => null);
+      if (!r.ok) throw new Error(d?.error || d?.message || `${r.status} ${r.statusText}`);
+
+      closeUploadModal();
+      setUploadNotice(
+        d?.backup_file
+          ? `Workbook uploaded. Previous copy backed up as ${d.backup_file}.`
+          : (d?.message || 'Workbook uploaded successfully.')
+      );
+      if (onReloadMaster) {
+        try {
+          await onReloadMaster();
+        } catch (reloadErr) {
+          setOpenError(String(reloadErr.message || reloadErr));
+        }
+      }
+    } catch (err) {
+      setUploadError(String(err.message || err));
+    } finally {
+      setUploadingMaster(false);
+    }
+  }
+
   const lots = master.lots || [];
   const gradeAgg = {};
   for (const l of lots) {
@@ -1275,8 +1370,9 @@ function MasterOverview({ master, user, masterLock, onReloadMaster }) {
   const depleted = lots.filter((l) => (l.qty_mt || 0) <= 0);
   const duplicates = master.duplicates || [];
 
-  const [gradesExpanded, setGradesExpanded] = useState(false);
   const visibleGrades = gradesExpanded ? gradeRows : gradeRows.slice(0, 6);
+  const showLocalOpen = !!runtimeInfo.supports_local_open;
+  const downloadUploadOnly = runtimeInfo.master_edit_mode === 'download-upload';
 
   return (
     <div className="mo">
@@ -1301,7 +1397,7 @@ function MasterOverview({ master, user, masterLock, onReloadMaster }) {
             <div className="mo-stat warn"><b>{duplicates.length}</b><span className="tiny muted"> duplicates</span></div>
           </>
         )}
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
+        <div className="mo-actions">
           {masterLock?.locked && (
             <span className="chip warn" title={masterLock.owner ? `Held by ${masterLock.owner}` : 'Master is open in Excel'}>
               IN USE{masterLock.owner && masterLock.owner !== 'unknown' ? ` · ${masterLock.owner}` : ''}
@@ -1309,6 +1405,7 @@ function MasterOverview({ master, user, masterLock, onReloadMaster }) {
           )}
           <button
             className="btn btn-sm btn-edit-master"
+            style={{ display: showLocalOpen ? undefined : 'none' }}
             onClick={() => setPinForEdit(true)}
             disabled={openingMaster || !!masterLock?.locked}
             title={masterLock?.locked ? 'Master is already open' : 'Open Master.xlsx in Excel. The app will go offline until you close the file.'}
@@ -1316,16 +1413,44 @@ function MasterOverview({ master, user, masterLock, onReloadMaster }) {
             <svg width="12" height="12" viewBox="0 0 12 12"><path d="M8 2 L10 4 L5 9 L2 10 L3 7 Z" stroke="currentColor" fill="none" strokeWidth="1.2"/></svg>
             {openingMaster ? 'Opening…' : 'Edit Master'}
           </button>
+          <button className="btn btn-sm btn-ghost" onClick={downloadMaster} title="Download the current live workbook">
+            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 2 V8 M3 6 L6 9 L9 6 M2 10 H10" stroke="currentColor" fill="none" strokeWidth="1.4" strokeLinecap="round"/></svg>
+            Download Master
+          </button>
+          <button
+            className="btn btn-sm"
+            onClick={() => { setUploadNotice(null); setUploadOpen(true); }}
+            disabled={uploadingMaster || !!masterLock?.locked}
+            title={masterLock?.locked ? 'Master is currently open in Excel' : 'Upload an edited workbook and replace the live Master.xlsx'}
+          >
+            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 10 V4 M3 6 L6 3 L9 6 M2 10 H10" stroke="currentColor" fill="none" strokeWidth="1.4" strokeLinecap="round"/></svg>
+            Upload Edited Master
+          </button>
           {onReloadMaster && (
             <button className="btn btn-sm btn-ghost" onClick={onReloadMaster} title="Reload from disk">Refresh</button>
           )}
         </div>
       </div>
+      <div className="master-edit-help">
+        <div className="master-edit-help-title">
+          {downloadUploadOnly ? 'Cloud workbook workflow' : 'Workbook editing workflow'}
+        </div>
+        <div className="master-edit-help-body">
+          Download the current live Master.xlsx, edit it locally in Excel, then upload the edited copy here.
+          The app creates a timestamped backup before replacing the live workbook, so routine data edits do not need to go through GitHub.
+        </div>
+        {showLocalOpen && !downloadUploadOnly && (
+          <div className="tiny muted">
+            Local host mode still supports opening the workbook directly in Excel, which temporarily takes matching offline until the file is closed.
+          </div>
+        )}
+      </div>
       {openError && (
-        <div style={{ margin: '8px 0', padding: '6px 10px', background: 'var(--warn-soft)', color: 'var(--err)', borderRadius: 3, fontSize: 12 }}>
+        <div className="master-edit-alert err">
           {openError}
         </div>
       )}
+      {uploadNotice && <div className="master-edit-alert ok">{uploadNotice}</div>}
       <PinPrompt
         open={pinForEdit}
         title="Edit Master.xlsx?"
@@ -1334,6 +1459,59 @@ function MasterOverview({ master, user, masterLock, onReloadMaster }) {
         onCancel={() => setPinForEdit(false)}
         onConfirm={async () => { setPinForEdit(false); await doOpenMaster(); }}
       />
+      {uploadOpen && (
+        <div className="pin-overlay" onClick={() => !uploadingMaster && closeUploadModal()}>
+          <form className="pin-dialog master-upload-dialog" onClick={(e) => e.stopPropagation()} onSubmit={submitMasterUpload}>
+            <div className="pin-header">
+              <svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7 H12 M7 2 V12" stroke="currentColor" fill="none" strokeWidth="1.2"/></svg>
+              <b>Upload edited Master.xlsx</b>
+            </div>
+            <p className="tiny muted master-upload-copy">
+              Use this for Render and any other remote deployment: download the current workbook first, edit it locally,
+              then upload the revised `.xlsx` file. The current server copy is backed up automatically before replacement.
+            </p>
+            <label className="field master-upload-field">
+              <span className="field-label">Edited workbook</span>
+              <input
+                ref={uploadInputRef}
+                className="master-upload-input"
+                type="file"
+                accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                onChange={(e) => {
+                  const nextFile = e.target.files && e.target.files[0] ? e.target.files[0] : null;
+                  setUploadFile(nextFile);
+                  setUploadError(null);
+                }}
+              />
+            </label>
+            {uploadFile && <div className="master-upload-name">{uploadFile.name}</div>}
+            <div className="field master-upload-field">
+              <label className="field-label" htmlFor="master-upload-pin">Supervisor PIN</label>
+              <input
+                id="master-upload-pin"
+                autoFocus
+                type="password"
+                inputMode="numeric"
+                maxLength={4}
+                className={'pin-input' + (uploadError ? ' err' : '')}
+                value={uploadPin}
+                onChange={(e) => {
+                  setUploadPin(e.target.value.replace(/\D/g, '').slice(0, 4));
+                  setUploadError(null);
+                }}
+                placeholder="...."
+              />
+            </div>
+            {uploadError && <div className="pin-err">{uploadError}</div>}
+            <div className="pin-actions">
+              <button type="button" className="btn btn-ghost btn-sm" onClick={closeUploadModal} disabled={uploadingMaster}>Cancel</button>
+              <button type="submit" className="btn btn-primary btn-sm" disabled={uploadingMaster || uploadPin.length !== 4 || !uploadFile}>
+                {uploadingMaster ? 'Uploading...' : 'Replace live workbook'}
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
 
       {/* Grade table */}
       <div className="mo-section">
@@ -2371,6 +2549,7 @@ function ResultsScreen({ customer, qty, ranked, allocated, onToggleAllocate, onS
             {shortfall === 0 && allocatedQty > 0 && <span className="chip ok">ready</span>}
             {shortfall > 0 && <span className="chip warn">{fmt(shortfall, 2)} MT short</span>}
             {allocatedQty > qty + 1e-3 && <span className="chip err">over by {fmt(allocatedQty - qty, 2)} MT</span>}
+            <TestingTag compact />
           </div>
           <button className="btn btn-primary"
                   onClick={onCommit}

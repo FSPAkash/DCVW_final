@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: dcw-siop
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATA_DIR
+        value: /var/data
+      - key: MASTER_EDIT_MODE
+        value: download-upload
+      - key: MASTER_OVERVIEW_OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: MASTER_OVERVIEW_OPENAI_API_KEY
+        sync: false
+    disk:
+      name: dcw-siop-data
+      mountPath: /var/data
+      sizeGB: 10

@@ -17,10 +17,12 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import openpyxl
 
+import runtime_paths
 import v3_master
 
 BASE_DIR = Path(__file__).resolve().parent
-LEDGER_FILE = BASE_DIR / "fulfillments.json"
+DATA_DIR = runtime_paths.ensure_data_layout()
+LEDGER_FILE = DATA_DIR / "fulfillments.json"
 EDIT_WINDOW_HOURS = 24
 
 

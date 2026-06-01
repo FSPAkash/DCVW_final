@@ -24,10 +24,12 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import openpyxl
+import runtime_paths
 
 BASE_DIR = Path(__file__).resolve().parent
-MASTER_FILE = BASE_DIR / "Master.xlsx"
-AUDIT_FILE = BASE_DIR / "inventory_audit.csv"
+DATA_DIR = runtime_paths.ensure_data_layout()
+MASTER_FILE = DATA_DIR / "Master.xlsx"
+AUDIT_FILE = DATA_DIR / "inventory_audit.csv"
 SHEET_NAME = "proposed "
 
 # Row indices (1-based)
@@ -41,10 +43,10 @@ ROW_LAST_EDITED = 61
 LAST_EDITED_LABEL_COL = 4  # col D, matches axis-label column
 LAST_EDITED_LABEL = "Last edited"
 
-EDIT_DATES_FILE = BASE_DIR / "inventory_edit_dates.json"
-BLEND_RECORDS_FILE = BASE_DIR / "blend_records.json"
-BLEND_CARDS_DIR = BASE_DIR / "blend_cards"
-BLEND_CARDS_DIR.mkdir(exist_ok=True)
+EDIT_DATES_FILE = DATA_DIR / "inventory_edit_dates.json"
+BLEND_RECORDS_FILE = DATA_DIR / "blend_records.json"
+BLEND_CARDS_DIR = DATA_DIR / "blend_cards"
+BLEND_CARDS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def _norm(s: Any) -> str:
