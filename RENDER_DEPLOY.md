@@ -1,56 +1,85 @@
-# Render Deploy Guide
+# Render Free Deploy Guide
 
-## What changed
+## What I changed
 
-- The app can now run as one Render web service using `Dockerfile`.
-- Mutable data can live on a Render persistent disk via `DATA_DIR=/var/data`.
-- `Master.xlsx` no longer has to be edited through GitHub after deploy.
-- The app now supports:
-  - `Download Master`
-  - edit locally in Excel
-  - `Upload Edited Master`
-  - automatic backup of the previous live workbook before replacement
+- [render.yaml](/c:/Users/AkashPatil/DCW%20SIOP/render.yaml) now targets Render `plan: free`.
+- The paid persistent disk was removed.
+- `DATA_DIR` now points at `/tmp/dcw-siop`, which works on free web services.
 
-## Recommended Render setup
+This makes the app deployable on Render's free web service tier.
 
-1. Push this repo to GitHub.
-2. In Render, choose `New +` -> `Blueprint`.
-3. Point it at this repo so Render reads [render.yaml](/c:/Users/AkashPatil/DCW%20SIOP/render.yaml).
-4. Confirm the web service settings:
+## Important reality check
+
+Render free web services use an ephemeral filesystem.
+That means:
+
+- the app can deploy and run for free
+- uploaded `Master.xlsx` changes can work during runtime
+- but file changes are **not durable** across restarts, redeploys, or free-tier spin-down
+
+So:
+
+- `free Render` = good for demo, testing, and user review
+- `paid Render + persistent disk` = needed for durable live workbook editing on Render itself
+
+## Best free setup
+
+Do this instead of `Blueprint`, because Render may still push you toward billing screens during that flow.
+
+1. Push the repo to GitHub.
+2. In Render, click `New +`.
+3. Choose `Web Service`, not `Blueprint`.
+4. Connect the GitHub repo.
+5. Use these settings:
    - Runtime: `Docker`
-   - Health check path: `/api/health`
-   - Persistent disk mount path: `/var/data`
-   - Persistent disk size: `10 GB` or larger if you expect more PDFs/reports
-5. Add or confirm environment variables:
-   - `DATA_DIR=/var/data`
+   - Instance Type: `Free`
+   - Dockerfile Path: `./Dockerfile`
+   - Docker Context: `.`
+   - Health Check Path: `/api/health`
+6. Add these environment variables:
+   - `DATA_DIR=/tmp/dcw-siop`
    - `MASTER_EDIT_MODE=download-upload`
-   - `MASTER_OVERVIEW_OPENAI_API_KEY` if you want the master chat to work
-   - `MASTER_OVERVIEW_OPENAI_MODEL=gpt-4o-mini` unless you want a different model
-6. Deploy.
+   - `MASTER_OVERVIEW_OPENAI_MODEL=gpt-4o-mini`
+   - `MASTER_OVERVIEW_OPENAI_API_KEY=...` only if you want the AI master chat enabled
+7. Deploy.
 
-## First deploy behavior
+## If you still want to use `render.yaml`
 
-- On first boot, the app seeds `/var/data` from the repo's current backend data.
-- After that, the live workbook and JSON files come from the disk, not from GitHub.
-- Future code deploys update the app code without overwriting the live disk data.
+The file is now free-safe:
 
-## How to edit Master after deploy
+- plan is explicitly `free`
+- no persistent disk is requested
 
-1. Open the app.
-2. Go to `Master Overview`.
-3. Click `Download Master`.
-4. Edit the downloaded workbook in Excel.
-5. Click `Upload Edited Master`.
-6. Enter the supervisor PIN and upload the edited `.xlsx`.
+So if Render allows Blueprint creation in your workspace without billing prompts, this repo config should no longer request a paid service.
 
-Notes:
+## What will still work on free
 
-- The app creates a timestamped backup of the previous workbook before replacing it.
-- This is the safest way to keep live inventory edits out of Git history.
-- GitHub stays for code changes; the app UI handles data changes.
+- frontend + backend in one service
+- login
+- matching
+- viewing master data
+- testing the upload/download workflow
+- demoing the app with current repo-seeded data
 
-## After deploy
+## What will not be durable on free
 
-- Use Render `Manual Deploy` only for code changes.
-- Do not expect edits inside the repo checkout to persist on Render.
-- Use the in-app workbook upload flow for inventory/master changes.
+- uploaded `Master.xlsx` replacements
+- fulfillment history written to local JSON
+- local report/output files
+- override files written at runtime
+
+Those can disappear after:
+
+- a redeploy
+- a restart
+- Render free idle spin-down
+
+## If you need both free deploy and durable data
+
+Render free alone is not enough for this app's current file-based storage model.
+The next real options are:
+
+1. Keep Render free and move mutable state to an external store like Supabase, Neon, S3, or GitHub API.
+2. Stay on Render and use a paid persistent disk.
+
+If you want, I can do the next step and refactor the mutable workbook/history storage so the app keeps free hosting while persisting edits outside Render.
