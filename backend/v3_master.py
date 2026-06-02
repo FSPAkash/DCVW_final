@@ -213,6 +213,51 @@ def parse_master() -> Dict[str, Any]:
         for l in lots if l["lot_no"] in dup_codes
     ]
 
+    # Blend cards must reflect what is actually in Master.xlsx, not the
+    # append-only JSON log. A blend whose output lot was removed from Master
+    # (e.g. deleted for testing) must not show a card. Anchor on live lots.
+    live_lot_ids = {l["lot_id"] for l in lots}
+    recorded_blend_ids = {
+        b.get("output", {}).get("lot_id") for b in blend_records.get("blends", [])
+    }
+
+    # Backfill: a lot typed directly into Master with a BLEND prefix on its lot
+    # code is a blend made outside the /master/blend endpoint, so it has no JSON
+    # record yet. Synthesize a minimal record (no source breakdown is knowable
+    # from the sheet) and persist it so it gets a card like any other blend.
+    backfilled = False
+    for l in lots:
+        if l["lot_id"] in recorded_blend_ids:
+            continue
+        if not l["lot_no"].upper().startswith("BLEND"):
+            continue
+        rec_id = f"BLEND-DIRECT-{l['lot_id']}"
+        record = {
+            "blend_id": rec_id,
+            "ts": l.get("last_edited") or "",
+            "user": "master.xlsx",
+            "direct_entry": True,
+            "output": {
+                "lot_id": l["lot_id"],
+                "lot_no": l["lot_no"],
+                "grade": l["grade"],
+                "col_letter": l["col_letter"],
+                "qty_mt": l["qty_mt"],
+            },
+            "sources": [],
+            "card_url": f"/api/v3/master/blend/{rec_id}/card.pdf",
+        }
+        blend_records.setdefault("blends", []).append(record)
+        recorded_blend_ids.add(l["lot_id"])
+        backfilled = True
+    if backfilled:
+        _write_blend_records(blend_records)
+
+    visible_blends = [
+        b for b in blend_records.get("blends", [])
+        if (b.get("output", {}).get("lot_id")) in live_lot_ids
+    ]
+
     return {
         "lots": lots,
         "methods": methods,
@@ -220,7 +265,7 @@ def parse_master() -> Dict[str, Any]:
         "layout": layout,
         "lot_col_start": lot_col_start,
         "duplicates": duplicates,
-        "blend_records": blend_records.get("blends", []),
+        "blend_records": visible_blends,
     }
 
 
