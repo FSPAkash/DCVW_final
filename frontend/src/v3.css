@@ -228,8 +228,9 @@ button, input, select, textarea {
   color: var(--ink-3);
 }
 .status-powered-logo {
-  height: 16px;
+  height: 18px;
   width: auto;
+  max-width: 110px;
   object-fit: contain;
   opacity: 0.85;
 }

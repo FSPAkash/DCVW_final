@@ -65,12 +65,11 @@ function Login({ onLogin }) {
             <div className="login-powered">
               <span className="login-powered-label">Powered By :</span>
               <img
-                src="/logos/partner2.png"
+                src="/logos/FS.png"
                 alt="Findability Sciences"
                 className="login-powered-logo"
                 onError={(e) => { e.target.style.display = 'none'; }}
               />
-              <span className="login-powered-name">Findability Sciences</span>
             </div>
           </div>
 

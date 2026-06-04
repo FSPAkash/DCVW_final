@@ -132,12 +132,11 @@ function StatusBar({ screen, customer, ranked, qty, totals, user, onLogout }) {
         <span className="status-powered">
           POWERED BY
           <img
-            src="/logos/partner2.png"
-            alt=""
+            src="/logos/FS.png"
+            alt="Findability Sciences"
             className="status-powered-logo"
             onError={(e) => { e.target.style.display = 'none'; }}
           />
-          FINDABILITY SCIENCES
         </span>
         <TestingTag compact />
         {onLogout && (
